@@ -1,0 +1,21 @@
+.index h1 {
+	padding: 0px;
+	margin-bottom: 0px;
+}
+.index h2 {
+	padding: 0px;
+	margin-bottom: 80px;
+	font-size: 0.9rem;
+}
+
+.freelancing button {
+	display: inline-block;
+	margin: 20px;
+	width: 150px;
+	height: 35px;
+	margin-top: 0px;
+}
+.index a {
+	text-decoration: none;
+	padding: 10px;
+}

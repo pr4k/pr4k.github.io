@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blogs on Blog</title>
+    <link>/blog/</link>
+    <description>Recent content in Blogs on Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© 2020 Powered by Hugo | Theme Customized by pr4k</copyright>
+    <lastBuildDate>Wed, 05 Feb 2020 22:39:53 +0000</lastBuildDate>
+    
+	<atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Creating A Blog In Hugo</title>
+      <link>/blog/how-i-created-this-blog/</link>
+      <pubDate>Wed, 05 Feb 2020 22:39:53 +0000</pubDate>
+      
+      <guid>/blog/how-i-created-this-blog/</guid>
+      <description>Why Hugo Hugo is a great tool to generate static website but honestly it is a boring framework to work with. There&amp;rsquo;s no fancy technology, neither you can create any funky functions to fetch your Github repo Readme or any of your Medium articles.
+It uses Go at its core which was the one and only reason for me to go with Hugo, though later I found out the benefits and features which makes it unique and perfect for creating simple static websites like this blog.</description>
+    </item>
+    
+  </channel>
+</rss>
