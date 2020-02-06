@@ -1,0 +1,4 @@
+[submodule "pr4k.github.io"]
+	path = pr4k.github.io
+	url = https://github.com/pr4k/pr4k.github.io.git
+	branch = master
