@@ -7,10 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© 2020 Powered by Hugo | Theme Customized by pr4k</copyright>
-    <lastBuildDate>Wed, 05 Feb 2020 22:39:53 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 09 Feb 2020 19:55:53 +0000</lastBuildDate>
     
 	<atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>How to Create a Stackoverflow Terminal Client - Go</title>
+      <link>/blog/stackoverflow-using-terminal/</link>
+      <pubDate>Sun, 09 Feb 2020 19:55:53 +0000</pubDate>
+      
+      <guid>/blog/stackoverflow-using-terminal/</guid>
+      <description>Around a month ago I came across a project howdoi created in python. And honestly it was amazing, finding solution of basic problems without opening browser was a life saver, so I thought of creating one for myself. As one of my major goal was speed ,so I went with Go lang.
+So today, let me show you how to use Stackoverflow using just a terminal.
+ Create Go Environment I won&amp;rsquo;t go in details about how to install Go or how the directory structure should look.</description>
+    </item>
     
     <item>
       <title>Creating A Blog In Hugo</title>
