@@ -11,8 +11,26 @@ description = "My github projects"
 ---
 
 # Projects on Github
-
 ---
+## [Howto](https://github.com/pr4k/howto)
+
+### About:
+
+A CLI tool for stackoverflow to get answers for simple coding tasks directly from terminal. Wrtten purely in Go and a CI implemented using Travis-CI
+
+- Go
+- Travis-CI
+- TermUI (Go Framework for UI)
+---
+## [Personal Blog](https://github.com/pr4k/pr4k.github.io)
+
+### About:
+
+A personal blog created using a static site builder Hugo , and a CI implemented using Travis-CI.
+
+- Hugo
+- Go
+- Travis-CI
 
 ## [Online Judge](https://github.com/pr4k/oj)
 

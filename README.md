@@ -8,7 +8,7 @@
 
 Made with :heart: [Hugo](https://gohugo.io/) 
 
-Theme Used :  [Hello Friends](https://themes.gohugo.io/hugo-theme-hello-friend/)
+Theme Used :  =[Hello Friends](https://themes.gohugo.io/hugo-theme-hello-friend/)
 
 Customized by pr4k
 
