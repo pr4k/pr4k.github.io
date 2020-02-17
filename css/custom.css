@@ -1,8 +1,54 @@
 .logo__cursor {
-	background: green !important;
+	background:var(--dark-color-secondary) !important;
 }
+.post-title a:hover{
+	color: var(--light-color);
+	background-color: transparent;
+}
+.dark-theme .post-title a:hover{
+	color: var(--dark-color);
+	background-color: transparent;
+}
+.container{
+	background-color:#2c3e1759;
+}
+
 .footer {
 	position: relative;
 	bottom: 0;
 	width: 100%;
+	color:var(--dark-color-secondary)
 }
+
+code {
+	color: #cccccc;
+	background-color: #212020 ;
+}
+
+a:hover,.theme-toggler:hover{
+	background-color: none;
+	color:var(--dark-color-secondary);
+}
+.freelancing button:hover,.freelancing a:hover{
+	color:var(--light-header)!important;
+}
+.freelancing button:hover,.freelancing a:hover{
+	background-color:var(--dark-color-secondary)!important;
+	color: var(--light-background);
+}
+
+.dark-theme a:hover,.theme-toggler:hover{
+	background-color: none;
+	color:var(--dark-color-secondary);
+}
+.dark-theme .freelancing button:hover,.freelancing a:hover{
+	background-color:var(--dark-color-secondary)!important;
+	color: var(--dark-background);
+}
+.dark-theme .freelancing button{
+	color:var(--dark-background)
+}
+code{
+	background-color: var(--dark-background-secondary);	
+}
+

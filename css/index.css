@@ -1,3 +1,7 @@
+
+body{
+	background-image: url('../static/img/index-bg.jpeg');
+}
 .index h1 {
 	padding: 0px;
 	margin-bottom: 0px;
@@ -6,6 +10,14 @@
 	padding: 0px;
 	margin-bottom: 80px;
 	font-size: 0.9rem;
+	
+	
+}
+ .index h2{
+	color:var(--dark-color-secondary);
+}
+.dark-theme .index h2{
+	color:var(--dark-color-secondary);
 }
 
 .freelancing button {
@@ -14,8 +26,22 @@
 	width: 150px;
 	height: 35px;
 	margin-top: 0px;
+	
 }
+
 .index a {
 	text-decoration: none;
 	padding: 10px;
+	padding-bottom: 0px;;
+}
+.dark-theme .header{
+	border-width: 2px;
+	border-top: 0px;
+	border-color:var(--light-color-border);
+	border-right: 0px;
+	border-left:0px;
+	border-style:solid ;
+}
+.dark-theme .header{
+	border-color: var(--dark-color-secondary);
 }
