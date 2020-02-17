@@ -1,0 +1,7 @@
+{{ $templateStyle := resources.Get "css/custom.css" }}
+{{ $custom := $templateStyle | resources.ExecuteAsTemplate "css/custom.css" . }}
+<link rel="stylesheet" type="text/css" href="{{ $custom.Permalink }}">
+{{ $templateVar :=resources.Get "css/variables.css"}}
+{{$variables := $templateVar | resources.ExecuteAsTemplate "css/variables.css" . }}
+<link rel="stylesheet" type="text/css" href="{{ $variables.Permalink }}" />
+

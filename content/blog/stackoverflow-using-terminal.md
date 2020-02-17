@@ -142,13 +142,14 @@ if (acceptedAnswer != solution{}) {
 ```
 So after combining everything we will get
 
-```GO
+```go 
 func getPost(node post) (solution, []solution) {
 	urlString := fmt.Sprintf("https://stackoverflow.com/%s", node.link)
 	res, err := goquery.NewDocument(urlString)
 	if err != nil {
 		log.Fatal(err)
 	}
+
 	var answers []solution
 	question := res.Find(".question").Find(".post-layout")
 	answers = append(answers, solution{strings.Trim(question.Find(".post-text").Text(), "\n"), question.Find(".js-vote-count").Text()})

@@ -1,3 +1,0 @@
-{{ $templateStyle := resources.Get "css/custom.css" }}
-{{ $custom := $templateStyle | resources.ExecuteAsTemplate "css/custom.css" . }}
-<link rel="stylesheet" type="text/css" href="{{ $custom.Permalink }}">
