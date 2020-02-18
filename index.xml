@@ -14,10 +14,10 @@
     
     <item>
       <title>How to Create a Stackoverflow Terminal Client - Go</title>
-      <link>/blog/stackoverflow-using-terminal/</link>
+      <link>/blog/howto/</link>
       <pubDate>Sun, 09 Feb 2020 19:55:53 +0000</pubDate>
       
-      <guid>/blog/stackoverflow-using-terminal/</guid>
+      <guid>/blog/howto/</guid>
       <description>Around a month ago I came across a project howdoi created in python. And honestly it was amazing, finding solution of basic problems without opening browser was a life saver, so I thought of creating one for myself. As one of my major goal was speed ,so I went with Go lang.
 So today, let me show you how to use Stackoverflow using just a terminal.
  Create Go Environment I won&amp;rsquo;t go in details about how to install Go or how the directory structure should look.</description>
@@ -25,10 +25,10 @@ So today, let me show you how to use Stackoverflow using just a terminal.
     
     <item>
       <title>Creating A Blog In Hugo</title>
-      <link>/blog/how-i-created-this-blog/</link>
+      <link>/blog/hugoblog/</link>
       <pubDate>Wed, 05 Feb 2020 22:39:53 +0000</pubDate>
       
-      <guid>/blog/how-i-created-this-blog/</guid>
+      <guid>/blog/hugoblog/</guid>
       <description>Why Hugo Hugo is a great tool to generate static website but honestly it is a boring framework to work with. There&amp;rsquo;s no fancy technology, neither you can create any funky functions to fetch your Github repo Readme or any of your Medium articles.
 It uses Go at its core which was the one and only reason for me to go with Hugo, though later I found out the benefits and features which makes it unique and perfect for creating simple static websites like this blog.</description>
     </item>
