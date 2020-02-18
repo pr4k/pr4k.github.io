@@ -1,11 +1,14 @@
 :root {
   /* light theme color */
-  --light-background: white;
-  --light-background-secondary: #86c232;
-  --light-header: white;
-  --light-color: #222;
+  --light-background: #C2C3C9;
+  --light-background-secondary: #BAB2B5;
+  --light-header: #A7ACE0;
+  --light-color: #0B0F2C;
+  --light-tag-color:#25355A;
   --light-color-secondary: rgb(71, 64, 64);
-  --light-border-color: #86c232;
+  --light-border-color: #061235;
+  --light-button-hover:#2f4b89;
+
 
   /* dark theme colors */
   --dark-background: #222629;

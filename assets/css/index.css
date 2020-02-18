@@ -1,6 +1,9 @@
 
-body{
-	background-image: url('../static/img/index-bg.jpeg');
+.index{
+	padding-right: 10px;
+	padding-left: 10px;
+	padding-bottom: 0px;
+
 }
 .index h1 {
 	padding: 0px;
@@ -13,8 +16,20 @@ body{
 	
 	
 }
+.footer {
+	padding-top: 0px;
+	
+}
+.footer__inner{
+	justify-content: center !important;
+}
+.footer .copyright{
+	margin:0px!important;
+	text-align: center;
+	
+}
  .index h2{
-	color:var(--dark-color-secondary);
+	color:var(--light-tag-color);
 }
 .dark-theme .index h2{
 	color:var(--dark-color-secondary);
@@ -34,14 +49,7 @@ body{
 	padding: 10px;
 	padding-bottom: 0px;;
 }
-.dark-theme .header{
-	border-width: 2px;
-	border-top: 0px;
-	border-color:var(--light-color-border);
-	border-right: 0px;
-	border-left:0px;
-	border-style:solid ;
-}
+
 .dark-theme .header{
 	border-color: var(--dark-color-secondary);
 }

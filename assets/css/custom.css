@@ -1,6 +1,10 @@
 .logo__cursor {
+	background:var(--light-button-hover) !important;
+}
+.dark-theme .logo__cursor {
 	background:var(--dark-color-secondary) !important;
 }
+
 .post-title a:hover{
 	color: var(--light-color);
 	background-color: transparent;
@@ -9,15 +13,17 @@
 	color: var(--dark-color);
 	background-color: transparent;
 }
-.container{
-	background-color:#2c3e1759;
+.post-cover{
+	max-width: 100% !important;
+	margin: 40px auto;
+
 }
 
 .footer {
 	position: relative;
 	bottom: 0;
 	width: 100%;
-	color:var(--dark-color-secondary)
+	color:var(--light-bordor-color)
 }
 
 code {
@@ -27,21 +33,22 @@ code {
 
 a:hover,.theme-toggler:hover{
 	background-color: none;
-	color:var(--dark-color-secondary);
+	color:var(--light-button-hover);
 }
-.freelancing button:hover,.freelancing a:hover{
-	color:var(--light-header)!important;
+.freelancing a:hover{
+	background-color: transparent ;
 }
+
 .freelancing button:hover,.freelancing a:hover{
-	background-color:var(--dark-color-secondary)!important;
+	background-color:var(--light-button-hover)!important;
 	color: var(--light-background);
 }
 
-.dark-theme a:hover,.theme-toggler:hover{
+.dark-theme a:hover,.dark-theme .theme-toggler:hover{
 	background-color: none;
 	color:var(--dark-color-secondary);
 }
-.dark-theme .freelancing button:hover,.freelancing a:hover{
+.dark-theme .freelancing button:hover,.dark-theme .freelancing a:hover{
 	background-color:var(--dark-color-secondary)!important;
 	color: var(--dark-background);
 }
@@ -52,3 +59,11 @@ code{
 	background-color: var(--dark-background-secondary);	
 }
 
+.header{
+	border-width: 2px;
+	border-top: 0px;
+	
+	border-right: 0px;
+	border-left:0px;
+	border-style:solid ;
+}
