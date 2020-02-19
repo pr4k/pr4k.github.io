@@ -13,8 +13,19 @@ paginate = 5
   showMenuItems = 4
   # Show reading time in minutes for posts
   showReadingTime = true
-  
+  resumeSrc = "assets/Prakhar_CV.pdf"
 
+[[data]]
+  src = "static/assets/Prakhar_CV.pdf"
+  title = "Resume"
+
+[[resources]]
+  src = "*specs.pdf"
+  title = "Specification #:counter"
+
+[[resources]]
+  name = "pdf-file-:counter"
+  src = "**.pdf"
 [languages]
   [languages.en]
     title = "Blog"
@@ -32,7 +43,7 @@ paginate = 5
     dateFormatList = "2006-01-02"
     # leave empty to disable, enter display text to enable
     # lastModDisplay = ""
-
+  
     [languages.en.params.logo]
       logoText = "home"
       logoHomeLink = "/"

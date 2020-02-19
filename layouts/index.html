@@ -1,6 +1,6 @@
 {{define "main"}} {{ $templateStyle := resources.Get "css/index.css" }}
 {{$index:= $templateStyle | resources.ExecuteAsTemplate "css/index.css" . }}
-
+{{$resume_link:= $.Param "resumeSrc"}}
 <link rel="stylesheet" type="text/css" href="{{ $index.Permalink }}" />
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -23,6 +23,7 @@
 		<button>
 			<a href="https://www.fiverr.com/prakharkaushik"><b>FIVERR</b></a>
 		</button>
+		
 	</div>
 	<a href="https://www.github.com/pr4k"><i class="fa fa-github" aria-hidden="true"></i></a>
 	<a href="https://twitter.com/me_prakhar"><i class="fa fa-twitter" aria-hidden="true"></i></a>
@@ -31,7 +32,10 @@
 	<a href="https://t.me/Prakharkaushik"><i class="fa fa-telegram" aria-hidden="true"></i></a>
 	<a href="https://stackoverflow.com/users/10425600/prakhar-kaushik"><i class="fa fa-stack-overflow"
 			aria-hidden="true"></i></a>
-</div>
 
+		</div>
+
+
+<a href={{$resume_link}}>Resume</a>
 {{end}}
 
