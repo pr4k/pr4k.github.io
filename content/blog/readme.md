@@ -2,7 +2,7 @@
 title: "How to Create an Effective Readme"
 date: 2020-02-19T23:22:15Z
 cover: "img/readme.jpg"
-draft: true
+draft: false
 ---
 
 
