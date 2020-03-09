@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© 2020 Powered by Hugo | Theme Customized by pr4k</copyright>
-    <lastBuildDate>Wed, 19 Feb 2020 23:22:15 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 09 Mar 2020 02:12:45 +0000</lastBuildDate>
     
 	<atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Hugo to Medium</title>
+      <link>/blog/hugo-to-medium/</link>
+      <pubDate>Mon, 09 Mar 2020 02:12:45 +0000</pubDate>
+      
+      <guid>/blog/hugo-to-medium/</guid>
+      <description>Photo by Yancy Min on Unsplash Motivation So everytime I added a blog on my personal website (Which is very rare) I had to go to my medium profile and import it manually. So once I got to know about Github actions, the first idea was to automate this process. Also this project was an attempt to understand Github Actions better.
+Description So what our action does is everytime I push my code to the github Repo with a special commit message, it takes the new post and use the Medium API and creates a new draft at my medium account.</description>
+    </item>
     
     <item>
       <title>How to Create an Effective Readme</title>
