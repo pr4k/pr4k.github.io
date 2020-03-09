@@ -44,7 +44,9 @@ How many times have you tried to center an image . Yes Github flavoured markdown
     <br>
     <img src="https://goreportcard.com/badge/github.com/pr4k/howto"
         alt="GoReport">
-    <img src="https://travis-ci.com/pr4k/howto.svg?branch=master" alt="Build">
+    <img 
+    src="https://travis-ci.com/pr4k/howto.svg?branch=master" 
+    alt="Build">
     <img src="https://img.shields.io/github/stars/pr4k/howto" alt="Stars">
     <img src="https://img.shields.io/github/issues/pr4k/howto" alt="Issues">
     <img src="https://img.shields.io/github/forks/pr4k/howto" alt="Forks">

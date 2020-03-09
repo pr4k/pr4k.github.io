@@ -1,0 +1,18 @@
+on: [push]
+
+jobs:
+  hugo_to_medium_job:
+    runs-on: ubuntu-latest
+    name: hugo-to-medium
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: master
+      - name: Hugo To medium Action step 
+        uses: pr4k/Hugo-to-Medium@master # Uses an action in the root directory
+        id: hugomedium 
+        env:
+          APP_ID: ${{secrets.APP_ID}}
+          ACCESS_TOKEN: ${{secrets.ACCESS_TOKEN}}
+          APP_SECRET: ${{secrets.APP_SECRET}}
+          BLOG_DIR: ${{secrets.BLOG_DIR}}
