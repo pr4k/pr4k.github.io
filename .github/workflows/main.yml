@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: master
+          ref: source 
       - name: Hugo To medium Action step 
         uses: pr4k/Hugo-to-Medium@master # Uses an action in the root directory
         id: hugomedium 
