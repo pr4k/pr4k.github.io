@@ -12,6 +12,27 @@ description = "My github projects"
 
 # Projects on Github
 ---
+## [Locate](https://github.com/pr4k/locate)
+
+### About:
+
+A Recursive Search tool to find location of a string in files.
+
+- Rust
+- Github Action (CI)
+
+---
+## [Hugo To Medium](https://github.com/pr4k/hugo-to-medium)
+
+### About:
+
+A Github Action created for a Github Hackathon, It directly publishes your hugo blog to Medium when a push is made on github.
+
+- Python
+- Github Action
+- Docker
+
+---
 ## [Howto](https://github.com/pr4k/howto)
 
 ### About:
@@ -31,7 +52,7 @@ A personal blog created using a static site builder Hugo , and a CI implemented 
 - Hugo
 - Go
 - Travis-CI
-
+---
 ## [Online Judge](https://github.com/pr4k/oj)
 
 ### About:
