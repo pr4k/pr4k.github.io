@@ -7,10 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© 2020 Powered by Hugo | Theme Customized by pr4k</copyright>
-    <lastBuildDate>Mon, 09 Mar 2020 02:12:45 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 21 Mar 2020 00:31:05 +0000</lastBuildDate>
     
 	<atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Locate:  A Recurive Search Tool - RUST</title>
+      <link>/blog/locate/</link>
+      <pubDate>Sat, 21 Mar 2020 00:31:05 +0000</pubDate>
+      
+      <guid>/blog/locate/</guid>
+      <description>How many times have you gone through files to find some string or origin of a function
+Locate is a tool written in Rust which goes through each file recursively and gives exact location of the query string in the files.
+Its blazing fast, as its written in Rust, and can recursively walk the directories.
+ Motivation Okay so I wanted to learn Rust and I think the best way to learn a new language is by creating a project, I always used search function in VS code to find origin of a function or places where the function is used.</description>
+    </item>
     
     <item>
       <title>Hugo to Medium</title>

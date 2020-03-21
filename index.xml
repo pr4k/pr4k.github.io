@@ -13,6 +13,18 @@
     
     
     <item>
+      <title>Locate:  A Recurive Search Tool - RUST</title>
+      <link>/blog/locate/</link>
+      <pubDate>Sat, 21 Mar 2020 00:31:05 +0000</pubDate>
+      
+      <guid>/blog/locate/</guid>
+      <description>How many times have you gone through files to find some string or origin of a function
+Locate is a tool written in Rust which goes through each file recursively and gives exact location of the query string in the files.
+Its blazing fast, as its written in Rust, and can recursively walk the directories.
+ Motivation Okay so I wanted to learn Rust and I think the best way to learn a new language is by creating a project, I always used search function in VS code to find origin of a function or places where the function is used.</description>
+    </item>
+    
+    <item>
       <title>Hugo to Medium</title>
       <link>/blog/hugo-to-medium/</link>
       <pubDate>Mon, 09 Mar 2020 02:12:45 +0000</pubDate>
@@ -60,9 +72,9 @@ It uses Go at its core which was the one and only reason for me to go with Hugo,
       <pubDate>Wed, 05 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>/projects/</guid>
-      <description>Projects on Github  Howto About: A CLI tool for stackoverflow to get answers for simple coding tasks directly from terminal. Wrtten purely in Go and a CI implemented using Travis-CI
- Go Travis-CI TermUI (Go Framework for UI)   Personal Blog About: A personal blog created using a static site builder Hugo , and a CI implemented using Travis-CI.
- Hugo Go Travis-CI  Online Judge About: This was a Backend for Online Judge which was never completed due to lack of frontend developer.</description>
+      <description>Projects on Github  Locate About: A Recursive Search tool to find location of a string in files.
+ Rust Github Action (CI)   Hugo To Medium About: A Github Action created for a Github Hackathon, It directly publishes your hugo blog to Medium when a push is made on github.
+ Python Github Action Docker   Howto About: A CLI tool for stackoverflow to get answers for simple coding tasks directly from terminal.</description>
     </item>
     
   </channel>
