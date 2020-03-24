@@ -35,6 +35,18 @@ Description So what our action does is everytime I push my code to the github Re
     </item>
     
     <item>
+      <title>My Arch Setup</title>
+      <link>/blog/archsetup/</link>
+      <pubDate>Tue, 03 Mar 2020 02:17:32 +0000</pubDate>
+      
+      <guid>/blog/archsetup/</guid>
+      <description>My first experience with linux was with ubuntu and it was great but the only problem was the extra packages which were making it heavy.
+One day I was going through reddit where I came across a reddit channel called UnixPorn, and watching other people&amp;rsquo;s setup inspired me to get one of my own.
+So here is My arch setup and steps to get one for yourself too.
+Installation Guide To be honest , the best Installation guide for Arch is their official guide Still I will give some steps in short to tell you about the basic flow</description>
+    </item>
+    
+    <item>
       <title>How to Create an Effective Readme</title>
       <link>/blog/readme/</link>
       <pubDate>Wed, 19 Feb 2020 23:22:15 +0000</pubDate>
