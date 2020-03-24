@@ -1,7 +1,7 @@
 ---
 title: "My Arch Setup"
 date: 2020-03-03T02:17:32Z
-draft: true
+draft: false 
 cover: img/archsetup.png
 ---
 My first experience with linux was with ubuntu and it was great but the only problem was the
