@@ -210,7 +210,7 @@ Then we will be installing Medium library which will be later used to provide an
 <h2 id="create-entrypointsh">Create entrypoint.sh</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh -l
 </span><span style="color:#75715e"></span>
-main<span style="color:#f92672">(){</span>
+main<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">{</span>
     message<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>jq  <span style="color:#e6db74">&#39;.commits[0].message&#39;</span> <span style="color:#e6db74">&#34;</span>$GITHUB_EVENT_PATH<span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">)</span>
     python /post.py $message
 <span style="color:#f92672">}</span>
@@ -229,25 +229,25 @@ We will be using Environment variables mentioned at the start. The <code>BLOG_DI
 
 ENV <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>environ
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">postToMedium</span>(heading,body):
-    client <span style="color:#f92672">=</span> Client(application_id <span style="color:#f92672">=</span> ENV[<span style="color:#e6db74">&#34;APP_ID&#34;</span>],application_secret <span style="color:#f92672">=</span> ENV[<span style="color:#e6db74">&#34;APP_SECRET&#34;</span>])
+    client <span style="color:#f92672">=</span> Client(application_id <span style="color:#f92672">=</span> ENV[<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">APP_ID</span><span style="color:#e6db74">&#34;</span>],application_secret <span style="color:#f92672">=</span> ENV[<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">APP_SECRET</span><span style="color:#e6db74">&#34;</span>])
 
-    client<span style="color:#f92672">.</span>access_token <span style="color:#f92672">=</span> ENV[<span style="color:#e6db74">&#34;ACCESS_TOKEN&#34;</span>]
+    client<span style="color:#f92672">.</span>access_token <span style="color:#f92672">=</span> ENV[<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">ACCESS_TOKEN</span><span style="color:#e6db74">&#34;</span>]
 
     user <span style="color:#f92672">=</span> client<span style="color:#f92672">.</span>get_current_user()
 
-    post <span style="color:#f92672">=</span> client<span style="color:#f92672">.</span>create_post(user_id <span style="color:#f92672">=</span> user[<span style="color:#e6db74">&#34;id&#34;</span>], title <span style="color:#f92672">=</span> heading, content <span style="color:#f92672">=</span> body, content_format <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;markdown&#34;</span>, publish_status <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;draft&#34;</span>)
+    post <span style="color:#f92672">=</span> client<span style="color:#f92672">.</span>create_post(user_id <span style="color:#f92672">=</span> user[<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">id</span><span style="color:#e6db74">&#34;</span>], title <span style="color:#f92672">=</span> heading, content <span style="color:#f92672">=</span> body, content_format <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">markdown</span><span style="color:#e6db74">&#34;</span>, publish_status <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">draft</span><span style="color:#e6db74">&#34;</span>)
 
-    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;New!! post at &#34;</span>,post[<span style="color:#e6db74">&#34;url&#34;</span>])
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">New!! post at </span><span style="color:#e6db74">&#34;</span>,post[<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">url</span><span style="color:#e6db74">&#34;</span>])
 
-commit_msg <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">.</span>join(sys<span style="color:#f92672">.</span>argv[<span style="color:#ae81ff">1</span>:])
-blog_path <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(ENV[<span style="color:#e6db74">&#34;GITHUB_WORKSPACE&#34;</span>],ENV[<span style="color:#e6db74">&#34;BLOG_DIR&#34;</span>])
+commit_msg <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74"> </span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>join(sys<span style="color:#f92672">.</span>argv[<span style="color:#ae81ff">1</span>:])
+blog_path <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(ENV[<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">GITHUB_WORKSPACE</span><span style="color:#e6db74">&#34;</span>],ENV[<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">BLOG_DIR</span><span style="color:#e6db74">&#34;</span>])
 blog_dir <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>listdir(blog_path)
-<span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#34;PUBLISH&#34;</span> <span style="color:#f92672">in</span> commit_msg<span style="color:#f92672">.</span>upper():
-    post_name <span style="color:#f92672">=</span> commit_msg<span style="color:#f92672">.</span>upper()<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34;PUBLISH&#34;</span>)[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>strip()[:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+<span style="color:#66d9ef">if</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">PUBLISH</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">in</span> commit_msg<span style="color:#f92672">.</span>upper():
+    post_name <span style="color:#f92672">=</span> commit_msg<span style="color:#f92672">.</span>upper()<span style="color:#f92672">.</span>split(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">PUBLISH</span><span style="color:#e6db74">&#34;</span>)[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>strip()[:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
     <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> blog_dir:
         <span style="color:#66d9ef">if</span> post_name <span style="color:#f92672">==</span> i<span style="color:#f92672">.</span>upper()<span style="color:#f92672">.</span>strip():
             post_path <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(blog_path,i)
-            body <span style="color:#f92672">=</span> open(post_path,<span style="color:#e6db74">&#34;r&#34;</span>)<span style="color:#f92672">.</span>read()
+            body <span style="color:#f92672">=</span> open(post_path,<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;</span>)<span style="color:#f92672">.</span>read()
             postToMedium(i,body)
 </code></pre></div><p>Okay so the code is simple it takes all the Environment variables and also take the commit message which is passed from <code>entrypoint.sh</code> .</p>
 <p>It checks whether the commit message contains <code>PUBLISH</code> if yes then we go on matching it from all the files in the blog directory. Once it finds the blog name given in commit message it takes the file and send it to our function which will handle the medium part.</p>

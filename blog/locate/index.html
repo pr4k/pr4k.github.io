@@ -237,12 +237,12 @@ If so the path of file will be passed to another function where the exact locati
     {
         <span style="color:#66d9ef">if</span> e.metadata().unwrap().is_file() {
             <span style="color:#66d9ef">match</span> fstream::contains(e.path(), query) {
-                Some(b) <span style="color:#f92672">=&gt;</span> {
+                Some(b) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
                     <span style="color:#66d9ef">if</span> b {
                         check_file(e.path(), query);
                     }
                 }
-                None <span style="color:#f92672">=&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Error in walking Dir&#34;</span>),
+                None <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Error in walking Dir&#34;</span>),
             }
         }
         total_files_scanned <span style="color:#f92672">=</span> fl_no;
@@ -263,7 +263,7 @@ If so the path of file will be passed to another function where the exact locati
         file_path.display().to_string().magenta().italic()
     );
     <span style="color:#66d9ef">match</span> fstream::read_lines(file_path) {
-        Some(s) <span style="color:#f92672">=&gt;</span> {
+        Some(s) <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
             <span style="color:#66d9ef">for</span> (pos, s) <span style="color:#66d9ef">in</span> s.iter().enumerate() {
                 <span style="color:#66d9ef">if</span> s.contains(query) {
                     print<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, <span style="color:#e6db74">&#34;Line &#34;</span>.green().bold());
@@ -272,7 +272,7 @@ If so the path of file will be passed to another function where the exact locati
                 }
             }
         }
-        None <span style="color:#f92672">=&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Error in reading File&#34;</span>),
+        None <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;Error in reading File&#34;</span>),
     }
     println<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;&#34;</span>);
 }
