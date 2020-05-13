@@ -1,1 +1,58 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml"><url><loc>/</loc><lastmod>2020-03-21T00:31:05+00:00</lastmod></url><url><loc>/blog/</loc><lastmod>2020-03-21T00:31:05+00:00</lastmod></url><url><loc>/blog/locate/</loc><lastmod>2020-03-21T00:31:05+00:00</lastmod></url><url><loc>/blog/hugo-to-medium/</loc><lastmod>2020-03-09T02:12:45+00:00</lastmod></url><url><loc>/blog/archsetup/</loc><lastmod>2020-03-03T02:17:32+00:00</lastmod></url><url><loc>/blog/readme/</loc><lastmod>2020-02-19T23:22:15+00:00</lastmod></url><url><loc>/blog/howto/</loc><lastmod>2020-02-09T19:55:53+00:00</lastmod></url><url><loc>/blog/hugoblog/</loc><lastmod>2020-02-05T22:39:53+00:00</lastmod></url><url><loc>/projects/</loc><lastmod>2020-02-05T00:00:00+00:00</lastmod></url><url><loc>/categories/</loc></url><url><loc>/tags/</loc></url></urlset>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>/blog/</loc>
+    <lastmod>2020-03-21T00:31:05+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/locate/</loc>
+    <lastmod>2020-03-21T00:31:05+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/hugo-to-medium/</loc>
+    <lastmod>2020-03-09T02:12:45+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/archsetup/</loc>
+    <lastmod>2020-03-03T02:17:32+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/readme/</loc>
+    <lastmod>2020-02-19T23:22:15+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/howto/</loc>
+    <lastmod>2020-02-09T19:55:53+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/hugoblog/</loc>
+    <lastmod>2020-02-05T22:39:53+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2020-02-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/projects/</loc>
+    <lastmod>2020-02-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+  </url>
+  
+</urlset>

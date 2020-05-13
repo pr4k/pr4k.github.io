@@ -1,195 +1,468 @@
-<!doctype html><html lang=en><head><title>How to Create a Stackoverflow Terminal Client - Go :: Blog</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta name=description content="Around a month ago I came across a project howdoi created in python. And honestly it was amazing, finding solution of basic problems without opening browser was a life saver, so I thought of creating one for myself. As one of my major goal was speed ,so I went with Go lang.
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>How to Create a Stackoverflow Terminal Client - Go :: Blog</title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="description" content="Around a month ago I came across a project howdoi created in python. And honestly it was amazing, finding solution of basic problems without opening browser was a life saver, so I thought of creating one for myself. As one of my major goal was speed ,so I went with Go lang.
 So today, let me show you how to use Stackoverflow using just a terminal.
- Create Go Environment I won&amp;rsquo;t go in details about how to install Go or how the directory structure should look."><meta name=keywords content><meta name=robots content="noodp"><link rel=canonical href=/blog/howto/><link rel=stylesheet href=/assets/style.css><link rel=stylesheet href=/style.css><link rel=apple-touch-icon-precomposed sizes=144x144 href=/img/apple-touch-icon-144-precomposed.png><link rel="shortcut icon" href=/img/favicon.png><meta name=twitter:card content="summary"><meta name=twitter:title content="How to Create a Stackoverflow Terminal Client - Go"><meta name=twitter:description content="Around a month ago I came across a project howdoi created in python. And honestly it was amazing, finding solution of basic problems without opening browser was a life saver, so I thought of creating one for myself. As one of my major goal was speed ,so I went with Go lang.
+ Create Go Environment I won&amp;rsquo;t go in details about how to install Go or how the directory structure should look."/>
+<meta name="keywords" content=""/>
+<meta name="robots" content="noodp"/>
+<link rel="canonical" href="/blog/howto/" />
+
+
+
+
+
+<link rel="stylesheet" href="/assets/style.css">
+
+
+<link rel="stylesheet" href="/style.css">
+
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/apple-touch-icon-144-precomposed.png">
+<link rel="shortcut icon" href="/img/favicon.png">
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="How to Create a Stackoverflow Terminal Client - Go"/>
+<meta name="twitter:description" content="Around a month ago I came across a project howdoi created in python. And honestly it was amazing, finding solution of basic problems without opening browser was a life saver, so I thought of creating one for myself. As one of my major goal was speed ,so I went with Go lang.
 So today, let me show you how to use Stackoverflow using just a terminal.
- Create Go Environment I won&rsquo;t go in details about how to install Go or how the directory structure should look."><meta property="og:title" content="How to Create a Stackoverflow Terminal Client - Go"><meta property="og:description" content="Around a month ago I came across a project howdoi created in python. And honestly it was amazing, finding solution of basic problems without opening browser was a life saver, so I thought of creating one for myself. As one of my major goal was speed ,so I went with Go lang.
+ Create Go Environment I won&rsquo;t go in details about how to install Go or how the directory structure should look."/>
+
+
+
+<meta property="og:title" content="How to Create a Stackoverflow Terminal Client - Go" />
+<meta property="og:description" content="Around a month ago I came across a project howdoi created in python. And honestly it was amazing, finding solution of basic problems without opening browser was a life saver, so I thought of creating one for myself. As one of my major goal was speed ,so I went with Go lang.
 So today, let me show you how to use Stackoverflow using just a terminal.
- Create Go Environment I won&rsquo;t go in details about how to install Go or how the directory structure should look."><meta property="og:type" content="article"><meta property="og:url" content="/blog/howto/"><meta property="article:published_time" content="2020-02-09T19:55:53+00:00"><meta property="article:modified_time" content="2020-02-09T19:55:53+00:00"><meta property="og:site_name" content="Blog"><link rel=stylesheet type=text/css href=/css/custom.css><link rel=stylesheet type=text/css href=/css/variables.css></head><body class=dark-theme><div class=container><header class=header><span class=header__inner><a href=/ class=logo style=text-decoration:none><span class=logo__mark><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44"><path fill="none" d="M15 8l14.729 14.382L15 35.367"/></svg></span><span class=logo__text>howto</span>
-<span class=logo__cursor></span></a><span class=header__right><nav class=menu><ul class="menu__inner menu__inner--desktop"><li><a href=/blog>Blog</a></li><li><a href=/projects>Projects</a></li></ul><ul class="menu__inner menu__inner--mobile"><li><a href=/blog>Blog</a></li><li><a href=/projects>Projects</a></li></ul></nav><span class=menu-trigger><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg></span><span class=theme-toggle><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 41C32.4934 41 41 32.4934 41 22 41 11.5066 32.4934 3 22 3 11.5066 3 3 11.5066 3 22s8.5066 19 19 19zM7 22C7 13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22z"/></svg></span></span></span></header><div class=content><div class=post><h2 class=post-title><a href=/blog/howto/>How to Create a Stackoverflow Terminal Client - Go</a></h2><div class=post-meta><span class=post-date>2020-02-09</span>
-<span class=post-read-time>— 7 min read</span></div><img src=/img/logo.png class=post-cover><div class=post-content><p>Around a month ago I came across a project <a href=https://github.com/gleitz/howdoi>howdoi</a> created in python. And honestly it was amazing, finding solution of basic problems without opening browser was a life saver, so I thought of creating one for myself. As one of my major goal was speed ,so I went with Go lang.</p><p>So today, let me show you how to use Stackoverflow using just a terminal.</p><hr><h1 id=create-go-environment>Create Go Environment</h1><p>I won&rsquo;t go in details about how to install Go or how the directory structure should look. You can find everything on the official page and the docs.</p><p><a href=https://golang.org/doc/install>Official Installation Docs</a></p><hr><h1 id=what-all-we-need-to-create>What All We Need to Create</h1><ul><li>A scraper to get the posts using search query</li><li>A scraper to get the contents for each question</li><li>A UI to display the solution</li></ul><hr><h1 id=get-result-for-search-query>Get Result for Search Query</h1><p>A general Stackover flow search url looks somthing like
-<code>https://stackoverflow.com/search?q=how+to+add+2+numbers</code></p><p>This makes it easy for us to get the result as what we need to change everytime is just the part after <em>search?q=</em></p><p>After getting the content of page our next job is to get content from correct elements to get <em>Title</em>, <em>Description</em>, <em>Link to Post</em> and <em>Up Votes</em>.
-For that first we need to create a <em>Struct</em> to store these data.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Go data-lang=Go><span style=color:#66d9ef>type</span> <span style=color:#a6e22e>post</span> <span style=color:#66d9ef>struct</span> {
-	<span style=color:#a6e22e>title</span>       <span style=color:#66d9ef>string</span>
-	<span style=color:#a6e22e>link</span>        <span style=color:#66d9ef>string</span>
-	<span style=color:#a6e22e>upvotes</span>     <span style=color:#66d9ef>string</span>
-	<span style=color:#a6e22e>description</span> <span style=color:#66d9ef>string</span>
+ Create Go Environment I won&rsquo;t go in details about how to install Go or how the directory structure should look." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blog/howto/" />
+<meta property="article:published_time" content="2020-02-09T19:55:53+00:00" />
+<meta property="article:modified_time" content="2020-02-09T19:55:53+00:00" /><meta property="og:site_name" content="Blog" />
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/custom.css">
+
+
+<link rel="stylesheet" type="text/css" href="/css/variables.css" />
+
+
+
+  </head>
+  <body class="dark-theme">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+	href="/"
+	class="logo"
+	style="text-decoration: none;"
+>
+
+
+	
+	<span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367"/>
+</svg>
+</span>
+	<span class="logo__text"
+    > howto
+    </span
+	>
+	<span class="logo__cursor"></span>
+	
+</a>
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/blog">Blog</a></li>
+        
+      
+        
+          <li><a href="/projects">Projects</a></li>
+        
+      
+      
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/blog">Blog</a></li>
+      
+    
+      
+        <li><a href="/projects">Projects</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path  d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <div class="post">
+    <h2 class="post-title"><a href="/blog/howto/">How to Create a Stackoverflow Terminal Client - Go</a></h2>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2020-02-09
+        </span>
+
+        
+          
+        
+      
+
+      
+      
+        <span class="post-read-time">— 7 min read</span>
+      
+    </div>
+
+    
+
+    
+      
+        <img src="/img/logo.png" class="post-cover" />
+      
+    
+
+    <div class="post-content">
+      <p>Around a month ago I came across a project <a href="https://github.com/gleitz/howdoi">howdoi</a> created in python. And honestly it was amazing, finding solution of basic problems without opening browser was a life saver, so I thought of creating one for myself. As one of my major goal was speed ,so I went with Go lang.</p>
+<p>So today, let me show you how to use Stackoverflow using just a terminal.</p>
+<hr>
+<h1 id="create-go-environment">Create Go Environment</h1>
+<p>I won&rsquo;t go in details about how to install Go or how the directory structure should look. You can find everything on the official page and the docs.</p>
+<p><a href="https://golang.org/doc/install">Official Installation Docs</a></p>
+<hr>
+<h1 id="what-all-we-need-to-create">What All We Need to Create</h1>
+<ul>
+<li>A scraper to get the posts using search query</li>
+<li>A scraper to get the contents for each question</li>
+<li>A UI to display the solution</li>
+</ul>
+<hr>
+<h1 id="get-result-for-search-query">Get Result for Search Query</h1>
+<p>A general Stackover flow search url looks somthing like
+<code>https://stackoverflow.com/search?q=how+to+add+2+numbers</code></p>
+<p>This makes it easy for us to get the result as what we need to change everytime is just the part after <em>search?q=</em></p>
+<p>After getting the content of page our next job is to get content from correct elements to get <em>Title</em>, <em>Description</em>,  <em>Link to Post</em>  and <em>Up Votes</em>.
+For that first we need to create a <em>Struct</em> to store these data.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Go" data-lang="Go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">post</span> <span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">title</span>       <span style="color:#66d9ef">string</span>
+	<span style="color:#a6e22e">link</span>        <span style="color:#66d9ef">string</span>
+	<span style="color:#a6e22e">upvotes</span>     <span style="color:#66d9ef">string</span>
+	<span style="color:#a6e22e">description</span> <span style="color:#66d9ef">string</span>
 }
-</code></pre></div><p>for getting content of page we will be using <em>GoQuery</em> Library</p><p>So the code snippet for getting the data from search is</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Go data-lang=Go><span style=color:#a6e22e>res</span>, <span style=color:#a6e22e>err</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>goquery</span>.<span style=color:#a6e22e>NewDocument</span>(<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Sprintf</span>(<span style=color:#e6db74>&#34;https://stackoverflow.com/search?q=%s&#34;</span>, <span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>ReplaceAll</span>(<span style=color:#a6e22e>query</span>, <span style=color:#e6db74>&#34; &#34;</span>, <span style=color:#e6db74>&#34;+&#34;</span>)))
-	<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>err</span> <span style=color:#f92672>!=</span> <span style=color:#66d9ef>nil</span> {
-		<span style=color:#a6e22e>log</span>.<span style=color:#a6e22e>Fatal</span>(<span style=color:#a6e22e>err</span>)
+</code></pre></div><p>for getting content of page we will be using <em>GoQuery</em> Library</p>
+<p>So the code snippet for getting the data from search is</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Go" data-lang="Go"><span style="color:#a6e22e">res</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">goquery</span>.<span style="color:#a6e22e">NewDocument</span>(<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;https://stackoverflow.com/search?q=%s&#34;</span>, <span style="color:#a6e22e">strings</span>.<span style="color:#a6e22e">ReplaceAll</span>(<span style="color:#a6e22e">query</span>, <span style="color:#e6db74">&#34; &#34;</span>, <span style="color:#e6db74">&#34;+&#34;</span>)))
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+		<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Fatal</span>(<span style="color:#a6e22e">err</span>)
     }
-</code></pre></div><p>The question is stored in div with class <code>question-summary</code> So we will iterate on each element with this class and get required details from the div.</p><p>Class for</p><ul><li>post link is <code>.result-link</code></li><li>question description is <code>.excerpt</code></li><li>upvotes count is <code>.vote-count-post</code></li><li>title is same as link tag, all we need is to get the text for a tag</li></ul><p>After getting all content we will store the data in list of posts struct</p><p>The final source code for getting the data will look something like</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Go data-lang=Go><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>searchPost</span>(<span style=color:#a6e22e>query</span> <span style=color:#66d9ef>string</span>) []<span style=color:#a6e22e>post</span> {
-	<span style=color:#a6e22e>res</span>, <span style=color:#a6e22e>err</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>goquery</span>.<span style=color:#a6e22e>NewDocument</span>(<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Sprintf</span>(<span style=color:#e6db74>&#34;https://stackoverflow.com/search?q=%s&#34;</span>, <span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>ReplaceAll</span>(<span style=color:#a6e22e>query</span>, <span style=color:#e6db74>&#34; &#34;</span>, <span style=color:#e6db74>&#34;+&#34;</span>)))
-	<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>err</span> <span style=color:#f92672>!=</span> <span style=color:#66d9ef>nil</span> {
-		<span style=color:#a6e22e>log</span>.<span style=color:#a6e22e>Fatal</span>(<span style=color:#a6e22e>err</span>)
+</code></pre></div><p>The question is stored in div with class <code>question-summary</code> So we will iterate on each element with this class and get required details from the div.</p>
+<p>Class for</p>
+<ul>
+<li>post link is <code>.result-link</code></li>
+<li>question description is <code>.excerpt</code></li>
+<li>upvotes count is <code>.vote-count-post</code></li>
+<li>title is same as link tag, all we need is to get the text for a tag</li>
+</ul>
+<p>After getting all content we will store the data in list of posts struct</p>
+<p>The final source code for getting the data will look something like</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Go" data-lang="Go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">searchPost</span>(<span style="color:#a6e22e">query</span> <span style="color:#66d9ef">string</span>) []<span style="color:#a6e22e">post</span> {
+	<span style="color:#a6e22e">res</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">goquery</span>.<span style="color:#a6e22e">NewDocument</span>(<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;https://stackoverflow.com/search?q=%s&#34;</span>, <span style="color:#a6e22e">strings</span>.<span style="color:#a6e22e">ReplaceAll</span>(<span style="color:#a6e22e">query</span>, <span style="color:#e6db74">&#34; &#34;</span>, <span style="color:#e6db74">&#34;+&#34;</span>)))
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+		<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Fatal</span>(<span style="color:#a6e22e">err</span>)
 	}
 
-	<span style=color:#66d9ef>var</span> <span style=color:#a6e22e>items</span> []<span style=color:#a6e22e>post</span>
-	<span style=color:#a6e22e>res</span>.<span style=color:#a6e22e>Find</span>(<span style=color:#e6db74>&#34;.question-summary&#34;</span>).<span style=color:#a6e22e>Each</span>(<span style=color:#66d9ef>func</span>(<span style=color:#a6e22e>index</span> <span style=color:#66d9ef>int</span>, <span style=color:#a6e22e>item</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>goquery</span>.<span style=color:#a6e22e>Selection</span>) {
-		<span style=color:#a6e22e>linkTag</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>item</span>.<span style=color:#a6e22e>Find</span>(<span style=color:#e6db74>&#34;.result-link&#34;</span>).<span style=color:#a6e22e>Find</span>(<span style=color:#e6db74>&#34;a&#34;</span>)
-		<span style=color:#a6e22e>link</span>, <span style=color:#a6e22e>_</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>linkTag</span>.<span style=color:#a6e22e>Attr</span>(<span style=color:#e6db74>&#34;href&#34;</span>)
-		<span style=color:#a6e22e>title</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>TrimFunc</span>(<span style=color:#a6e22e>linkTag</span>.<span style=color:#a6e22e>Text</span>(), <span style=color:#66d9ef>func</span>(<span style=color:#a6e22e>r</span> <span style=color:#66d9ef>rune</span>) <span style=color:#66d9ef>bool</span> {
-			<span style=color:#66d9ef>return</span> !<span style=color:#a6e22e>unicode</span>.<span style=color:#a6e22e>IsLetter</span>(<span style=color:#a6e22e>r</span>) <span style=color:#f92672>&amp;&amp;</span> !<span style=color:#a6e22e>unicode</span>.<span style=color:#a6e22e>IsNumber</span>(<span style=color:#a6e22e>r</span>)
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">items</span> []<span style="color:#a6e22e">post</span>
+	<span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">Find</span>(<span style="color:#e6db74">&#34;.question-summary&#34;</span>).<span style="color:#a6e22e">Each</span>(<span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">index</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">item</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">goquery</span>.<span style="color:#a6e22e">Selection</span>) {
+		<span style="color:#a6e22e">linkTag</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">Find</span>(<span style="color:#e6db74">&#34;.result-link&#34;</span>).<span style="color:#a6e22e">Find</span>(<span style="color:#e6db74">&#34;a&#34;</span>)
+		<span style="color:#a6e22e">link</span>, <span style="color:#a6e22e">_</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">linkTag</span>.<span style="color:#a6e22e">Attr</span>(<span style="color:#e6db74">&#34;href&#34;</span>)
+		<span style="color:#a6e22e">title</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">strings</span>.<span style="color:#a6e22e">TrimFunc</span>(<span style="color:#a6e22e">linkTag</span>.<span style="color:#a6e22e">Text</span>(), <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">r</span> <span style="color:#66d9ef">rune</span>) <span style="color:#66d9ef">bool</span> {
+			<span style="color:#66d9ef">return</span> !<span style="color:#a6e22e">unicode</span>.<span style="color:#a6e22e">IsLetter</span>(<span style="color:#a6e22e">r</span>) <span style="color:#f92672">&amp;&amp;</span> !<span style="color:#a6e22e">unicode</span>.<span style="color:#a6e22e">IsNumber</span>(<span style="color:#a6e22e">r</span>)
 		})
-		<span style=color:#a6e22e>description</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>item</span>.<span style=color:#a6e22e>Find</span>(<span style=color:#e6db74>&#34;.excerpt&#34;</span>).<span style=color:#a6e22e>Text</span>()
-		<span style=color:#a6e22e>upvotes</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>item</span>.<span style=color:#a6e22e>Find</span>(<span style=color:#e6db74>&#34;.vote-count-post&#34;</span>).<span style=color:#a6e22e>Text</span>()
-		<span style=color:#75715e>//fmt.Println(link)
-</span><span style=color:#75715e></span>		<span style=color:#66d9ef>if</span> <span style=color:#66d9ef>true</span> <span style=color:#f92672>||</span> (<span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>HasPrefix</span>(<span style=color:#a6e22e>title</span>, <span style=color:#e6db74>&#34;Q:&#34;</span>) <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>index</span> &lt; <span style=color:#ae81ff>4</span>) {
-			<span style=color:#a6e22e>items</span> = append(<span style=color:#a6e22e>items</span>, <span style=color:#a6e22e>post</span>{<span style=color:#a6e22e>title</span>, <span style=color:#a6e22e>link</span>, <span style=color:#a6e22e>upvotes</span>, <span style=color:#a6e22e>description</span>})
-			<span style=color:#a6e22e>index</span><span style=color:#f92672>++</span>
+		<span style="color:#a6e22e">description</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">Find</span>(<span style="color:#e6db74">&#34;.excerpt&#34;</span>).<span style="color:#a6e22e">Text</span>()
+		<span style="color:#a6e22e">upvotes</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">Find</span>(<span style="color:#e6db74">&#34;.vote-count-post&#34;</span>).<span style="color:#a6e22e">Text</span>()
+		<span style="color:#75715e">//fmt.Println(link)
+</span><span style="color:#75715e"></span>		<span style="color:#66d9ef">if</span> <span style="color:#66d9ef">true</span> <span style="color:#f92672">||</span> (<span style="color:#a6e22e">strings</span>.<span style="color:#a6e22e">HasPrefix</span>(<span style="color:#a6e22e">title</span>, <span style="color:#e6db74">&#34;Q:&#34;</span>) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">index</span> &lt; <span style="color:#ae81ff">4</span>) {
+			<span style="color:#a6e22e">items</span> = append(<span style="color:#a6e22e">items</span>, <span style="color:#a6e22e">post</span>{<span style="color:#a6e22e">title</span>, <span style="color:#a6e22e">link</span>, <span style="color:#a6e22e">upvotes</span>, <span style="color:#a6e22e">description</span>})
+			<span style="color:#a6e22e">index</span><span style="color:#f92672">++</span>
 		}
 	})
-	<span style=color:#66d9ef>return</span> <span style=color:#a6e22e>items</span>
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">items</span>
 </code></pre></div><p>After this we are done with getting the content of search page and storing in our array.
-Next part will be getting content for each question and storing it in another array</p><h1 id=get-each-post-content>Get Each Post Content</h1><p>We have url for each post stored in the array from previous section, our next job is to go on each of these links and get content for that page and store it in another array.</p><p>So the stackoverflow page for answer has 2 parts , A question section and a list of solutions. We will get each solution and store it in another array and return the answers along with the accepted answer
+Next part will be getting content for each question and storing it in another array</p>
+<h1 id="get-each-post-content">Get Each Post Content</h1>
+<p>We have url for each post stored in the array from previous section, our next job is to go on each of these links and get content for that page and store it in another array.</p>
+<p>So the stackoverflow page for answer has 2 parts , A question section and a list of solutions. We will get each solution and store it in another array and return the answers along with the accepted answer
 This will be same as previous part.
-Struct we will be using for this part will be</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Go data-lang=Go><span style=color:#66d9ef>type</span> <span style=color:#a6e22e>solution</span> <span style=color:#66d9ef>struct</span> {
-	<span style=color:#a6e22e>description</span> <span style=color:#66d9ef>string</span>
-	<span style=color:#a6e22e>upvotes</span>     <span style=color:#66d9ef>string</span>
+Struct we will be using for this part will be</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Go" data-lang="Go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">solution</span> <span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">description</span> <span style="color:#66d9ef">string</span>
+	<span style="color:#a6e22e">upvotes</span>     <span style="color:#66d9ef">string</span>
 }
-</code></pre></div><p>So the class for question is <code>.question</code> and for accepted answer it is <code>accepted-answer</code></p><p>After this remaining answers will be scraped using the relative div from <em>accepted answer div</em></p><p>code for getting the question content is</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Go data-lang=Go>
-	<span style=color:#66d9ef>var</span> <span style=color:#a6e22e>answers</span> []<span style=color:#a6e22e>solution</span>
-	<span style=color:#a6e22e>question</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>res</span>.<span style=color:#a6e22e>Find</span>(<span style=color:#e6db74>&#34;.question&#34;</span>).<span style=color:#a6e22e>Find</span>(<span style=color:#e6db74>&#34;.post-layout&#34;</span>)
-	<span style=color:#a6e22e>answers</span> = append(<span style=color:#a6e22e>answers</span>, <span style=color:#a6e22e>solution</span>{<span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Trim</span>(<span style=color:#a6e22e>question</span>.<span style=color:#a6e22e>Find</span>(<span style=color:#e6db74>&#34;.post-text&#34;</span>).<span style=color:#a6e22e>Text</span>(), <span style=color:#e6db74>&#34;\n&#34;</span>), <span style=color:#a6e22e>question</span>.<span style=color:#a6e22e>Find</span>(<span style=color:#e6db74>&#34;.js-vote-count&#34;</span>).<span style=color:#a6e22e>Text</span>()})
+</code></pre></div><p>So the class for question is <code>.question</code> and for accepted answer it is <code>accepted-answer</code></p>
+<p>After this remaining answers will be scraped using the relative div from <em>accepted answer div</em></p>
+<p>code for getting the question content is</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Go" data-lang="Go">
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">answers</span> []<span style="color:#a6e22e">solution</span>
+	<span style="color:#a6e22e">question</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">Find</span>(<span style="color:#e6db74">&#34;.question&#34;</span>).<span style="color:#a6e22e">Find</span>(<span style="color:#e6db74">&#34;.post-layout&#34;</span>)
+	<span style="color:#a6e22e">answers</span> = append(<span style="color:#a6e22e">answers</span>, <span style="color:#a6e22e">solution</span>{<span style="color:#a6e22e">strings</span>.<span style="color:#a6e22e">Trim</span>(<span style="color:#a6e22e">question</span>.<span style="color:#a6e22e">Find</span>(<span style="color:#e6db74">&#34;.post-text&#34;</span>).<span style="color:#a6e22e">Text</span>(), <span style="color:#e6db74">&#34;\n&#34;</span>), <span style="color:#a6e22e">question</span>.<span style="color:#a6e22e">Find</span>(<span style="color:#e6db74">&#34;.js-vote-count&#34;</span>).<span style="color:#a6e22e">Text</span>()})
 
-</code></pre></div><p>code for getting the accepted answer is</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Go data-lang=Go>
-	<span style=color:#a6e22e>acceptedContainer</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>res</span>.<span style=color:#a6e22e>Find</span>(<span style=color:#e6db74>&#34;.accepted-answer&#34;</span>).<span style=color:#a6e22e>Find</span>(<span style=color:#e6db74>&#34;.post-layout&#34;</span>)
-	<span style=color:#a6e22e>acceptedAnswer</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>solution</span>{<span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Trim</span>(<span style=color:#a6e22e>acceptedContainer</span>.<span style=color:#a6e22e>Find</span>(<span style=color:#e6db74>&#34;.post-text&#34;</span>).<span style=color:#a6e22e>Text</span>(), <span style=color:#e6db74>&#34;\n&#34;</span>), <span style=color:#a6e22e>acceptedContainer</span>.<span style=color:#a6e22e>Find</span>(<span style=color:#e6db74>&#34;.js-vote-count&#34;</span>).<span style=color:#a6e22e>Text</span>()}
+</code></pre></div><p>code for getting the accepted answer is</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Go" data-lang="Go">
+	<span style="color:#a6e22e">acceptedContainer</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">Find</span>(<span style="color:#e6db74">&#34;.accepted-answer&#34;</span>).<span style="color:#a6e22e">Find</span>(<span style="color:#e6db74">&#34;.post-layout&#34;</span>)
+	<span style="color:#a6e22e">acceptedAnswer</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">solution</span>{<span style="color:#a6e22e">strings</span>.<span style="color:#a6e22e">Trim</span>(<span style="color:#a6e22e">acceptedContainer</span>.<span style="color:#a6e22e">Find</span>(<span style="color:#e6db74">&#34;.post-text&#34;</span>).<span style="color:#a6e22e">Text</span>(), <span style="color:#e6db74">&#34;\n&#34;</span>), <span style="color:#a6e22e">acceptedContainer</span>.<span style="color:#a6e22e">Find</span>(<span style="color:#e6db74">&#34;.js-vote-count&#34;</span>).<span style="color:#a6e22e">Text</span>()}
 
-</code></pre></div><p>and finally for getting remaining answers</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Go data-lang=Go><span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>acceptedAnswer</span> <span style=color:#f92672>!=</span> <span style=color:#a6e22e>solution</span>{}) {
-		<span style=color:#a6e22e>res</span>.<span style=color:#a6e22e>Find</span>(<span style=color:#e6db74>&#34;.accepted-answer&#34;</span>).<span style=color:#a6e22e>NextAll</span>().<span style=color:#a6e22e>Each</span>(<span style=color:#66d9ef>func</span>(<span style=color:#a6e22e>index</span> <span style=color:#66d9ef>int</span>, <span style=color:#a6e22e>item</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>goquery</span>.<span style=color:#a6e22e>Selection</span>) {
+</code></pre></div><p>and finally for getting remaining answers</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Go" data-lang="Go"><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">acceptedAnswer</span> <span style="color:#f92672">!=</span> <span style="color:#a6e22e">solution</span>{}) {
+		<span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">Find</span>(<span style="color:#e6db74">&#34;.accepted-answer&#34;</span>).<span style="color:#a6e22e">NextAll</span>().<span style="color:#a6e22e">Each</span>(<span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">index</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">item</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">goquery</span>.<span style="color:#a6e22e">Selection</span>) {
 
-			<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>item</span>.<span style=color:#a6e22e>Find</span>(<span style=color:#e6db74>&#34;.post-text&#34;</span>).<span style=color:#a6e22e>Text</span>() <span style=color:#f92672>!=</span> <span style=color:#e6db74>&#34;&#34;</span> {
-				<span style=color:#a6e22e>answers</span> = append(<span style=color:#a6e22e>answers</span>, <span style=color:#a6e22e>solution</span>{<span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Trim</span>(<span style=color:#a6e22e>item</span>.<span style=color:#a6e22e>Find</span>(<span style=color:#e6db74>&#34;.post-text&#34;</span>).<span style=color:#a6e22e>Text</span>(), <span style=color:#e6db74>&#34;\n&#34;</span>), <span style=color:#a6e22e>item</span>.<span style=color:#a6e22e>Find</span>(<span style=color:#e6db74>&#34;.js-vote-count&#34;</span>).<span style=color:#a6e22e>Text</span>()})
+			<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">Find</span>(<span style="color:#e6db74">&#34;.post-text&#34;</span>).<span style="color:#a6e22e">Text</span>() <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;&#34;</span> {
+				<span style="color:#a6e22e">answers</span> = append(<span style="color:#a6e22e">answers</span>, <span style="color:#a6e22e">solution</span>{<span style="color:#a6e22e">strings</span>.<span style="color:#a6e22e">Trim</span>(<span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">Find</span>(<span style="color:#e6db74">&#34;.post-text&#34;</span>).<span style="color:#a6e22e">Text</span>(), <span style="color:#e6db74">&#34;\n&#34;</span>), <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">Find</span>(<span style="color:#e6db74">&#34;.js-vote-count&#34;</span>).<span style="color:#a6e22e">Text</span>()})
 			}
 		})
-	} <span style=color:#66d9ef>else</span> {
-		<span style=color:#a6e22e>res</span>.<span style=color:#a6e22e>Find</span>(<span style=color:#e6db74>&#34;.post-layout&#34;</span>).<span style=color:#a6e22e>Each</span>(<span style=color:#66d9ef>func</span>(<span style=color:#a6e22e>index</span> <span style=color:#66d9ef>int</span>, <span style=color:#a6e22e>item</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>goquery</span>.<span style=color:#a6e22e>Selection</span>) {
+	} <span style="color:#66d9ef">else</span> {
+		<span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">Find</span>(<span style="color:#e6db74">&#34;.post-layout&#34;</span>).<span style="color:#a6e22e">Each</span>(<span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">index</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">item</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">goquery</span>.<span style="color:#a6e22e">Selection</span>) {
 
-			<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>item</span>.<span style=color:#a6e22e>Find</span>(<span style=color:#e6db74>&#34;.post-text&#34;</span>).<span style=color:#a6e22e>Text</span>() <span style=color:#f92672>!=</span> <span style=color:#e6db74>&#34;&#34;</span> {
-				<span style=color:#a6e22e>answers</span> = append(<span style=color:#a6e22e>answers</span>, <span style=color:#a6e22e>solution</span>{<span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Trim</span>(<span style=color:#a6e22e>item</span>.<span style=color:#a6e22e>Find</span>(<span style=color:#e6db74>&#34;.post-text&#34;</span>).<span style=color:#a6e22e>Text</span>(), <span style=color:#e6db74>&#34;\n&#34;</span>), <span style=color:#a6e22e>item</span>.<span style=color:#a6e22e>Find</span>(<span style=color:#e6db74>&#34;.js-vote-count&#34;</span>).<span style=color:#a6e22e>Text</span>()})
+			<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">Find</span>(<span style="color:#e6db74">&#34;.post-text&#34;</span>).<span style="color:#a6e22e">Text</span>() <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;&#34;</span> {
+				<span style="color:#a6e22e">answers</span> = append(<span style="color:#a6e22e">answers</span>, <span style="color:#a6e22e">solution</span>{<span style="color:#a6e22e">strings</span>.<span style="color:#a6e22e">Trim</span>(<span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">Find</span>(<span style="color:#e6db74">&#34;.post-text&#34;</span>).<span style="color:#a6e22e">Text</span>(), <span style="color:#e6db74">&#34;\n&#34;</span>), <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">Find</span>(<span style="color:#e6db74">&#34;.js-vote-count&#34;</span>).<span style="color:#a6e22e">Text</span>()})
 			}
 		})
     }
-</code></pre></div><p>So after combining everything we will get</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>getPost</span>(<span style=color:#a6e22e>node</span> <span style=color:#a6e22e>post</span>) (<span style=color:#a6e22e>solution</span>, []<span style=color:#a6e22e>solution</span>) {
-	<span style=color:#a6e22e>urlString</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Sprintf</span>(<span style=color:#e6db74>&#34;https://stackoverflow.com/%s&#34;</span>, <span style=color:#a6e22e>node</span>.<span style=color:#a6e22e>link</span>)
-	<span style=color:#a6e22e>res</span>, <span style=color:#a6e22e>err</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>goquery</span>.<span style=color:#a6e22e>NewDocument</span>(<span style=color:#a6e22e>urlString</span>)
-	<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>err</span> <span style=color:#f92672>!=</span> <span style=color:#66d9ef>nil</span> {
-		<span style=color:#a6e22e>log</span>.<span style=color:#a6e22e>Fatal</span>(<span style=color:#a6e22e>err</span>)
+</code></pre></div><p>So after combining everything we will get</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">getPost</span>(<span style="color:#a6e22e">node</span> <span style="color:#a6e22e">post</span>) (<span style="color:#a6e22e">solution</span>, []<span style="color:#a6e22e">solution</span>) {
+	<span style="color:#a6e22e">urlString</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;https://stackoverflow.com/%s&#34;</span>, <span style="color:#a6e22e">node</span>.<span style="color:#a6e22e">link</span>)
+	<span style="color:#a6e22e">res</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">goquery</span>.<span style="color:#a6e22e">NewDocument</span>(<span style="color:#a6e22e">urlString</span>)
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+		<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Fatal</span>(<span style="color:#a6e22e">err</span>)
 	}
 
-	<span style=color:#66d9ef>var</span> <span style=color:#a6e22e>answers</span> []<span style=color:#a6e22e>solution</span>
-	<span style=color:#a6e22e>question</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>res</span>.<span style=color:#a6e22e>Find</span>(<span style=color:#e6db74>&#34;.question&#34;</span>).<span style=color:#a6e22e>Find</span>(<span style=color:#e6db74>&#34;.post-layout&#34;</span>)
-	<span style=color:#a6e22e>answers</span> = append(<span style=color:#a6e22e>answers</span>, <span style=color:#a6e22e>solution</span>{<span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Trim</span>(<span style=color:#a6e22e>question</span>.<span style=color:#a6e22e>Find</span>(<span style=color:#e6db74>&#34;.post-text&#34;</span>).<span style=color:#a6e22e>Text</span>(), <span style=color:#e6db74>&#34;\n&#34;</span>), <span style=color:#a6e22e>question</span>.<span style=color:#a6e22e>Find</span>(<span style=color:#e6db74>&#34;.js-vote-count&#34;</span>).<span style=color:#a6e22e>Text</span>()})
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">answers</span> []<span style="color:#a6e22e">solution</span>
+	<span style="color:#a6e22e">question</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">Find</span>(<span style="color:#e6db74">&#34;.question&#34;</span>).<span style="color:#a6e22e">Find</span>(<span style="color:#e6db74">&#34;.post-layout&#34;</span>)
+	<span style="color:#a6e22e">answers</span> = append(<span style="color:#a6e22e">answers</span>, <span style="color:#a6e22e">solution</span>{<span style="color:#a6e22e">strings</span>.<span style="color:#a6e22e">Trim</span>(<span style="color:#a6e22e">question</span>.<span style="color:#a6e22e">Find</span>(<span style="color:#e6db74">&#34;.post-text&#34;</span>).<span style="color:#a6e22e">Text</span>(), <span style="color:#e6db74">&#34;\n&#34;</span>), <span style="color:#a6e22e">question</span>.<span style="color:#a6e22e">Find</span>(<span style="color:#e6db74">&#34;.js-vote-count&#34;</span>).<span style="color:#a6e22e">Text</span>()})
 
-	<span style=color:#a6e22e>acceptedContainer</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>res</span>.<span style=color:#a6e22e>Find</span>(<span style=color:#e6db74>&#34;.accepted-answer&#34;</span>).<span style=color:#a6e22e>Find</span>(<span style=color:#e6db74>&#34;.post-layout&#34;</span>)
-	<span style=color:#a6e22e>acceptedAnswer</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>solution</span>{<span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Trim</span>(<span style=color:#a6e22e>acceptedContainer</span>.<span style=color:#a6e22e>Find</span>(<span style=color:#e6db74>&#34;.post-text&#34;</span>).<span style=color:#a6e22e>Text</span>(), <span style=color:#e6db74>&#34;\n&#34;</span>), <span style=color:#a6e22e>acceptedContainer</span>.<span style=color:#a6e22e>Find</span>(<span style=color:#e6db74>&#34;.js-vote-count&#34;</span>).<span style=color:#a6e22e>Text</span>()}
+	<span style="color:#a6e22e">acceptedContainer</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">Find</span>(<span style="color:#e6db74">&#34;.accepted-answer&#34;</span>).<span style="color:#a6e22e">Find</span>(<span style="color:#e6db74">&#34;.post-layout&#34;</span>)
+	<span style="color:#a6e22e">acceptedAnswer</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">solution</span>{<span style="color:#a6e22e">strings</span>.<span style="color:#a6e22e">Trim</span>(<span style="color:#a6e22e">acceptedContainer</span>.<span style="color:#a6e22e">Find</span>(<span style="color:#e6db74">&#34;.post-text&#34;</span>).<span style="color:#a6e22e">Text</span>(), <span style="color:#e6db74">&#34;\n&#34;</span>), <span style="color:#a6e22e">acceptedContainer</span>.<span style="color:#a6e22e">Find</span>(<span style="color:#e6db74">&#34;.js-vote-count&#34;</span>).<span style="color:#a6e22e">Text</span>()}
 
-	<span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>acceptedAnswer</span> <span style=color:#f92672>!=</span> <span style=color:#a6e22e>solution</span>{}) {
-		<span style=color:#a6e22e>res</span>.<span style=color:#a6e22e>Find</span>(<span style=color:#e6db74>&#34;.accepted-answer&#34;</span>).<span style=color:#a6e22e>NextAll</span>().<span style=color:#a6e22e>Each</span>(<span style=color:#66d9ef>func</span>(<span style=color:#a6e22e>index</span> <span style=color:#66d9ef>int</span>, <span style=color:#a6e22e>item</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>goquery</span>.<span style=color:#a6e22e>Selection</span>) {
+	<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">acceptedAnswer</span> <span style="color:#f92672">!=</span> <span style="color:#a6e22e">solution</span>{}) {
+		<span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">Find</span>(<span style="color:#e6db74">&#34;.accepted-answer&#34;</span>).<span style="color:#a6e22e">NextAll</span>().<span style="color:#a6e22e">Each</span>(<span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">index</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">item</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">goquery</span>.<span style="color:#a6e22e">Selection</span>) {
 
-			<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>item</span>.<span style=color:#a6e22e>Find</span>(<span style=color:#e6db74>&#34;.post-text&#34;</span>).<span style=color:#a6e22e>Text</span>() <span style=color:#f92672>!=</span> <span style=color:#e6db74>&#34;&#34;</span> {
-				<span style=color:#a6e22e>answers</span> = append(<span style=color:#a6e22e>answers</span>, <span style=color:#a6e22e>solution</span>{<span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Trim</span>(<span style=color:#a6e22e>item</span>.<span style=color:#a6e22e>Find</span>(<span style=color:#e6db74>&#34;.post-text&#34;</span>).<span style=color:#a6e22e>Text</span>(), <span style=color:#e6db74>&#34;\n&#34;</span>), <span style=color:#a6e22e>item</span>.<span style=color:#a6e22e>Find</span>(<span style=color:#e6db74>&#34;.js-vote-count&#34;</span>).<span style=color:#a6e22e>Text</span>()})
+			<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">Find</span>(<span style="color:#e6db74">&#34;.post-text&#34;</span>).<span style="color:#a6e22e">Text</span>() <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;&#34;</span> {
+				<span style="color:#a6e22e">answers</span> = append(<span style="color:#a6e22e">answers</span>, <span style="color:#a6e22e">solution</span>{<span style="color:#a6e22e">strings</span>.<span style="color:#a6e22e">Trim</span>(<span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">Find</span>(<span style="color:#e6db74">&#34;.post-text&#34;</span>).<span style="color:#a6e22e">Text</span>(), <span style="color:#e6db74">&#34;\n&#34;</span>), <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">Find</span>(<span style="color:#e6db74">&#34;.js-vote-count&#34;</span>).<span style="color:#a6e22e">Text</span>()})
 			}
 		})
-	} <span style=color:#66d9ef>else</span> {
-		<span style=color:#a6e22e>res</span>.<span style=color:#a6e22e>Find</span>(<span style=color:#e6db74>&#34;.post-layout&#34;</span>).<span style=color:#a6e22e>Each</span>(<span style=color:#66d9ef>func</span>(<span style=color:#a6e22e>index</span> <span style=color:#66d9ef>int</span>, <span style=color:#a6e22e>item</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>goquery</span>.<span style=color:#a6e22e>Selection</span>) {
+	} <span style="color:#66d9ef">else</span> {
+		<span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">Find</span>(<span style="color:#e6db74">&#34;.post-layout&#34;</span>).<span style="color:#a6e22e">Each</span>(<span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">index</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">item</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">goquery</span>.<span style="color:#a6e22e">Selection</span>) {
 
-			<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>item</span>.<span style=color:#a6e22e>Find</span>(<span style=color:#e6db74>&#34;.post-text&#34;</span>).<span style=color:#a6e22e>Text</span>() <span style=color:#f92672>!=</span> <span style=color:#e6db74>&#34;&#34;</span> {
-				<span style=color:#a6e22e>answers</span> = append(<span style=color:#a6e22e>answers</span>, <span style=color:#a6e22e>solution</span>{<span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Trim</span>(<span style=color:#a6e22e>item</span>.<span style=color:#a6e22e>Find</span>(<span style=color:#e6db74>&#34;.post-text&#34;</span>).<span style=color:#a6e22e>Text</span>(), <span style=color:#e6db74>&#34;\n&#34;</span>), <span style=color:#a6e22e>item</span>.<span style=color:#a6e22e>Find</span>(<span style=color:#e6db74>&#34;.js-vote-count&#34;</span>).<span style=color:#a6e22e>Text</span>()})
+			<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">Find</span>(<span style="color:#e6db74">&#34;.post-text&#34;</span>).<span style="color:#a6e22e">Text</span>() <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;&#34;</span> {
+				<span style="color:#a6e22e">answers</span> = append(<span style="color:#a6e22e">answers</span>, <span style="color:#a6e22e">solution</span>{<span style="color:#a6e22e">strings</span>.<span style="color:#a6e22e">Trim</span>(<span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">Find</span>(<span style="color:#e6db74">&#34;.post-text&#34;</span>).<span style="color:#a6e22e">Text</span>(), <span style="color:#e6db74">&#34;\n&#34;</span>), <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">Find</span>(<span style="color:#e6db74">&#34;.js-vote-count&#34;</span>).<span style="color:#a6e22e">Text</span>()})
 			}
 		})
 	}
 
-	<span style=color:#66d9ef>return</span> <span style=color:#a6e22e>acceptedAnswer</span>, <span style=color:#a6e22e>answers</span>
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">acceptedAnswer</span>, <span style="color:#a6e22e">answers</span>
 }
-</code></pre></div><h1 id=build-the-ui>Build the UI</h1><p>So we have Everything we need, Question list from search page and then solution for each post , Now we need to display the content in a UI.
+</code></pre></div><h1 id="build-the-ui">Build the UI</h1>
+<p>So we have Everything we need, Question list from search page and then solution for each post , Now we need to display the content in a UI.
 what we will be trying to obtain is 2 parts, one for question and other one for the question description. Something like this.
-<img src=ui1.png alt=ui1></p><p><img src=solution.png alt=ui2></p><p>So the library we will be using is <a href=https://github.com/gizak/termui>termui</a>.
+<img src="ui1.png" alt="ui1"></p>
+<p><img src="solution.png" alt="ui2"></p>
+<p>So the library we will be using is <a href="https://github.com/gizak/termui">termui</a>.
 Our UI will have 3 sections , one for question list, other for question description and the last for the possible solution and we will display 2 sections at a time
-Now I won&rsquo;t cover the whole library as we only need some parts of it.</p><p>So for creating a box with paragraph inside we have a widget already provided in the library, but the problem with it is we can&rsquo;t scroll it , so for that we will create our own paragraph widget.</p><p>The source code for the widget is</p><p>For struct</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Go data-lang=Go><span style=color:#66d9ef>type</span> <span style=color:#a6e22e>Paragraph</span> <span style=color:#66d9ef>struct</span> {
-	<span style=color:#a6e22e>Block</span>
-	<span style=color:#a6e22e>Text</span>      <span style=color:#66d9ef>string</span>
-	<span style=color:#a6e22e>TextStyle</span> <span style=color:#a6e22e>Style</span>
-	<span style=color:#a6e22e>WrapText</span>  <span style=color:#66d9ef>bool</span>
-	<span style=color:#a6e22e>start</span>     <span style=color:#66d9ef>int</span>
-	<span style=color:#a6e22e>end</span>       <span style=color:#66d9ef>int</span>
+Now I won&rsquo;t cover the whole library as we only need some parts of it.</p>
+<p>So for creating a box with paragraph inside we have a widget already provided in the library, but the problem with it is we can&rsquo;t scroll it , so for that we will create our own paragraph widget.</p>
+<p>The source code for the widget is</p>
+<p>For struct</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Go" data-lang="Go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Paragraph</span> <span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">Block</span>
+	<span style="color:#a6e22e">Text</span>      <span style="color:#66d9ef">string</span>
+	<span style="color:#a6e22e">TextStyle</span> <span style="color:#a6e22e">Style</span>
+	<span style="color:#a6e22e">WrapText</span>  <span style="color:#66d9ef">bool</span>
+	<span style="color:#a6e22e">start</span>     <span style="color:#66d9ef">int</span>
+	<span style="color:#a6e22e">end</span>       <span style="color:#66d9ef">int</span>
 }
-</code></pre></div><p>and the remaining code base</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Go data-lang=Go>
-<span style=color:#66d9ef>func</span> <span style=color:#a6e22e>NewParagraph</span>() <span style=color:#f92672>*</span><span style=color:#a6e22e>Paragraph</span> {
-	<span style=color:#66d9ef>return</span> <span style=color:#f92672>&amp;</span><span style=color:#a6e22e>Paragraph</span>{
-		<span style=color:#a6e22e>Block</span>:     <span style=color:#f92672>*</span><span style=color:#a6e22e>NewBlock</span>(),
-		<span style=color:#a6e22e>TextStyle</span>: <span style=color:#a6e22e>Theme</span>.<span style=color:#a6e22e>Paragraph</span>.<span style=color:#a6e22e>Text</span>,
-		<span style=color:#a6e22e>WrapText</span>:  <span style=color:#66d9ef>true</span>,
-	}
-}
-
-<span style=color:#66d9ef>func</span> (<span style=color:#a6e22e>self</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>Paragraph</span>) <span style=color:#a6e22e>Draw</span>(<span style=color:#a6e22e>buf</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>Buffer</span>) {
-	<span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>Block</span>.<span style=color:#a6e22e>Draw</span>(<span style=color:#a6e22e>buf</span>)
-
-	<span style=color:#a6e22e>cells</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>ParseStyles</span>(<span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>Text</span>, <span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>TextStyle</span>)
-	<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>WrapText</span> {
-		<span style=color:#a6e22e>cells</span> = <span style=color:#a6e22e>WrapCells</span>(<span style=color:#a6e22e>cells</span>, uint(<span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>Inner</span>.<span style=color:#a6e22e>Dx</span>()))
-	}
-
-	<span style=color:#a6e22e>rows</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>SplitCells</span>(<span style=color:#a6e22e>cells</span>, <span style=color:#e6db74>&#39;\n&#39;</span>)
-	<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>end</span><span style=color:#f92672>-</span><span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>start</span> <span style=color:#f92672>&lt;=</span> len(<span style=color:#a6e22e>rows</span>) {
-		<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>end</span> &gt; len(<span style=color:#a6e22e>rows</span>) {
-			<span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>end</span> = len(<span style=color:#a6e22e>rows</span>)
-			<span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>start</span> = <span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>end</span> <span style=color:#f92672>-</span> <span style=color:#ae81ff>40</span>
-		}
-
-		<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>start</span> <span style=color:#f92672>&lt;=</span> <span style=color:#ae81ff>0</span> {
-			<span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>start</span> = <span style=color:#ae81ff>0</span>
-			<span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>end</span> = <span style=color:#ae81ff>40</span>
-		}
-		<span style=color:#a6e22e>rows</span> = <span style=color:#a6e22e>rows</span>[<span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>start</span>:<span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>end</span>]
-	}
-	<span style=color:#66d9ef>for</span> <span style=color:#a6e22e>y</span>, <span style=color:#a6e22e>row</span> <span style=color:#f92672>:=</span> <span style=color:#66d9ef>range</span> <span style=color:#a6e22e>rows</span> {
-		<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>y</span><span style=color:#f92672>+</span><span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>Inner</span>.<span style=color:#a6e22e>Min</span>.<span style=color:#a6e22e>Y</span> <span style=color:#f92672>&gt;=</span> <span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>Inner</span>.<span style=color:#a6e22e>Max</span>.<span style=color:#a6e22e>Y</span> {
-			<span style=color:#66d9ef>break</span>
-		}
-		<span style=color:#a6e22e>row</span> = <span style=color:#a6e22e>TrimCells</span>(<span style=color:#a6e22e>row</span>, <span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>Inner</span>.<span style=color:#a6e22e>Dx</span>())
-		<span style=color:#66d9ef>for</span> <span style=color:#a6e22e>_</span>, <span style=color:#a6e22e>cx</span> <span style=color:#f92672>:=</span> <span style=color:#66d9ef>range</span> <span style=color:#a6e22e>BuildCellWithXArray</span>(<span style=color:#a6e22e>row</span>) {
-			<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>cell</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>cx</span>.<span style=color:#a6e22e>X</span>, <span style=color:#a6e22e>cx</span>.<span style=color:#a6e22e>Cell</span>
-
-			<span style=color:#a6e22e>buf</span>.<span style=color:#a6e22e>SetCell</span>(<span style=color:#a6e22e>cell</span>, <span style=color:#a6e22e>image</span>.<span style=color:#a6e22e>Pt</span>(<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>y</span>).<span style=color:#a6e22e>Add</span>(<span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>Inner</span>.<span style=color:#a6e22e>Min</span>))
-		}
+</code></pre></div><p>and the remaining code base</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Go" data-lang="Go">
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">NewParagraph</span>() <span style="color:#f92672">*</span><span style="color:#a6e22e">Paragraph</span> {
+	<span style="color:#66d9ef">return</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">Paragraph</span>{
+		<span style="color:#a6e22e">Block</span>:     <span style="color:#f92672">*</span><span style="color:#a6e22e">NewBlock</span>(),
+		<span style="color:#a6e22e">TextStyle</span>: <span style="color:#a6e22e">Theme</span>.<span style="color:#a6e22e">Paragraph</span>.<span style="color:#a6e22e">Text</span>,
+		<span style="color:#a6e22e">WrapText</span>:  <span style="color:#66d9ef">true</span>,
 	}
 }
-</code></pre></div><p>Now explaining the whole code will be an another article, but to give you people a gist, it basically takes the style we specified and create cells, then it takes the whole text and breaks it into lines and then iterating on each line , drawing it into the cell we specified above, and placing it at the correct position.</p><p>The part which is important is</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Go data-lang=Go>	<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>end</span><span style=color:#f92672>-</span><span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>start</span> <span style=color:#f92672>&lt;=</span> len(<span style=color:#a6e22e>rows</span>) {
-		<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>end</span> &gt; len(<span style=color:#a6e22e>rows</span>) {
-			<span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>end</span> = len(<span style=color:#a6e22e>rows</span>)
-			<span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>start</span> = <span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>end</span> <span style=color:#f92672>-</span> <span style=color:#ae81ff>40</span>
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">self</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Paragraph</span>) <span style="color:#a6e22e">Draw</span>(<span style="color:#a6e22e">buf</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Buffer</span>) {
+	<span style="color:#a6e22e">self</span>.<span style="color:#a6e22e">Block</span>.<span style="color:#a6e22e">Draw</span>(<span style="color:#a6e22e">buf</span>)
+
+	<span style="color:#a6e22e">cells</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">ParseStyles</span>(<span style="color:#a6e22e">self</span>.<span style="color:#a6e22e">Text</span>, <span style="color:#a6e22e">self</span>.<span style="color:#a6e22e">TextStyle</span>)
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">self</span>.<span style="color:#a6e22e">WrapText</span> {
+		<span style="color:#a6e22e">cells</span> = <span style="color:#a6e22e">WrapCells</span>(<span style="color:#a6e22e">cells</span>, uint(<span style="color:#a6e22e">self</span>.<span style="color:#a6e22e">Inner</span>.<span style="color:#a6e22e">Dx</span>()))
+	}
+
+	<span style="color:#a6e22e">rows</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">SplitCells</span>(<span style="color:#a6e22e">cells</span>, <span style="color:#e6db74">&#39;\n&#39;</span>)
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">self</span>.<span style="color:#a6e22e">end</span><span style="color:#f92672">-</span><span style="color:#a6e22e">self</span>.<span style="color:#a6e22e">start</span> <span style="color:#f92672">&lt;=</span> len(<span style="color:#a6e22e">rows</span>) {
+		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">self</span>.<span style="color:#a6e22e">end</span> &gt; len(<span style="color:#a6e22e">rows</span>) {
+			<span style="color:#a6e22e">self</span>.<span style="color:#a6e22e">end</span> = len(<span style="color:#a6e22e">rows</span>)
+			<span style="color:#a6e22e">self</span>.<span style="color:#a6e22e">start</span> = <span style="color:#a6e22e">self</span>.<span style="color:#a6e22e">end</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">40</span>
 		}
 
-		<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>start</span> <span style=color:#f92672>&lt;=</span> <span style=color:#ae81ff>0</span> {
-			<span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>start</span> = <span style=color:#ae81ff>0</span>
-			<span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>end</span> = <span style=color:#ae81ff>40</span>
+		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">self</span>.<span style="color:#a6e22e">start</span> <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span> {
+			<span style="color:#a6e22e">self</span>.<span style="color:#a6e22e">start</span> = <span style="color:#ae81ff">0</span>
+			<span style="color:#a6e22e">self</span>.<span style="color:#a6e22e">end</span> = <span style="color:#ae81ff">40</span>
 		}
-		<span style=color:#a6e22e>rows</span> = <span style=color:#a6e22e>rows</span>[<span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>start</span>:<span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>end</span>]
+		<span style="color:#a6e22e">rows</span> = <span style="color:#a6e22e">rows</span>[<span style="color:#a6e22e">self</span>.<span style="color:#a6e22e">start</span>:<span style="color:#a6e22e">self</span>.<span style="color:#a6e22e">end</span>]
+	}
+	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">y</span>, <span style="color:#a6e22e">row</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">rows</span> {
+		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">y</span><span style="color:#f92672">+</span><span style="color:#a6e22e">self</span>.<span style="color:#a6e22e">Inner</span>.<span style="color:#a6e22e">Min</span>.<span style="color:#a6e22e">Y</span> <span style="color:#f92672">&gt;=</span> <span style="color:#a6e22e">self</span>.<span style="color:#a6e22e">Inner</span>.<span style="color:#a6e22e">Max</span>.<span style="color:#a6e22e">Y</span> {
+			<span style="color:#66d9ef">break</span>
+		}
+		<span style="color:#a6e22e">row</span> = <span style="color:#a6e22e">TrimCells</span>(<span style="color:#a6e22e">row</span>, <span style="color:#a6e22e">self</span>.<span style="color:#a6e22e">Inner</span>.<span style="color:#a6e22e">Dx</span>())
+		<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">cx</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">BuildCellWithXArray</span>(<span style="color:#a6e22e">row</span>) {
+			<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">cell</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">cx</span>.<span style="color:#a6e22e">X</span>, <span style="color:#a6e22e">cx</span>.<span style="color:#a6e22e">Cell</span>
+
+			<span style="color:#a6e22e">buf</span>.<span style="color:#a6e22e">SetCell</span>(<span style="color:#a6e22e">cell</span>, <span style="color:#a6e22e">image</span>.<span style="color:#a6e22e">Pt</span>(<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>).<span style="color:#a6e22e">Add</span>(<span style="color:#a6e22e">self</span>.<span style="color:#a6e22e">Inner</span>.<span style="color:#a6e22e">Min</span>))
+		}
+	}
+}
+</code></pre></div><p>Now explaining the whole code will be an another article, but to give you people a gist, it basically takes the style we specified and create cells, then it takes the whole text and breaks it into lines and then iterating on each line , drawing it into the cell we specified above, and placing it at the correct position.</p>
+<p>The part which is important is</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Go" data-lang="Go">	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">self</span>.<span style="color:#a6e22e">end</span><span style="color:#f92672">-</span><span style="color:#a6e22e">self</span>.<span style="color:#a6e22e">start</span> <span style="color:#f92672">&lt;=</span> len(<span style="color:#a6e22e">rows</span>) {
+		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">self</span>.<span style="color:#a6e22e">end</span> &gt; len(<span style="color:#a6e22e">rows</span>) {
+			<span style="color:#a6e22e">self</span>.<span style="color:#a6e22e">end</span> = len(<span style="color:#a6e22e">rows</span>)
+			<span style="color:#a6e22e">self</span>.<span style="color:#a6e22e">start</span> = <span style="color:#a6e22e">self</span>.<span style="color:#a6e22e">end</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">40</span>
+		}
+
+		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">self</span>.<span style="color:#a6e22e">start</span> <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span> {
+			<span style="color:#a6e22e">self</span>.<span style="color:#a6e22e">start</span> = <span style="color:#ae81ff">0</span>
+			<span style="color:#a6e22e">self</span>.<span style="color:#a6e22e">end</span> = <span style="color:#ae81ff">40</span>
+		}
+		<span style="color:#a6e22e">rows</span> = <span style="color:#a6e22e">rows</span>[<span style="color:#a6e22e">self</span>.<span style="color:#a6e22e">start</span>:<span style="color:#a6e22e">self</span>.<span style="color:#a6e22e">end</span>]
     }
-</code></pre></div><p>This part handles the content scrolling, what this is doing is we provide 2 values one is start and other one is end. Then it uses those values to slice the array, so that we draw only a part of the whole content on screen.This start and end value will change on each key press so the content will look like its scrolling.</p><p>So the rest of the part is pretty straight forward, we will be using this newly created widget and create 3 boxes with different content.
+</code></pre></div><p>This part handles the content scrolling, what this is doing is we provide 2 values one is start and other one is end. Then it uses those values to slice the array, so that we  draw only a part of the whole content on screen.This start and end value will change on each key press so the content will look like its scrolling.</p>
+<p>So the rest of the part is pretty straight forward, we will be using this newly created widget and create 3 boxes with different content.
 I won&rsquo;t display the code of this part here as it will make the post unnecessarily long, instead I will explain the flow.
-So we will first create 3 paragraphs</p><p>Example code :</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Go data-lang=Go>	<span style=color:#a6e22e>quesBox</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>NewParagraph</span>()
+So we will first create 3 paragraphs</p>
+<p>Example code :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Go" data-lang="Go">	<span style="color:#a6e22e">quesBox</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">NewParagraph</span>()
 
-	<span style=color:#a6e22e>quesBox</span>.<span style=color:#a6e22e>Title</span> = <span style=color:#e6db74>&#34;Question Description&#34;</span>
-	<span style=color:#a6e22e>quesBox</span>.<span style=color:#a6e22e>SetRect</span>(<span style=color:#a6e22e>width</span><span style=color:#f92672>/</span><span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>4</span>, <span style=color:#a6e22e>width</span>, <span style=color:#a6e22e>height</span><span style=color:#f92672>-</span><span style=color:#ae81ff>4</span>)
-	<span style=color:#a6e22e>quesBox</span>.<span style=color:#a6e22e>start</span> = <span style=color:#ae81ff>0</span>
-	<span style=color:#a6e22e>quesBox</span>.<span style=color:#a6e22e>end</span> = <span style=color:#ae81ff>44</span>
-	<span style=color:#a6e22e>quesBox</span>.<span style=color:#a6e22e>WrapText</span> = <span style=color:#66d9ef>true</span>
-    <span style=color:#a6e22e>quesBox</span>.<span style=color:#a6e22e>BorderStyle</span>.<span style=color:#a6e22e>Fg</span> = <span style=color:#a6e22e>ui</span>.<span style=color:#a6e22e>ColorYellow</span>
+	<span style="color:#a6e22e">quesBox</span>.<span style="color:#a6e22e">Title</span> = <span style="color:#e6db74">&#34;Question Description&#34;</span>
+	<span style="color:#a6e22e">quesBox</span>.<span style="color:#a6e22e">SetRect</span>(<span style="color:#a6e22e">width</span><span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>, <span style="color:#a6e22e">width</span>, <span style="color:#a6e22e">height</span><span style="color:#f92672">-</span><span style="color:#ae81ff">4</span>)
+	<span style="color:#a6e22e">quesBox</span>.<span style="color:#a6e22e">start</span> = <span style="color:#ae81ff">0</span>
+	<span style="color:#a6e22e">quesBox</span>.<span style="color:#a6e22e">end</span> = <span style="color:#ae81ff">44</span>
+	<span style="color:#a6e22e">quesBox</span>.<span style="color:#a6e22e">WrapText</span> = <span style="color:#66d9ef">true</span>
+    <span style="color:#a6e22e">quesBox</span>.<span style="color:#a6e22e">BorderStyle</span>.<span style="color:#a6e22e">Fg</span> = <span style="color:#a6e22e">ui</span>.<span style="color:#a6e22e">ColorYellow</span>
 </code></pre></div><p>And then the only task would be to render correct box on correct key press.
 So termui provides few functions like <em>Render</em> to render particular element and a whole keyboard binding to refer each key.
-Example code:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Go data-lang=Go><span style=color:#a6e22e>uiEvents</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>ui</span>.<span style=color:#a6e22e>PollEvents</span>()
-	<span style=color:#66d9ef>for</span> {
-		<span style=color:#a6e22e>e</span> <span style=color:#f92672>:=</span> <span style=color:#f92672>&lt;-</span><span style=color:#a6e22e>uiEvents</span>
-		<span style=color:#66d9ef>switch</span> <span style=color:#a6e22e>e</span>.<span style=color:#a6e22e>ID</span> {
-		<span style=color:#66d9ef>case</span> <span style=color:#e6db74>&#34;q&#34;</span>, <span style=color:#e6db74>&#34;&lt;C-c&gt;&#34;</span>:
-            <span style=color:#66d9ef>return</span>
-</code></pre></div><p>So this handles the closing of Ui if someone presses <em>q</em> or <em>ctrl-c</em>, we can add other cases to render correct Box on key press.</p><p>So the final thing will work something like
-<img src=working.gif alt=working></p><p>You can find the whole source code at:-
-<a href=https://github.com/pr4k/howto>https://github.com/pr4k/howto</a></p></div><div class=pagination><div class=pagination__title><span class=pagination__title-h>Read other posts</span><hr></div><div class=pagination__buttons><span class="button previous"><a href=/blog/readme/><span class=button__icon>←</span>
-<span class=button__text>How to Create an Effective Readme</span></a></span>
-<span class="button next"><a href=/blog/hugoblog/><span class=button__text>Creating A Blog In Hugo</span>
-<span class=button__icon>→</span></a></span></div></div></div></div><footer class=footer><div class=footer__inner><div class="copyright copyright--user">© 2020 Powered by Hugo | Theme Customized by pr4k</div></div></footer><script src=/assets/main.js></script><script src=/assets/prism.js></script></div></body></html>
+Example code:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Go" data-lang="Go"><span style="color:#a6e22e">uiEvents</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">ui</span>.<span style="color:#a6e22e">PollEvents</span>()
+	<span style="color:#66d9ef">for</span> {
+		<span style="color:#a6e22e">e</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">uiEvents</span>
+		<span style="color:#66d9ef">switch</span> <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">ID</span> {
+		<span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;q&#34;</span>, <span style="color:#e6db74">&#34;&lt;C-c&gt;&#34;</span>:
+            <span style="color:#66d9ef">return</span>
+</code></pre></div><p>So this handles the closing of Ui if someone presses <em>q</em> or <em>ctrl-c</em>, we can add other cases to render correct Box on key press.</p>
+<p>So the final thing will work something like
+<img src="working.gif" alt="working"></p>
+<p>You can find the whole source code at:-
+<a href="https://github.com/pr4k/howto">https://github.com/pr4k/howto</a></p>
+
+    </div>
+    
+      
+        <div class="pagination">
+          <div class="pagination__title">
+            <span class="pagination__title-h">Read other posts</span>
+            <hr />
+          </div>
+          <div class="pagination__buttons">
+            
+              <span class="button previous">
+                <a href="/blog/readme/">
+                  <span class="button__icon">←</span>
+                  <span class="button__text">How to Create an Effective Readme</span>
+                </a>
+              </span>
+            
+            
+              <span class="button next">
+                <a href="/blog/hugoblog/">
+                  <span class="button__text">Creating A Blog In Hugo</span>
+                  <span class="button__icon">→</span>
+                </a>
+              </span>
+            
+          </div>
+        </div>
+      
+    
+
+
+    
+      
+        
+
+      
+    
+
+    </div>
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">© 2020 Powered by Hugo | Theme Customized by pr4k</div>
+    
+  </div>
+</footer>
+
+<script src="/assets/main.js"></script>
+<script src="/assets/prism.js"></script>
+
+
+      
+    </div>
+
+    
+  </body>
+</html>

@@ -1,15 +1,93 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog</title><link>/</link><description>Recent content on Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>© 2020 Powered by Hugo | Theme Customized by pr4k</copyright><lastBuildDate>Sat, 21 Mar 2020 00:31:05 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml"/><item><title>Locate: A Recurive Search Tool - RUST</title><link>/blog/locate/</link><pubDate>Sat, 21 Mar 2020 00:31:05 +0000</pubDate><guid>/blog/locate/</guid><description>How many times have you gone through files to find some string or origin of a function
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog</title>
+    <link>/</link>
+    <description>Recent content on Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© 2020 Powered by Hugo | Theme Customized by pr4k</copyright>
+    <lastBuildDate>Wed, 05 Feb 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Locate:  A Recurive Search Tool - RUST</title>
+      <link>/blog/locate/</link>
+      <pubDate>Sat, 21 Mar 2020 00:31:05 +0000</pubDate>
+      
+      <guid>/blog/locate/</guid>
+      <description>How many times have you gone through files to find some string or origin of a function
 Locate is a tool written in Rust which goes through each file recursively and gives exact location of the query string in the files.
 Its blazing fast, as its written in Rust, and can recursively walk the directories.
-Motivation Okay so I wanted to learn Rust and I think the best way to learn a new language is by creating a project, I always used search function in VS code to find origin of a function or places where the function is used.</description></item><item><title>Hugo to Medium</title><link>/blog/hugo-to-medium/</link><pubDate>Mon, 09 Mar 2020 02:12:45 +0000</pubDate><guid>/blog/hugo-to-medium/</guid><description>Photo by Yancy Min on Unsplash Motivation So everytime I added a blog on my personal website (Which is very rare) I had to go to my medium profile and import it manually. So once I got to know about Github actions, the first idea was to automate this process. Also this project was an attempt to understand Github Actions better.
-Description So what our action does is everytime I push my code to the github Repo with a special commit message, it takes the new post and use the Medium API and creates a new draft at my medium account.</description></item><item><title>My Arch Setup</title><link>/blog/archsetup/</link><pubDate>Tue, 03 Mar 2020 02:17:32 +0000</pubDate><guid>/blog/archsetup/</guid><description>My first experience with linux was with ubuntu and it was great but the only problem was the extra packages which were making it heavy.
+ Motivation Okay so I wanted to learn Rust and I think the best way to learn a new language is by creating a project, I always used search function in VS code to find origin of a function or places where the function is used.</description>
+    </item>
+    
+    <item>
+      <title>Hugo to Medium</title>
+      <link>/blog/hugo-to-medium/</link>
+      <pubDate>Mon, 09 Mar 2020 02:12:45 +0000</pubDate>
+      
+      <guid>/blog/hugo-to-medium/</guid>
+      <description>Photo by Yancy Min on Unsplash Motivation So everytime I added a blog on my personal website (Which is very rare) I had to go to my medium profile and import it manually. So once I got to know about Github actions, the first idea was to automate this process. Also this project was an attempt to understand Github Actions better.
+Description So what our action does is everytime I push my code to the github Repo with a special commit message, it takes the new post and use the Medium API and creates a new draft at my medium account.</description>
+    </item>
+    
+    <item>
+      <title>My Arch Setup</title>
+      <link>/blog/archsetup/</link>
+      <pubDate>Tue, 03 Mar 2020 02:17:32 +0000</pubDate>
+      
+      <guid>/blog/archsetup/</guid>
+      <description>My first experience with linux was with ubuntu and it was great but the only problem was the extra packages which were making it heavy.
 One day I was going through reddit where I came across a reddit channel called UnixPorn, and watching other people&amp;rsquo;s setup inspired me to get one of my own.
 So here is My arch setup and steps to get one for yourself too.
-Installation Guide To be honest , the best Installation guide for Arch is their official guide Still I will give some steps in short to tell you about the basic flow</description></item><item><title>How to Create an Effective Readme</title><link>/blog/readme/</link><pubDate>Wed, 19 Feb 2020 23:22:15 +0000</pubDate><guid>/blog/readme/</guid><description>Photo by Helloquence on Unsplash
-As Harvey says, First Impression Lasts.
-Lets be honest even before trying any project on github the first thing we do is check their Readme. A better readme not only make your project look better and professional but also a well framed readme makes it easy for others to test and use your project. There are many projects out there which are not on trending just because there are not enough instructions to fire that up.</description></item><item><title>How to Create a Stackoverflow Terminal Client - Go</title><link>/blog/howto/</link><pubDate>Sun, 09 Feb 2020 19:55:53 +0000</pubDate><guid>/blog/howto/</guid><description>Around a month ago I came across a project howdoi created in python. And honestly it was amazing, finding solution of basic problems without opening browser was a life saver, so I thought of creating one for myself. As one of my major goal was speed ,so I went with Go lang.
+Installation Guide To be honest , the best Installation guide for Arch is their official guide Still I will give some steps in short to tell you about the basic flow</description>
+    </item>
+    
+    <item>
+      <title>How to Create an Effective Readme</title>
+      <link>/blog/readme/</link>
+      <pubDate>Wed, 19 Feb 2020 23:22:15 +0000</pubDate>
+      
+      <guid>/blog/readme/</guid>
+      <description>Photo by Helloquence on Unsplash
+ As Harvey says, First Impression Lasts.
+ Lets be honest even before trying any project on github the first thing we do is check their Readme. A better readme not only make your project look better and professional but also a well framed readme makes it easy for others to test and use your project. There are many projects out there which are not on trending just because there are not enough instructions to fire that up.</description>
+    </item>
+    
+    <item>
+      <title>How to Create a Stackoverflow Terminal Client - Go</title>
+      <link>/blog/howto/</link>
+      <pubDate>Sun, 09 Feb 2020 19:55:53 +0000</pubDate>
+      
+      <guid>/blog/howto/</guid>
+      <description>Around a month ago I came across a project howdoi created in python. And honestly it was amazing, finding solution of basic problems without opening browser was a life saver, so I thought of creating one for myself. As one of my major goal was speed ,so I went with Go lang.
 So today, let me show you how to use Stackoverflow using just a terminal.
-Create Go Environment I won&amp;rsquo;t go in details about how to install Go or how the directory structure should look.</description></item><item><title>Creating A Blog In Hugo</title><link>/blog/hugoblog/</link><pubDate>Wed, 05 Feb 2020 22:39:53 +0000</pubDate><guid>/blog/hugoblog/</guid><description>Why Hugo Hugo is a great tool to generate static website but honestly it is a boring framework to work with. There&amp;rsquo;s no fancy technology, neither you can create any funky functions to fetch your Github repo Readme or any of your Medium articles.
-It uses Go at its core which was the one and only reason for me to go with Hugo, though later I found out the benefits and features which makes it unique and perfect for creating simple static websites like this blog.</description></item><item><title>Projects</title><link>/projects/</link><pubDate>Wed, 05 Feb 2020 00:00:00 +0000</pubDate><guid>/projects/</guid><description>Projects on Github Locate About: A Recursive Search tool to find location of a string in files.
-Rust Github Action (CI) Hugo To Medium About: A Github Action created for a Github Hackathon, It directly publishes your hugo blog to Medium when a push is made on github.
-Python Github Action Docker Howto About: A CLI tool for stackoverflow to get answers for simple coding tasks directly from terminal.</description></item></channel></rss>
+ Create Go Environment I won&amp;rsquo;t go in details about how to install Go or how the directory structure should look.</description>
+    </item>
+    
+    <item>
+      <title>Creating A Blog In Hugo</title>
+      <link>/blog/hugoblog/</link>
+      <pubDate>Wed, 05 Feb 2020 22:39:53 +0000</pubDate>
+      
+      <guid>/blog/hugoblog/</guid>
+      <description>Why Hugo Hugo is a great tool to generate static website but honestly it is a boring framework to work with. There&amp;rsquo;s no fancy technology, neither you can create any funky functions to fetch your Github repo Readme or any of your Medium articles.
+It uses Go at its core which was the one and only reason for me to go with Hugo, though later I found out the benefits and features which makes it unique and perfect for creating simple static websites like this blog.</description>
+    </item>
+    
+    <item>
+      <title>Projects</title>
+      <link>/projects/</link>
+      <pubDate>Wed, 05 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/projects/</guid>
+      <description>Projects on Github  Locate About: A Recursive Search tool to find location of a string in files.
+ Rust Github Action (CI)   Hugo To Medium About: A Github Action created for a Github Hackathon, It directly publishes your hugo blog to Medium when a push is made on github.
+ Python Github Action Docker   Howto About: A CLI tool for stackoverflow to get answers for simple coding tasks directly from terminal.</description>
+    </item>
+    
+  </channel>
+</rss>
