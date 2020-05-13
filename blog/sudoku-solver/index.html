@@ -1,0 +1,197 @@
+<!doctype html><html lang=en><head><title>Sudoku Solver :: Blog</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta name=description content="Project Motivation Okay so one day browsing through Reddit , I came across a project, It was a sudoku solver using video cam stream. The project was cool, but there was only 1 thing I didn&amp;rsquo;t liked, it used to crop the sudoku image and give a solved sudoku image solution.
+So I thought why not project back the solution to the original image to make it look like its solved in the original image"><meta name=keywords content><meta name=robots content="noodp"><link rel=canonical href=/blog/sudoku-solver/><link rel=stylesheet href=/assets/style.css><link rel=stylesheet href=/style.css><link rel=apple-touch-icon-precomposed sizes=144x144 href=/img/apple-touch-icon-144-precomposed.png><link rel="shortcut icon" href=/img/favicon.png><meta name=twitter:card content="summary"><meta name=twitter:title content="Sudoku Solver"><meta name=twitter:description content="Project Motivation Okay so one day browsing through Reddit , I came across a project, It was a sudoku solver using video cam stream. The project was cool, but there was only 1 thing I didn&rsquo;t liked, it used to crop the sudoku image and give a solved sudoku image solution.
+So I thought why not project back the solution to the original image to make it look like its solved in the original image"><meta property="og:title" content="Sudoku Solver"><meta property="og:description" content="Project Motivation Okay so one day browsing through Reddit , I came across a project, It was a sudoku solver using video cam stream. The project was cool, but there was only 1 thing I didn&rsquo;t liked, it used to crop the sudoku image and give a solved sudoku image solution.
+So I thought why not project back the solution to the original image to make it look like its solved in the original image"><meta property="og:type" content="article"><meta property="og:url" content="/blog/sudoku-solver/"><meta property="article:published_time" content="2020-05-13T17:22:28+00:00"><meta property="article:modified_time" content="2020-05-13T17:22:28+00:00"><meta property="og:site_name" content="Blog"><link rel=stylesheet type=text/css href=/css/custom.css><link rel=stylesheet type=text/css href=/css/variables.css></head><body class=dark-theme><div class=container><header class=header><span class=header__inner><a href=/ class=logo style=text-decoration:none><span class=logo__mark><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44"><path fill="none" d="M15 8l14.729 14.382L15 35.367"/></svg></span><span class=logo__text>sudoku-solver</span>
+<span class=logo__cursor></span></a><span class=header__right><nav class=menu><ul class="menu__inner menu__inner--desktop"><li><a href=/blog>Blog</a></li><li><a href=/projects>Projects</a></li></ul><ul class="menu__inner menu__inner--mobile"><li><a href=/blog>Blog</a></li><li><a href=/projects>Projects</a></li></ul></nav><span class=menu-trigger><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg></span><span class=theme-toggle><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 41C32.4934 41 41 32.4934 41 22 41 11.5066 32.4934 3 22 3 11.5066 3 3 11.5066 3 22s8.5066 19 19 19zM7 22C7 13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22z"/></svg></span></span></span></header><div class=content><div class=post><h2 class=post-title><a href=/blog/sudoku-solver/>Sudoku Solver</a></h2><div class=post-meta><span class=post-date>2020-05-13</span>
+<span class=post-read-time>— 8 min read</span></div><div class=post-content><h2 id=project-motivation>Project Motivation</h2><p>Okay so one day browsing through Reddit , I came across a project,
+It was a sudoku solver using video cam stream. The project was cool,
+but there was only 1 thing I didn&rsquo;t liked, it used to crop the sudoku image
+and give a solved sudoku image solution.</p><p>So I thought why not project back the solution to the original image to make it
+look like its solved in the original image</p><hr><h2 id=about-project>About Project</h2><p>So well the project is simple, take the sudoku image, solve it
+and project back the solution to the image, thats all !!.
+Well that was my initial plans, but execution is another thing.</p><p>Brief project technology description is:</p><ul><li>Get the sudoku block in the image - <strong>Python OPEN CV</strong></li><li>Crop the sudoku image and change perspective - <strong>Python OPEN CV</strong></li><li>Extract the digits in some ordered manner - <strong>Python KNN Model</strong></li><li>Solve the sudoku - <strong>Using Rust Sudoku Solver</strong></li><li>Project back the solution into the original image - <strong>Python OPEN CV</strong></li></ul><p>Well we can solve the sudoku using <em>Python</em> but for some reason I wanted to try
+adding Rust to python, also its faster than python in solving the sudoku.</p><p>If you find it interesting , Lets start!!</p><hr><h2 id=crop--change-perspective>Crop & Change Perspective</h2><p>After this Section we will be converting the full image to cropped image.
+Initial Image:</p><img src=orgnl.jpg alt="Hello Friend" class=center style=border-radius:8px;width:400px;padding:20px><p>Okay so basic logic is</p><ol><li>Get the biggest box in image as it will be most probably the sudoku box.</li><li>Next is to draw lines along the sudoku box edges.</li><li>Find the intersection points of these images.</li><li>Use the intersection points to change the perspective of image and get
+the cropped sudoku.</li></ol><p>Okay so lets see each step one by one!</p><h3 id=getting-the-biggest-box>Getting the biggest box:</h3><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>original <span style=color:#f92672>=</span> img<span style=color:#f92672>.</span>copy()
+<span style=color:#75715e>#img = cv2.medianBlur(img,5)</span>
+img <span style=color:#f92672>=</span> cv2<span style=color:#f92672>.</span>cvtColor(img,cv2<span style=color:#f92672>.</span>COLOR_BGR2RGB)
+greymain <span style=color:#f92672>=</span> cv2<span style=color:#f92672>.</span>cvtColor(img,cv2<span style=color:#f92672>.</span>COLOR_RGB2GRAY)
+
+th2 <span style=color:#f92672>=</span> cv2<span style=color:#f92672>.</span>adaptiveThreshold(greymain,<span style=color:#ae81ff>255</span>,cv2<span style=color:#f92672>.</span>ADAPTIVE_THRESH_MEAN_C,\
+            cv2<span style=color:#f92672>.</span>THRESH_BINARY_INV,<span style=color:#ae81ff>39</span>,<span style=color:#ae81ff>10</span>)
+
+
+contours,heirarchy <span style=color:#f92672>=</span> cv2<span style=color:#f92672>.</span>findContours(th2,cv2<span style=color:#f92672>.</span>RETR_EXTERNAL,cv2<span style=color:#f92672>.</span>CHAIN_APPROX_SIMPLE)
+maxarea <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+cnt <span style=color:#f92672>=</span> contours[<span style=color:#ae81ff>0</span>]
+<span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> contours:
+    <span style=color:#66d9ef>if</span> cv2<span style=color:#f92672>.</span>contourArea(i)<span style=color:#f92672>&gt;</span>maxarea:
+        cnt <span style=color:#f92672>=</span> i
+        maxarea <span style=color:#f92672>=</span> cv2<span style=color:#f92672>.</span>contourArea(i)
+
+</code></pre></div><p>Lets understand the code!
+First of all contour is basically any closed shape , we will be using opencv library to first,</p><ul><li>Converting image to <strong>GRAY</strong></li><li>Using adaptiveThreshold to convert the image to either black or pure white.</li><li>Opencv has a function <code>findContours</code> it returns the contours(<em><strong>closed shape</strong></em>)</li><li>Going through Each contour and getting the max area contour.</li></ul><p>After this we will be having the biggest contour which most probably is the sudoku box.</p><p>As this just gives the outline of the shape, we can&rsquo;t use it to get the sudoku box, we need the four corner points to change perspective.</p><p>Hence we will be first drawing this contour on a blank image and the draw straight lines on this shape, it will give us four lines which will be later used
+to get the four corner points.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>    blank <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>zeros(img<span style=color:#f92672>.</span>shape,np<span style=color:#f92672>.</span>uint8)
+    image <span style=color:#f92672>=</span> cv2<span style=color:#f92672>.</span>drawContours(blank,[cnt],<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>,(<span style=color:#ae81ff>255</span>,<span style=color:#ae81ff>255</span>,<span style=color:#ae81ff>255</span>),<span style=color:#ae81ff>2</span>)
+    edges <span style=color:#f92672>=</span> cv2<span style=color:#f92672>.</span>Canny(image,<span style=color:#ae81ff>40</span>,<span style=color:#ae81ff>150</span>,apertureSize <span style=color:#f92672>=</span> <span style=color:#ae81ff>3</span>)
+    lines <span style=color:#f92672>=</span> cv2<span style=color:#f92672>.</span>HoughLines(edges,<span style=color:#ae81ff>1</span>,np<span style=color:#f92672>.</span>pi<span style=color:#f92672>/</span><span style=color:#ae81ff>180</span>,<span style=color:#ae81ff>100</span>)
+    createhor <span style=color:#f92672>=</span> []
+    createver <span style=color:#f92672>=</span> []
+    created <span style=color:#f92672>=</span> []
+    anglediff<span style=color:#f92672>=</span><span style=color:#ae81ff>10</span>
+    rhodiff<span style=color:#f92672>=</span><span style=color:#ae81ff>10</span>
+    flag<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>
+    count <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span>
+</code></pre></div><p>After this we will have lines along the sudoku sides but the thing is ,
+there are multiple lines along a single side, because the <code>Houghlines</code> uses
+roughly in line points to draw a line and as our image is not very clear nor is
+the correct perspective hence what we get is multiple lines along a single side.</p><p>So what we will be doing is we will eliminate all lines which are close to each other,
+but leave one hence we will be left with 4 lines for 4 sides.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>    
+    <span style=color:#66d9ef>for</span> line <span style=color:#f92672>in</span> lines:
+        <span style=color:#66d9ef>for</span> (rho,theta) <span style=color:#f92672>in</span> line:
+            flag<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>
+            <span style=color:#66d9ef>for</span> (rho1,theta1) <span style=color:#f92672>in</span> created:
+                <span style=color:#66d9ef>if</span> abs(rho<span style=color:#f92672>-</span>rho1)<span style=color:#f92672>&lt;</span>rhodiff <span style=color:#f92672>and</span> abs(theta<span style=color:#f92672>-</span>theta1)<span style=color:#f92672>&lt;</span>anglediff:
+                    flag<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span>
+                    
+            <span style=color:#66d9ef>if</span> flag<span style=color:#f92672>==</span><span style=color:#ae81ff>0</span>:
+                a <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>cos(theta)
+                b <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>sin(theta)
+                x0 <span style=color:#f92672>=</span> a<span style=color:#f92672>*</span>rho
+                y0 <span style=color:#f92672>=</span> b<span style=color:#f92672>*</span>rho
+                x1 <span style=color:#f92672>=</span> int(x0 <span style=color:#f92672>+</span> <span style=color:#ae81ff>1000</span><span style=color:#f92672>*</span>(<span style=color:#f92672>-</span>b))
+                y1 <span style=color:#f92672>=</span> int(y0 <span style=color:#f92672>+</span> <span style=color:#ae81ff>1000</span><span style=color:#f92672>*</span>(a))
+                x2 <span style=color:#f92672>=</span> int(x0 <span style=color:#f92672>-</span> <span style=color:#ae81ff>1000</span><span style=color:#f92672>*</span>(<span style=color:#f92672>-</span>b))
+                y2 <span style=color:#f92672>=</span> int(y0 <span style=color:#f92672>-</span> <span style=color:#ae81ff>1000</span><span style=color:#f92672>*</span>(a))
+                d <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>linalg<span style=color:#f92672>.</span>norm(np<span style=color:#f92672>.</span>array((x1,y1,<span style=color:#ae81ff>0</span>))<span style=color:#f92672>-</span>np<span style=color:#f92672>.</span>array((x2,y2,<span style=color:#ae81ff>0</span>)))
+                cv2<span style=color:#f92672>.</span>line(img,(x1,y1),(x2,y2),(<span style=color:#ae81ff>0</span>,<span style=color:#ae81ff>255</span>,<span style=color:#ae81ff>0</span>),<span style=color:#ae81ff>2</span>)
+                m<span style=color:#f92672>=</span>abs(<span style=color:#ae81ff>1</span><span style=color:#f92672>/</span>np<span style=color:#f92672>.</span>tan(theta))
+                <span style=color:#66d9ef>if</span> m<span style=color:#f92672>&lt;</span><span style=color:#ae81ff>1</span>:
+                    createhor<span style=color:#f92672>.</span>append((rho,theta))
+                <span style=color:#66d9ef>else</span>:
+                    createver<span style=color:#f92672>.</span>append((rho,theta))
+                created<span style=color:#f92672>.</span>append((rho,theta))
+                
+    points<span style=color:#f92672>=</span>[]
+</code></pre></div><p>So now we have 4 lines, what&rsquo;s left is to get the intersection points of these
+lines.</p><p>Well as our lines are not parallel hence we will be getting 6 point of intersection.
+we will be using the slope, we will divide the lines into 2 category, horizontal and vertical. And this way we will get only 4 points.
+<strong>Note</strong>: The lines are not the horizontal and vertical but are just 2 categories.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>    <span style=color:#66d9ef>for</span> (rho,theta) <span style=color:#f92672>in</span> createhor:
+        <span style=color:#66d9ef>for</span> (rho1,theta1) <span style=color:#f92672>in</span> createver:
+            <span style=color:#66d9ef>if</span> (rho,theta)<span style=color:#f92672>!=</span>(rho1,theta1):
+                a<span style=color:#f92672>=</span>[[np<span style=color:#f92672>.</span>cos(theta),np<span style=color:#f92672>.</span>sin(theta)],[np<span style=color:#f92672>.</span>cos(theta1),np<span style=color:#f92672>.</span>sin(theta1)]]
+                b<span style=color:#f92672>=</span>[rho,rho1]
+                cor<span style=color:#f92672>=</span>np<span style=color:#f92672>.</span>linalg<span style=color:#f92672>.</span>solve(a,b)
+                <span style=color:#66d9ef>if</span> list(cor) <span style=color:#f92672>not</span> <span style=color:#f92672>in</span> points:
+                    points<span style=color:#f92672>.</span>append(list(cor))
+    
+</code></pre></div><p>Now we have 4 corner points , its time to do the magic and get the sudoku image.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>points<span style=color:#f92672>.</span>sort()
+    <span style=color:#66d9ef>if</span> (points[<span style=color:#ae81ff>0</span>][<span style=color:#ae81ff>1</span>]<span style=color:#f92672>&gt;</span>points[<span style=color:#ae81ff>1</span>][<span style=color:#ae81ff>1</span>]):
+        points[<span style=color:#ae81ff>0</span>],points[<span style=color:#ae81ff>1</span>]<span style=color:#f92672>=</span>points[<span style=color:#ae81ff>1</span>],points[<span style=color:#ae81ff>0</span>]
+    <span style=color:#66d9ef>if</span> (points[<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>][<span style=color:#ae81ff>1</span>]<span style=color:#f92672>&lt;</span>points[<span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>][<span style=color:#ae81ff>1</span>]):
+        points[<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>],points[<span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>]<span style=color:#f92672>=</span>points[<span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>],points[<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>]
+    
+    points[<span style=color:#ae81ff>1</span>],points[<span style=color:#ae81ff>2</span>]<span style=color:#f92672>=</span>points[<span style=color:#ae81ff>2</span>],points[<span style=color:#ae81ff>1</span>]
+    <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> points:
+        images <span style=color:#f92672>=</span> cv2<span style=color:#f92672>.</span>circle(image,(int(i[<span style=color:#ae81ff>0</span>]),int(i[<span style=color:#ae81ff>1</span>])),<span style=color:#ae81ff>4</span>,(<span style=color:#ae81ff>0</span>,<span style=color:#ae81ff>0</span>,<span style=color:#ae81ff>255</span>),<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>)
+    pts1 <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>float32(points)
+    pts2 <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>float32([[<span style=color:#ae81ff>0</span>,<span style=color:#ae81ff>0</span>],[size,<span style=color:#ae81ff>0</span>],[<span style=color:#ae81ff>0</span>,size],[size,size]])
+    M <span style=color:#f92672>=</span> cv2<span style=color:#f92672>.</span>getPerspectiveTransform(pts1,pts2)
+    
+    warped2 <span style=color:#f92672>=</span> cv2<span style=color:#f92672>.</span>warpPerspective(blank,M,(size,size))
+    img <span style=color:#f92672>=</span> cv2<span style=color:#f92672>.</span>warpPerspective(original,M,(size,size))
+</code></pre></div><p>Nothing fancy, we will be using the <code>warpPerspective</code> to change the perspective and get the image.</p><p>Final output:</p><img src=crpzimg.jpg alt="Hello Friend" class=center style=border-radius:8px;width:400px;padding:20px><hr><h2 id=extract-digits-from-sudoku-image>Extract Digits from Sudoku Image</h2><p>This section will be focused on extracting the digits from sudoku image.</p><p>So first is some eroding and dilating to remove the noise .
+Next is to get the contour of digits, and drawing the on a new blank image.
+After that its just drawing the divider lines.</p><p>After this we will get
+<img src=sd_img.jpg alt="Hello Friend" class=center style=border-radius:8px;width:400px;padding:20px>
+A clean sudoku image with no noise.</p><p>Next is simple, just iterating through each box and predicting the numbers.
+First approach which failed very very miserably was to use a <strong>CNN</strong> model and training it to predict the numbers.
+After some experimenting I went ahead with <strong>KNN</strong> Model.</p><p>The first problem was to create the dataset, Tried kaggle but apparently there
+are no dataset for simple plained numbers.
+So I created a script which first writes the digits on an image, adds some <strong>Noise and blur</strong> to make it realistic and then crop it.</p><p>Then I used another good Library <code>Augmentor</code> , It uses the present images and adds random tilts, rotations etc. Hence what I got was 10k images for each number.
+Pretty cool!! Atleast for me, I was not able to sleep after doing that master piece stuff .
+Okay after we are done of thinking about it lets move to train the model.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>import</span> numpy <span style=color:#f92672>as</span> np
+<span style=color:#f92672>import</span> os
+<span style=color:#f92672>import</span> scipy.ndimage
+<span style=color:#f92672>from</span> skimage.feature <span style=color:#f92672>import</span> hog
+<span style=color:#f92672>from</span> skimage <span style=color:#f92672>import</span> data, color, exposure
+<span style=color:#f92672>from</span> sklearn.model_selection <span style=color:#f92672>import</span>  train_test_split
+<span style=color:#f92672>from</span> sklearn.neighbors <span style=color:#f92672>import</span> KNeighborsClassifier
+<span style=color:#f92672>from</span> sklearn.externals <span style=color:#f92672>import</span> joblib
+<span style=color:#f92672>import</span> cv2
+
+features_list <span style=color:#f92672>=</span> []
+features_label <span style=color:#f92672>=</span> []
+<span style=color:#75715e># load labeled training / test data</span>
+<span style=color:#75715e># loop over the 10 directories where each directory stores the images of a digit</span>
+<span style=color:#66d9ef>for</span> digit <span style=color:#f92672>in</span> range(<span style=color:#ae81ff>0</span>,<span style=color:#ae81ff>10</span>):
+    label <span style=color:#f92672>=</span> digit
+    training_directory <span style=color:#f92672>=</span> <span style=color:#e6db74></span><span style=color:#e6db74>&#39;</span><span style=color:#e6db74>output/</span><span style=color:#e6db74>&#39;</span> <span style=color:#f92672>+</span> str(label) <span style=color:#f92672>+</span> <span style=color:#e6db74></span><span style=color:#e6db74>&#39;</span><span style=color:#e6db74>/</span><span style=color:#e6db74>&#39;</span>
+    <span style=color:#66d9ef>for</span> filename <span style=color:#f92672>in</span> os<span style=color:#f92672>.</span>listdir(training_directory):
+        <span style=color:#66d9ef>if</span> (filename<span style=color:#f92672>.</span>endswith(<span style=color:#e6db74></span><span style=color:#e6db74>&#39;</span><span style=color:#e6db74>.jpg</span><span style=color:#e6db74>&#39;</span>)):
+            training_digit <span style=color:#f92672>=</span> cv2<span style=color:#f92672>.</span>imread(training_directory <span style=color:#f92672>+</span> filename)
+            df<span style=color:#f92672>=</span> hog(training_digit, orientations<span style=color:#f92672>=</span><span style=color:#ae81ff>8</span>, pixels_per_cell<span style=color:#f92672>=</span>(<span style=color:#ae81ff>4</span>,<span style=color:#ae81ff>4</span>), cells_per_block<span style=color:#f92672>=</span>(<span style=color:#ae81ff>7</span>, <span style=color:#ae81ff>7</span>))
+            training_digit <span style=color:#f92672>=</span> color<span style=color:#f92672>.</span>rgb2gray(training_digit)
+
+            <span style=color:#75715e># extra digit&#39;s Histogram of Gradients (HOG). Divide the image into 5x5 blocks and where block in 10x10</span>
+            <span style=color:#75715e># pixels</span>
+       
+            features_list<span style=color:#f92672>.</span>append(df)
+            features_label<span style=color:#f92672>.</span>append(label)
+
+<span style=color:#75715e># store features array into a numpy array</span>
+features  <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array(features_list, <span style=color:#e6db74></span><span style=color:#e6db74>&#39;</span><span style=color:#e6db74>float64</span><span style=color:#e6db74>&#39;</span>)
+<span style=color:#75715e># split the labled dataset into training / test sets</span>
+X_train, X_test, y_train, y_test <span style=color:#f92672>=</span> train_test_split(features, features_label)
+<span style=color:#75715e># train using K-NN</span>
+knn <span style=color:#f92672>=</span> KNeighborsClassifier(n_neighbors<span style=color:#f92672>=</span><span style=color:#ae81ff>5</span>)
+knn<span style=color:#f92672>.</span>fit(X_train, y_train)
+<span style=color:#75715e># get the model accuracy</span>
+model_score <span style=color:#f92672>=</span> knn<span style=color:#f92672>.</span>score(X_test, y_test)
+
+<span style=color:#75715e># save trained model</span>
+joblib<span style=color:#f92672>.</span>dump(knn, <span style=color:#e6db74></span><span style=color:#e6db74>&#39;</span><span style=color:#e6db74>models/knn_model.pkl</span><span style=color:#e6db74>&#39;</span>)
+
+</code></pre></div><p>Next was easy, just use this model to predict the numbers and creating a new image of a sudoku.</p><p>After everything what we have is
+<img src=unsolved_sd_img.jpg alt="Hello Friend" class=center style=border-radius:8px;width:400px;padding:20px></p><hr><h2 id=solve-sudoku>Solve Sudoku</h2><p>We will be solving sudoku using Rust in this section.</p><p>After our last section we have numbers in sudoku image, whats left is to code a sudoku solver, in rust and thankfully we can export it into a library which can be
+imported in python.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=color:#66d9ef>use</span> cpython::{py_fn, py_module_initializer, PyResult, Python};
+<span style=color:#66d9ef>use</span> sudoku::Sudoku;
+
+py_module_initializer<span style=color:#f92672>!</span>(sudoku_solver, <span style=color:#f92672>|</span>py, m<span style=color:#f92672>|</span> {
+    m.add(py, <span style=color:#e6db74>&#34;__doc__&#34;</span>, <span style=color:#e6db74>&#34;This module is implemented in Rust.&#34;</span>)<span style=color:#f92672>?</span>;
+    m.add(py, <span style=color:#e6db74>&#34;solve&#34;</span>, py_fn<span style=color:#f92672>!</span>(py, solve_py(sudoku_line: String)))<span style=color:#f92672>?</span>;
+    Ok(())
+});
+
+<span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>solve_py</span>(_: <span style=color:#a6e22e>Python</span>, sudoku_line: String) -&gt; <span style=color:#a6e22e>PyResult</span><span style=color:#f92672>&lt;</span>String<span style=color:#f92672>&gt;</span> {
+    <span style=color:#66d9ef>let</span> out <span style=color:#f92672>=</span> solve(sudoku_line);
+    Ok(out)
+}
+<span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>solve</span>(sudoku_line: String) -&gt; String {
+    <span style=color:#66d9ef>let</span> sudoku <span style=color:#f92672>=</span> Sudoku::from_str_line(<span style=color:#f92672>&amp;</span>sudoku_line).unwrap();
+
+    <span style=color:#66d9ef>let</span> <span style=color:#66d9ef>mut</span> solution: String;
+    solution <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;&#34;</span>.to_string();
+    <span style=color:#75715e>// Solve, print or convert the sudoku to another format
+</span><span style=color:#75715e></span>    <span style=color:#66d9ef>if</span> <span style=color:#66d9ef>let</span> Some(solve) <span style=color:#f92672>=</span> sudoku.solve_unique() {
+        <span style=color:#75715e>// print the solution in line format
+</span><span style=color:#75715e></span>        solution <span style=color:#f92672>=</span> solve.to_string();
+
+        <span style=color:#75715e>// or return it as a byte array
+</span><span style=color:#75715e></span>    }
+    solution.to_string()
+}
+</code></pre></div><p>Well there is a library sudoku which provides a good sudoku solver,
+so I used it to create a function and wrote Python bindings to import in python,
+another master piece moment lol.</p><p>After this solving the sudoku and creating a solution mask was left.</p><p>And the final solution looked like.
+<img src=solved_sd_img.jpg alt="Hello Friend" class=center style=border-radius:8px;width:400px;padding:20px>
+Great !! Lets move to the nect part</p><hr><h2 id=project-the-solution-to-original-image>Project the Solution To Original Image</h2><p>Final section, it will be focusing on projecting the solution to the original image.</p><p>Once we have solution mapped on a black image , just doing a bitwise not
+and and was enough to remove the black part of image, and as we had the initial points, changing back the perspective, is also easy</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>M <span style=color:#f92672>=</span> cv2<span style=color:#f92672>.</span>getPerspectiveTransform(pts2,pts1)
+    
+    img <span style=color:#f92672>=</span> cv2<span style=color:#f92672>.</span>warpPerspective(sudoku_image,M,(original<span style=color:#f92672>.</span>shape[<span style=color:#ae81ff>1</span>],original<span style=color:#f92672>.</span>shape[<span style=color:#ae81ff>0</span>]))
+    img <span style=color:#f92672>=</span> cv2<span style=color:#f92672>.</span>bitwise_not(img)
+    img <span style=color:#f92672>=</span> cv2<span style=color:#f92672>.</span>bitwise_and(img,original)
+</code></pre></div><p>Thats all!! The final image is
+<img src=final.jpg alt="Hello Friend" class=center style=border-radius:8px;width:400px;padding:20px></p><hr><h2 id=source-code>Source Code</h2><p>You can find all the source code at.
+<a href=https://github.com/pr4k/sudoku-solver>github.com/pr4k/sudoku-solver</a></p></div><div class=pagination><div class=pagination__title><span class=pagination__title-h>Read other posts</span><hr></div><div class=pagination__buttons><span class="button next"><a href=/blog/locate/><span class=button__text>Locate: A Recurive Search Tool - RUST</span>
+<span class=button__icon>→</span></a></span></div></div></div></div><footer class=footer><div class=footer__inner><div class="copyright copyright--user">© 2020 Powered by Hugo | Theme Customized by pr4k</div></div></footer><script src=/assets/main.js></script><script src=/assets/prism.js></script></div></body></html>
