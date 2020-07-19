@@ -1,390 +1,120 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    
-      <title>Creating A Blog In Hugo :: Blog</title>
-    
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="description" content="Why Hugo Hugo is a great tool to generate static website but honestly it is a boring framework to work with. There&amp;rsquo;s no fancy technology, neither you can create any funky functions to fetch your Github repo Readme or any of your Medium articles.
-It uses Go at its core which was the one and only reason for me to go with Hugo, though later I found out the benefits and features which makes it unique and perfect for creating simple static websites like this blog."/>
-<meta name="keywords" content=""/>
-<meta name="robots" content="noodp"/>
-<link rel="canonical" href="/blog/hugoblog/" />
+<!doctype html><html lang=en><head><title>Creating A Blog In Hugo :: Blog</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta name=description content="Why Hugo Hugo is a great tool to generate static website but honestly it is a boring framework to work with. There&amp;rsquo;s no fancy technology, neither you can create any funky functions to fetch your Github repo Readme or any of your Medium articles.
+It uses Go at its core which was the one and only reason for me to go with Hugo, though later I found out the benefits and features which makes it unique and perfect for creating simple static websites like this blog."><meta name=keywords content><meta name=robots content="noodp"><link rel=canonical href=/blog/hugoblog/><link rel=stylesheet href=/assets/style.css><link rel=stylesheet href=/style.css><link rel=apple-touch-icon-precomposed sizes=144x144 href=/img/apple-touch-icon-144-precomposed.png><link rel="shortcut icon" href=/img/favicon.png><meta name=twitter:card content="summary"><meta name=twitter:title content="Creating A Blog In Hugo"><meta name=twitter:description content="Why Hugo Hugo is a great tool to generate static website but honestly it is a boring framework to work with. There&rsquo;s no fancy technology, neither you can create any funky functions to fetch your Github repo Readme or any of your Medium articles.
+It uses Go at its core which was the one and only reason for me to go with Hugo, though later I found out the benefits and features which makes it unique and perfect for creating simple static websites like this blog."><meta property="og:title" content="Creating A Blog In Hugo"><meta property="og:description" content="Why Hugo Hugo is a great tool to generate static website but honestly it is a boring framework to work with. There&rsquo;s no fancy technology, neither you can create any funky functions to fetch your Github repo Readme or any of your Medium articles.
+It uses Go at its core which was the one and only reason for me to go with Hugo, though later I found out the benefits and features which makes it unique and perfect for creating simple static websites like this blog."><meta property="og:type" content="article"><meta property="og:url" content="/blog/hugoblog/"><meta property="article:published_time" content="2020-02-05T22:39:53+00:00"><meta property="article:modified_time" content="2020-02-05T22:39:53+00:00"><meta property="og:site_name" content="Blog"><link rel=stylesheet type=text/css href=/css/custom.css><link rel=stylesheet type=text/css href=/css/variables.css></head><body class=dark-theme><div class=container><header class=header><span class=header__inner><a href=/ class=logo style=text-decoration:none><span class=logo__mark><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44"><path fill="none" d="M15 8l14.729 14.382L15 35.367"/></svg></span><span class=logo__text>hugoblog</span>
+<span class=logo__cursor></span></a><span class=header__right><nav class=menu><ul class="menu__inner menu__inner--desktop"><li><a href=/blog>Blog</a></li><li><a href=/projects>Projects</a></li></ul><ul class="menu__inner menu__inner--mobile"><li><a href=/blog>Blog</a></li><li><a href=/projects>Projects</a></li></ul></nav><span class=menu-trigger><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg></span><span class=theme-toggle><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 41C32.4934 41 41 32.4934 41 22 41 11.5066 32.4934 3 22 3 11.5066 3 3 11.5066 3 22s8.5066 19 19 19zM7 22C7 13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22z"/></svg></span></span></span></header><div class=content><div class=post><h2 class=post-title><a href=/blog/hugoblog/>Creating A Blog In Hugo</a></h2><div class=post-meta><span class=post-date>2020-02-05</span>
+<span class=post-read-time>— 7 min read</span></div><img src=/img/combined.png class=post-cover><div class=post-content><h2 id=why-hugo>Why Hugo</h2><p>Hugo is a great tool to generate static website but honestly it is a boring framework to work with. There&rsquo;s no fancy technology, neither you can create any funky functions to fetch your Github repo Readme or any of your Medium articles.</p><p>It uses Go at its core which was the one and only reason for me to go with Hugo, though later I found out the benefits and features which makes it unique and perfect for creating simple static websites like this blog. As hugo is built using go it makes it super fast which is a plus.
+Also the flexibility it provides like changing themes anytime you want without changing anything except a single line in configuration.</p><p>It allows you to create your content in Markdown, Yes the post you are reading is written in MarkDown which is pretty darn cool</p><h2 id=installing-hugo>Installing Hugo</h2><p>Installing Hugo is very simple. <a href=https://gohugo.io/getting-started/installing/>Official Installation Page</a></p><p>For me it was
+<code>brew install hugo</code></p><h2 id=choosing-theme>Choosing Theme</h2><p>There are plenty of themes available for Hugo. Checkout the official page for <a href=https://themes.gohugo.io/>theme</a>.</p><p>The theme I used is <a href=https://themes.gohugo.io/hugo-theme-hello-friend/>Hello Friends</a></p><h2 id=creating-a-new-site>Creating A New Site</h2><p>For checking whether hugo is installed or not use</p><p><code>hugo version</code></p><p>Creating a hugo site is very simple , all you need to do is install hugo and then</p><p><code>hugo new site website-name</code></p><p>will do the trick. This will create a directory structure for your blog.</p><h3 id=adding-theme-to-the-blog>Adding theme to the blog</h3><p>So the steps are pretty simple. First download the theme from github and then add it to your website&rsquo;s config file. For this post I will be using Hello Friends theme.</p><p>Move to your website folder and do</p><p><code>git init</code></p><p><code>git submodule add https://github.com/panr/hugo-theme-hello-friend.git themes/hello-friend</code></p><p>this will download the theme and add it as a git submodule to your project.</p><h3 id=configuring-the-theme>Configuring the theme</h3><p>As I mentioned above the Hugo framework is very simple and straight forward, So it doesn&rsquo;t require any special configuration.</p><p>The config I used is:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-toml data-lang=toml><span style=color:#a6e22e>baseurl</span> = <span style=color:#e6db74>&#34;/&#34;</span>
+<span style=color:#a6e22e>languageCode</span> = <span style=color:#e6db74>&#34;en-us&#34;</span>
+<span style=color:#a6e22e>theme</span> = <span style=color:#e6db74>&#34;hello-friend&#34;</span>
+<span style=color:#a6e22e>paginate</span> = <span style=color:#ae81ff>5</span>
 
 
-
-
-
-<link rel="stylesheet" href="/assets/style.css">
-
-
-<link rel="stylesheet" href="/style.css">
-
-
-
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/apple-touch-icon-144-precomposed.png">
-<link rel="shortcut icon" href="/img/favicon.png">
-
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Creating A Blog In Hugo"/>
-<meta name="twitter:description" content="Why Hugo Hugo is a great tool to generate static website but honestly it is a boring framework to work with. There&rsquo;s no fancy technology, neither you can create any funky functions to fetch your Github repo Readme or any of your Medium articles.
-It uses Go at its core which was the one and only reason for me to go with Hugo, though later I found out the benefits and features which makes it unique and perfect for creating simple static websites like this blog."/>
-
-
-
-<meta property="og:title" content="Creating A Blog In Hugo" />
-<meta property="og:description" content="Why Hugo Hugo is a great tool to generate static website but honestly it is a boring framework to work with. There&rsquo;s no fancy technology, neither you can create any funky functions to fetch your Github repo Readme or any of your Medium articles.
-It uses Go at its core which was the one and only reason for me to go with Hugo, though later I found out the benefits and features which makes it unique and perfect for creating simple static websites like this blog." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/blog/hugoblog/" />
-<meta property="article:published_time" content="2020-02-05T22:39:53+00:00" />
-<meta property="article:modified_time" content="2020-02-05T22:39:53+00:00" /><meta property="og:site_name" content="Blog" />
-
-
-
-
-
-<link rel="stylesheet" type="text/css" href="/css/custom.css">
-
-
-<link rel="stylesheet" type="text/css" href="/css/variables.css" />
-
-
-
-  </head>
-  <body class="dark-theme">
-    <div class="container">
-      <header class="header">
-  <span class="header__inner">
-    <a
-	href="/"
-	class="logo"
-	style="text-decoration: none;"
->
-
-
-	
-	<span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
-  <path fill="none" d="M15 8l14.729 14.382L15 35.367"/>
-</svg>
-</span>
-	<span class="logo__text"
-    > hugoblog
-    </span
-	>
-	<span class="logo__cursor"></span>
-	
-</a>
-    <span class="header__right">
-      
-        <nav class="menu">
-  <ul class="menu__inner menu__inner--desktop">
-    
-      
-        
-          <li><a href="/blog">Blog</a></li>
-        
-      
-        
-          <li><a href="/projects">Projects</a></li>
-        
-      
-      
-    
-  </ul>
-
-  <ul class="menu__inner menu__inner--mobile">
-    
-      
-        <li><a href="/blog">Blog</a></li>
-      
-    
-      
-        <li><a href="/projects">Projects</a></li>
-      
-    
-  </ul>
-</nav>
-
-        <span class="menu-trigger">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M0 0h24v24H0z" fill="none"/>
-            <path  d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-          </svg>
-        </span>
-      
-      <span class="theme-toggle">
-        <svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
-  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
-  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
-</svg>
-
-      </span>
-    </span>
-  </span>
-</header>
-
-
-      <div class="content">
-        
-  
+[<span style=color:#a6e22e>params</span>]
+  <span style=color:#75715e># dir name of your blog content (default is `content/posts`)</span>
+  <span style=color:#a6e22e>contentTypeName</span> = <span style=color:#e6db74>&#34;blog&#34;</span>
+  <span style=color:#75715e># &#34;light&#34; or &#34;dark&#34;</span>
+  <span style=color:#a6e22e>defaultTheme</span> = <span style=color:#e6db74>&#34;dark&#34;</span>
+  <span style=color:#75715e># if you set this to 0, only submenu trigger will be visible</span>
+  <span style=color:#a6e22e>showMenuItems</span> = <span style=color:#ae81ff>4</span>
+  <span style=color:#75715e># Show reading time in minutes for posts</span>
+  <span style=color:#a6e22e>showReadingTime</span> = <span style=color:#66d9ef>true</span>
   
 
-  <div class="post">
-    <h2 class="post-title"><a href="/blog/hugoblog/">Creating A Blog In Hugo</a></h2>
-    <div class="post-meta">
-      
-        <span class="post-date">
-          2020-02-05
-        </span>
+[<span style=color:#a6e22e>languages</span>]
+  [<span style=color:#a6e22e>languages</span>.<span style=color:#a6e22e>en</span>]
+    <span style=color:#a6e22e>title</span> = <span style=color:#e6db74>&#34;Blog&#34;</span>
+    <span style=color:#a6e22e>subtitle</span> = <span style=color:#e6db74>&#34;&#34;</span>
+    <span style=color:#a6e22e>keywords</span> = <span style=color:#e6db74>&#34;&#34;</span>
+    <span style=color:#a6e22e>copyright</span> = <span style=color:#e6db74>&#34;© 2020 Powered by Hugo | Theme Customized by pr4k&#34;</span>
+    <span style=color:#a6e22e>menuMore</span> = <span style=color:#e6db74>&#34;Show more&#34;</span>
+    <span style=color:#a6e22e>writtenBy</span> = <span style=color:#e6db74>&#34;Written by&#34;</span>
+    <span style=color:#a6e22e>readMore</span> = <span style=color:#e6db74>&#34;Read more&#34;</span>
+    <span style=color:#a6e22e>readOtherPosts</span> = <span style=color:#e6db74>&#34;Read other posts&#34;</span>
+    <span style=color:#a6e22e>newerPosts</span> = <span style=color:#e6db74>&#34;Newer posts&#34;</span>
+    <span style=color:#a6e22e>olderPosts</span> = <span style=color:#e6db74>&#34;Older posts&#34;</span>
+    <span style=color:#a6e22e>minuteReadingTime</span> = <span style=color:#e6db74>&#34;min read&#34;</span>
+    <span style=color:#a6e22e>dateFormatSingle</span> = <span style=color:#e6db74>&#34;2006-01-02&#34;</span>
+    <span style=color:#a6e22e>dateFormatList</span> = <span style=color:#e6db74>&#34;2006-01-02&#34;</span>
+    <span style=color:#75715e># leave empty to disable, enter display text to enable</span>
+    <span style=color:#75715e># lastModDisplay = &#34;&#34;</span>
 
-        
-          
-        
-      
-
-      
-      
-        <span class="post-read-time">— 7 min read</span>
-      
-    </div>
-
-    
-
-    
-      
-        <img src="/img/combined.png" class="post-cover" />
-      
-    
-
-    <div class="post-content">
-      <h2 id="why-hugo">Why Hugo</h2>
-<p>Hugo is a great tool to generate static website but honestly it is a boring framework to work with. There&rsquo;s no fancy technology, neither you can create any funky functions to  fetch your Github repo Readme or any of your Medium articles.</p>
-<p>It uses Go at its core which was the one and only reason for me to go with Hugo, though later I found out the benefits and features which makes it unique and perfect for creating simple static websites like this blog. As hugo is  built using go it makes it super fast which is a plus.
-Also the flexibility it provides like changing themes anytime you want without changing anything except a single line in configuration.</p>
-<p>It allows you to create your content in Markdown, Yes the post you are reading is written in MarkDown which is pretty darn cool</p>
-<h2 id="installing-hugo">Installing Hugo</h2>
-<p>Installing Hugo is very simple. <a href="https://gohugo.io/getting-started/installing/">Official Installation Page</a></p>
-<p>For me it was
-<code> brew install hugo</code></p>
-<h2 id="choosing-theme">Choosing Theme</h2>
-<p>There are plenty of themes available for Hugo. Checkout the official page for <a href="https://themes.gohugo.io/">theme</a>.</p>
-<p>The theme I used is <a href="https://themes.gohugo.io/hugo-theme-hello-friend/">Hello Friends</a></p>
-<h2 id="creating-a-new-site">Creating A New Site</h2>
-<p>For checking whether hugo is installed or not use</p>
-<p><code>hugo version</code></p>
-<p>Creating a hugo site is very simple , all you need to do is install hugo and then</p>
-<p><code>hugo new site website-name</code></p>
-<p>will do the trick. This will create a directory structure for your blog.</p>
-<h3 id="adding-theme-to-the-blog">Adding theme to the blog</h3>
-<p>So the steps are pretty simple. First download the theme from github and then add it to your website&rsquo;s config file. For this post I will be using Hello Friends theme.</p>
-<p>Move to your website folder and do</p>
-<p><code> git init</code></p>
-<p><code>git submodule add https://github.com/panr/hugo-theme-hello-friend.git themes/hello-friend</code></p>
-<p>this will download the theme and add it as a git submodule to your project.</p>
-<h3 id="configuring-the-theme">Configuring the theme</h3>
-<p>As I mentioned above the Hugo framework is very simple and straight forward, So it doesn&rsquo;t require any special configuration.</p>
-<p>The config I used is:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml"><span style="color:#a6e22e">baseurl</span> = <span style="color:#e6db74">&#34;/&#34;</span>
-<span style="color:#a6e22e">languageCode</span> = <span style="color:#e6db74">&#34;en-us&#34;</span>
-<span style="color:#a6e22e">theme</span> = <span style="color:#e6db74">&#34;hello-friend&#34;</span>
-<span style="color:#a6e22e">paginate</span> = <span style="color:#ae81ff">5</span>
-
-
-[<span style="color:#a6e22e">params</span>]
-  <span style="color:#75715e"># dir name of your blog content (default is `content/posts`)</span>
-  <span style="color:#a6e22e">contentTypeName</span> = <span style="color:#e6db74">&#34;blog&#34;</span>
-  <span style="color:#75715e"># &#34;light&#34; or &#34;dark&#34;</span>
-  <span style="color:#a6e22e">defaultTheme</span> = <span style="color:#e6db74">&#34;dark&#34;</span>
-  <span style="color:#75715e"># if you set this to 0, only submenu trigger will be visible</span>
-  <span style="color:#a6e22e">showMenuItems</span> = <span style="color:#ae81ff">4</span>
-  <span style="color:#75715e"># Show reading time in minutes for posts</span>
-  <span style="color:#a6e22e">showReadingTime</span> = <span style="color:#66d9ef">true</span>
-  
-
-[<span style="color:#a6e22e">languages</span>]
-  [<span style="color:#a6e22e">languages</span>.<span style="color:#a6e22e">en</span>]
-    <span style="color:#a6e22e">title</span> = <span style="color:#e6db74">&#34;Blog&#34;</span>
-    <span style="color:#a6e22e">subtitle</span> = <span style="color:#e6db74">&#34;&#34;</span>
-    <span style="color:#a6e22e">keywords</span> = <span style="color:#e6db74">&#34;&#34;</span>
-    <span style="color:#a6e22e">copyright</span> = <span style="color:#e6db74">&#34;© 2020 Powered by Hugo | Theme Customized by pr4k&#34;</span>
-    <span style="color:#a6e22e">menuMore</span> = <span style="color:#e6db74">&#34;Show more&#34;</span>
-    <span style="color:#a6e22e">writtenBy</span> = <span style="color:#e6db74">&#34;Written by&#34;</span>
-    <span style="color:#a6e22e">readMore</span> = <span style="color:#e6db74">&#34;Read more&#34;</span>
-    <span style="color:#a6e22e">readOtherPosts</span> = <span style="color:#e6db74">&#34;Read other posts&#34;</span>
-    <span style="color:#a6e22e">newerPosts</span> = <span style="color:#e6db74">&#34;Newer posts&#34;</span>
-    <span style="color:#a6e22e">olderPosts</span> = <span style="color:#e6db74">&#34;Older posts&#34;</span>
-    <span style="color:#a6e22e">minuteReadingTime</span> = <span style="color:#e6db74">&#34;min read&#34;</span>
-    <span style="color:#a6e22e">dateFormatSingle</span> = <span style="color:#e6db74">&#34;2006-01-02&#34;</span>
-    <span style="color:#a6e22e">dateFormatList</span> = <span style="color:#e6db74">&#34;2006-01-02&#34;</span>
-    <span style="color:#75715e"># leave empty to disable, enter display text to enable</span>
-    <span style="color:#75715e"># lastModDisplay = &#34;&#34;</span>
-
-    [<span style="color:#a6e22e">languages</span>.<span style="color:#a6e22e">en</span>.<span style="color:#a6e22e">params</span>.<span style="color:#a6e22e">logo</span>]
-      <span style="color:#a6e22e">logoText</span> = <span style="color:#e6db74">&#34;home&#34;</span>
-      <span style="color:#a6e22e">logoHomeLink</span> = <span style="color:#e6db74">&#34;/&#34;</span>
-    <span style="color:#75715e"># or</span>
-    <span style="color:#75715e">#</span>
-    <span style="color:#75715e"># path = &#34;/img/your-example-logo.svg&#34;</span>
-    <span style="color:#75715e"># alt = &#34;Your example logo alt text&#34;</span>
+    [<span style=color:#a6e22e>languages</span>.<span style=color:#a6e22e>en</span>.<span style=color:#a6e22e>params</span>.<span style=color:#a6e22e>logo</span>]
+      <span style=color:#a6e22e>logoText</span> = <span style=color:#e6db74>&#34;home&#34;</span>
+      <span style=color:#a6e22e>logoHomeLink</span> = <span style=color:#e6db74>&#34;/&#34;</span>
+    <span style=color:#75715e># or</span>
+    <span style=color:#75715e>#</span>
+    <span style=color:#75715e># path = &#34;/img/your-example-logo.svg&#34;</span>
+    <span style=color:#75715e># alt = &#34;Your example logo alt text&#34;</span>
 
     
-      [[<span style="color:#a6e22e">languages</span>.<span style="color:#a6e22e">en</span>.<span style="color:#a6e22e">menu</span>.<span style="color:#a6e22e">main</span>]]
-        <span style="color:#a6e22e">identifier</span> = <span style="color:#e6db74">&#34;projects&#34;</span>
-        <span style="color:#a6e22e">name</span> = <span style="color:#e6db74">&#34;Projects&#34;</span>
-        <span style="color:#a6e22e">url</span> = <span style="color:#e6db74">&#34;/projects&#34;</span>
-     [[<span style="color:#a6e22e">languages</span>.<span style="color:#a6e22e">en</span>.<span style="color:#a6e22e">menu</span>.<span style="color:#a6e22e">main</span>]]
-        <span style="color:#a6e22e">identifier</span> = <span style="color:#e6db74">&#34;blog&#34;</span>
-        <span style="color:#a6e22e">name</span> = <span style="color:#e6db74">&#34;Blog&#34;</span>
-        <span style="color:#a6e22e">url</span> = <span style="color:#e6db74">&#34;/blog&#34;</span> 
-</code></pre></div><p>copy this config to <code>config.toml</code> in the root directory of your project and you are done.</p>
-<p>Start the server using <code>hugo server -D</code>
-The output will be something like :</p>
-<p><img src="serverOutput.png" alt="serverOutput"></p>
-<p>Now go to <code>localhost:1313</code> you will find the blog up and running.</p>
-<p>You can find all the steps mentioned above in the official Documentation.</p>
-<p><a href="https://gohugo.io/getting-started/quick-start/">Quick Start Guide</a></p>
-<p><a href="https://themes.gohugo.io/hugo-theme-hello-friend/">Hello Theme Configuration</a></p>
-<h2 id="tweaking">Tweaking</h2>
-<p>Well this is the fun part! As I was new to this framework so doing even simple things like comparing two strings inside a template was not simple anymore.</p>
-<p>So lets do it from start, first of all i wanted that the logo should change as I move from one page to other like output of <code>pwd</code> in linux</p>
-<p><img src="terminalOutput.png" alt="pwd Output"></p>
-<p>So for that I copied the <code>logo.html</code> from partials of theme and copied it to partials folder inside my root folder&rsquo;s layouts <code>personalBlog-&gt;layouts-&gt;partials-&gt;logo.html</code></p>
-<p>So now if we do any change in our <code>logo.html</code> file it will be reflected on our main website.
-So the previous Code was</p>
-<p><img src="logoHtml.png" alt="logo Code"></p>
-<p>Line 6</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"> &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;logo__text&#34;</span>&gt;{{ with $.Site.Params.Logo.logoText }}{{ . }}{{ else }}hello friend{{ end }}&lt;/<span style="color:#f92672">span</span>&gt;
+      [[<span style=color:#a6e22e>languages</span>.<span style=color:#a6e22e>en</span>.<span style=color:#a6e22e>menu</span>.<span style=color:#a6e22e>main</span>]]
+        <span style=color:#a6e22e>identifier</span> = <span style=color:#e6db74>&#34;projects&#34;</span>
+        <span style=color:#a6e22e>name</span> = <span style=color:#e6db74>&#34;Projects&#34;</span>
+        <span style=color:#a6e22e>url</span> = <span style=color:#e6db74>&#34;/projects&#34;</span>
+     [[<span style=color:#a6e22e>languages</span>.<span style=color:#a6e22e>en</span>.<span style=color:#a6e22e>menu</span>.<span style=color:#a6e22e>main</span>]]
+        <span style=color:#a6e22e>identifier</span> = <span style=color:#e6db74>&#34;blog&#34;</span>
+        <span style=color:#a6e22e>name</span> = <span style=color:#e6db74>&#34;Blog&#34;</span>
+        <span style=color:#a6e22e>url</span> = <span style=color:#e6db74>&#34;/blog&#34;</span> 
+</code></pre></div><p>copy this config to <code>config.toml</code> in the root directory of your project and you are done.</p><p>Start the server using <code>hugo server -D</code>
+The output will be something like :</p><p><img src=serverOutput.png alt=serverOutput></p><p>Now go to <code>localhost:1313</code> you will find the blog up and running.</p><p>You can find all the steps mentioned above in the official Documentation.</p><p><a href=https://gohugo.io/getting-started/quick-start/>Quick Start Guide</a></p><p><a href=https://themes.gohugo.io/hugo-theme-hello-friend/>Hello Theme Configuration</a></p><h2 id=tweaking>Tweaking</h2><p>Well this is the fun part! As I was new to this framework so doing even simple things like comparing two strings inside a template was not simple anymore.</p><p>So lets do it from start, first of all i wanted that the logo should change as I move from one page to other like output of <code>pwd</code> in linux</p><p><img src=terminalOutput.png alt="pwd Output"></p><p>So for that I copied the <code>logo.html</code> from partials of theme and copied it to partials folder inside my root folder&rsquo;s layouts <code>personalBlog->layouts->partials->logo.html</code></p><p>So now if we do any change in our <code>logo.html</code> file it will be reflected on our main website.
+So the previous Code was</p><p><img src=logoHtml.png alt="logo Code"></p><p>Line 6</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html> &lt;<span style=color:#f92672>span</span> <span style=color:#a6e22e>class</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;logo__text&#34;</span>&gt;{{ with $.Site.Params.Logo.logoText }}{{ . }}{{ else }}hello friend{{ end }}&lt;/<span style=color:#f92672>span</span>&gt;
 </code></pre></div><p>decides what will be displayed as a logo.
-My first task was to check at which page currently I am, so after digging the documentation of Hugo i found the in-built <code>path.Base</code> function. What it does is once we provide a url to this function, it automatically returns the last part of url .</p>
-<p>Example
-<code> path.Base &quot;/blog/post&quot; -&gt; post</code>.</p>
-<p>So i used this function to get the current page name using <code>path.Base $.RelPermalink</code> and stored it in a variable for future use.
-After this it was simply adding this url-part to the present logo string, But there was a problem, suppose I open this blog , the url will become so big that it will cover the whole nav bar.</p>
-<p>The solution for that was displaying a different logo on a post page and other pages will follow the same old rule of changing urls. Now for that i need to compare the last part of url , either it should be <code>blog</code> , <code>/</code> , <code>projects</code>. And I wont lie just for comparing two strings it took me around <em>30 mins for Duck Duck Go</em> search and then around <em>15 mins of Google</em> search as DDG was showing me results for every language other then Go. So finally the string compare can be done using another built-in function <code> eq str1 str2</code>, yeah i know its simple.</p>
-<p>So combining everything and replacing it in the <code>logo.html</code> . The final output was</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">a</span>
-	<span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ if $.Site.Params.Logo.LogoHomeLink }}{{ $.Site.Params.Logo.LogoHomeLink }}{{else}}{{ $.Site.BaseURL }}{{ end }}&#34;</span>
-	<span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;logo&#34;</span>
-	<span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-decoration: none;&#34;</span>
+My first task was to check at which page currently I am, so after digging the documentation of Hugo i found the in-built <code>path.Base</code> function. What it does is once we provide a url to this function, it automatically returns the last part of url .</p><p>Example
+<code>path.Base "/blog/post" -> post</code>.</p><p>So i used this function to get the current page name using <code>path.Base $.RelPermalink</code> and stored it in a variable for future use.
+After this it was simply adding this url-part to the present logo string, But there was a problem, suppose I open this blog , the url will become so big that it will cover the whole nav bar.</p><p>The solution for that was displaying a different logo on a post page and other pages will follow the same old rule of changing urls. Now for that i need to compare the last part of url , either it should be <code>blog</code> , <code>/</code> , <code>projects</code>. And I wont lie just for comparing two strings it took me around <em>30 mins for Duck Duck Go</em> search and then around <em>15 mins of Google</em> search as DDG was showing me results for every language other then Go. So finally the string compare can be done using another built-in function <code>eq str1 str2</code>, yeah i know its simple.</p><p>So combining everything and replacing it in the <code>logo.html</code> . The final output was</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html>&lt;<span style=color:#f92672>a</span>
+	<span style=color:#a6e22e>href</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;{{ if $.Site.Params.Logo.LogoHomeLink }}{{ $.Site.Params.Logo.LogoHomeLink }}{{else}}{{ $.Site.BaseURL }}{{ end }}&#34;</span>
+	<span style=color:#a6e22e>class</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;logo&#34;</span>
+	<span style=color:#a6e22e>style</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;text-decoration: none;&#34;</span>
 &gt;
 {{$urlString := path.Base $.RelPermalink}}
 
 	{{ if $.Site.Params.Logo.path }}
-	&lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ $.Site.Params.Logo.path }}&#34;</span> <span style="color:#a6e22e">alt</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ $.Site.Params.Logo.alt }}&#34;</span> /&gt;
+	&lt;<span style=color:#f92672>img</span> <span style=color:#a6e22e>src</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;{{ $.Site.Params.Logo.path }}&#34;</span> <span style=color:#a6e22e>alt</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;{{ $.Site.Params.Logo.alt }}&#34;</span> /&gt;
 	{{ else }}
-	&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;logo__mark&#34;</span>&gt;{{ partial &#34;greater-icon.html&#34; . }}&lt;/<span style="color:#f92672">span</span>&gt;
-	&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;logo__text&#34;</span>
+	&lt;<span style=color:#f92672>span</span> <span style=color:#a6e22e>class</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;logo__mark&#34;</span>&gt;{{ partial &#34;greater-icon.html&#34; . }}&lt;/<span style=color:#f92672>span</span>&gt;
+	&lt;<span style=color:#f92672>span</span> <span style=color:#a6e22e>class</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;logo__text&#34;</span>
     &gt;{{ if (or (eq $urlString &#34;blog&#34;) (eq $urlString &#34;/&#34;) (eq $urlString &#34;projects&#34;) ) }}{{ with $.Site.Params.Logo.logoText }}{{ . }}{{$.RelPermalink}}{{ else }}hello friend{{end}} {{else}} {{$urlString}}{{end}}
-    &lt;/<span style="color:#f92672">span</span>
+    &lt;/<span style=color:#f92672>span</span>
 	&gt;
-	&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;logo__cursor&#34;</span>&gt;&lt;/<span style="color:#f92672">span</span>&gt;
+	&lt;<span style=color:#f92672>span</span> <span style=color:#a6e22e>class</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;logo__cursor&#34;</span>&gt;&lt;/<span style=color:#f92672>span</span>&gt;
 	{{ end }}
-&lt;/<span style="color:#f92672">a</span>&gt;
-</code></pre></div><p>Notice how i used the <code>eq</code> along with <code>or</code> to check all the pages.</p>
-<p>Other then this few tweaks were done here and there like logo  blinker color was changed to green from pink etc.
-After this the only thing remaining was adding the index page as the official theme doesn&rsquo;t provide a index page.</p>
-<h3 id="adding-index-page">Adding Index Page</h3>
-<p>First create <code>index.html</code> inside <code>layouts </code>folder.</p>
-<p>I always wanted a simple and plain index page where i can provide my freelancing profiles and social media links.
-So first I created the css file <code>assets -&gt; css -&gt;index.css</code></p>
-<p>Code for <code>index.html</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">{{define &#34;main&#34;}} {{ $templateStyle := resources.Get &#34;css/index.css&#34; }}
+&lt;/<span style=color:#f92672>a</span>&gt;
+</code></pre></div><p>Notice how i used the <code>eq</code> along with <code>or</code> to check all the pages.</p><p>Other then this few tweaks were done here and there like logo blinker color was changed to green from pink etc.
+After this the only thing remaining was adding the index page as the official theme doesn&rsquo;t provide a index page.</p><h3 id=adding-index-page>Adding Index Page</h3><p>First create <code>index.html</code> inside <code>layouts </code>folder.</p><p>I always wanted a simple and plain index page where i can provide my freelancing profiles and social media links.
+So first I created the css file <code>assets -> css ->index.css</code></p><p>Code for <code>index.html</code></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html>{{define &#34;main&#34;}} {{ $templateStyle := resources.Get &#34;css/index.css&#34; }}
 {{$index:= $templateStyle | resources.ExecuteAsTemplate &#34;css/index.css&#34; . }}
-&lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/css&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ $index.Permalink }}&#34;</span> /&gt;
-&lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css&#34;</span> /&gt;
-&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;index&#34;</span>&gt;
-	&lt;<span style="color:#f92672">h1</span>&gt;I&#39;m Prakhar Kaushik&lt;/<span style="color:#f92672">h1</span>&gt;
-	&lt;<span style="color:#f92672">h2</span>&gt;Freelance Python Developer&lt;/<span style="color:#f92672">h2</span>&gt;
-	&lt;<span style="color:#f92672">p</span>&gt;
-		Python Developer interested in learning new languages, &lt;<span style="color:#f92672">br</span> /&gt;
-		also an Active Open Source Contributor. &lt;<span style="color:#f92672">br</span> /&gt;Experienced in Web
+&lt;<span style=color:#f92672>link</span> <span style=color:#a6e22e>rel</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;stylesheet&#34;</span> <span style=color:#a6e22e>type</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;text/css&#34;</span> <span style=color:#a6e22e>href</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;{{ $index.Permalink }}&#34;</span> /&gt;
+&lt;<span style=color:#f92672>link</span> <span style=color:#a6e22e>rel</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;stylesheet&#34;</span> <span style=color:#a6e22e>href</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css&#34;</span> /&gt;
+&lt;<span style=color:#f92672>div</span> <span style=color:#a6e22e>class</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;index&#34;</span>&gt;
+	&lt;<span style=color:#f92672>h1</span>&gt;I&#39;m Prakhar Kaushik&lt;/<span style=color:#f92672>h1</span>&gt;
+	&lt;<span style=color:#f92672>h2</span>&gt;Freelance Python Developer&lt;/<span style=color:#f92672>h2</span>&gt;
+	&lt;<span style=color:#f92672>p</span>&gt;
+		Python Developer interested in learning new languages, &lt;<span style=color:#f92672>br</span> /&gt;
+		also an Active Open Source Contributor. &lt;<span style=color:#f92672>br</span> /&gt;Experienced in Web
 		Development and Machine Learning
-	&lt;/<span style="color:#f92672">p</span>&gt;
+	&lt;/<span style=color:#f92672>p</span>&gt;
 
-	&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;freelancing&#34;</span>&gt;
-		&lt;<span style="color:#f92672">h4</span>&gt;Checkout My Profile At&lt;/<span style="color:#f92672">h4</span>&gt;
-		&lt;<span style="color:#f92672">button</span>&gt;
-			&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://www.freelancer.com/u/Prakhark19&#34;</span>&gt;
-				&lt;<span style="color:#f92672">b</span>&gt;FREELANCER&lt;/<span style="color:#f92672">b</span>&gt;&lt;/<span style="color:#f92672">a</span>&gt;
-		&lt;/<span style="color:#f92672">button</span>&gt;
-		&lt;<span style="color:#f92672">button</span>&gt;
-			&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://www.fiverr.com/prakharkaushik&#34;</span>&gt;&lt;<span style="color:#f92672">b</span>&gt;FIVERR&lt;/<span style="color:#f92672">b</span>&gt;&lt;/<span style="color:#f92672">a</span>&gt;
-		&lt;/<span style="color:#f92672">button</span>&gt;
-	&lt;/<span style="color:#f92672">div</span>&gt;
-	&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://www.github.com/pr4k&#34;</span>&gt;&lt;<span style="color:#f92672">i</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fa fa-github&#34;</span> <span style="color:#a6e22e">aria-hidden</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;true&#34;</span>&gt;&lt;/<span style="color:#f92672">i</span>&gt;&lt;/<span style="color:#f92672">a</span>&gt;
-	&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://twitter.com/me_prakhar&#34;</span>&gt;&lt;<span style="color:#f92672">i</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fa fa-twitter&#34;</span> <span style="color:#a6e22e">aria-hidden</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;true&#34;</span>&gt;&lt;/<span style="color:#f92672">i</span>&gt;&lt;/<span style="color:#f92672">a</span>&gt;
-	&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://www.linkedin.com/in/pr4k&#34;</span>&gt;&lt;<span style="color:#f92672">i</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fa fa-linkedin&#34;</span> <span style="color:#a6e22e">aria-hidden</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;true&#34;</span>&gt;&lt;/<span style="color:#f92672">i</span>&gt;&lt;/<span style="color:#f92672">a</span>&gt;
-	&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://join.skype.com/invite/oZkUaPq8hsnw&#34;</span>&gt;&lt;<span style="color:#f92672">i</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fa fa-skype&#34;</span> <span style="color:#a6e22e">aria-hidden</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;true&#34;</span>&gt;&lt;/<span style="color:#f92672">i</span>&gt;&lt;/<span style="color:#f92672">a</span>&gt;
-	&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://t.me/Prakharkaushik&#34;</span>&gt;&lt;<span style="color:#f92672">i</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fa fa-telegram&#34;</span> <span style="color:#a6e22e">aria-hidden</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;true&#34;</span>&gt;&lt;/<span style="color:#f92672">i</span>&gt;&lt;/<span style="color:#f92672">a</span>&gt;
-	&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://stackoverflow.com/users/10425600/prakhar-kaushik&#34;</span>&gt;&lt;<span style="color:#f92672">i</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fa fa-stack-overflow&#34;</span>
-			<span style="color:#a6e22e">aria-hidden</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;true&#34;</span>&gt;&lt;/<span style="color:#f92672">i</span>&gt;&lt;/<span style="color:#f92672">a</span>&gt;
-&lt;/<span style="color:#f92672">div</span>&gt;
+	&lt;<span style=color:#f92672>div</span> <span style=color:#a6e22e>class</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;freelancing&#34;</span>&gt;
+		&lt;<span style=color:#f92672>h4</span>&gt;Checkout My Profile At&lt;/<span style=color:#f92672>h4</span>&gt;
+		&lt;<span style=color:#f92672>button</span>&gt;
+			&lt;<span style=color:#f92672>a</span> <span style=color:#a6e22e>href</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;https://www.freelancer.com/u/Prakhark19&#34;</span>&gt;
+				&lt;<span style=color:#f92672>b</span>&gt;FREELANCER&lt;/<span style=color:#f92672>b</span>&gt;&lt;/<span style=color:#f92672>a</span>&gt;
+		&lt;/<span style=color:#f92672>button</span>&gt;
+		&lt;<span style=color:#f92672>button</span>&gt;
+			&lt;<span style=color:#f92672>a</span> <span style=color:#a6e22e>href</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;https://www.fiverr.com/prakharkaushik&#34;</span>&gt;&lt;<span style=color:#f92672>b</span>&gt;FIVERR&lt;/<span style=color:#f92672>b</span>&gt;&lt;/<span style=color:#f92672>a</span>&gt;
+		&lt;/<span style=color:#f92672>button</span>&gt;
+	&lt;/<span style=color:#f92672>div</span>&gt;
+	&lt;<span style=color:#f92672>a</span> <span style=color:#a6e22e>href</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;https://www.github.com/pr4k&#34;</span>&gt;&lt;<span style=color:#f92672>i</span> <span style=color:#a6e22e>class</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;fa fa-github&#34;</span> <span style=color:#a6e22e>aria-hidden</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;true&#34;</span>&gt;&lt;/<span style=color:#f92672>i</span>&gt;&lt;/<span style=color:#f92672>a</span>&gt;
+	&lt;<span style=color:#f92672>a</span> <span style=color:#a6e22e>href</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;https://twitter.com/me_prakhar&#34;</span>&gt;&lt;<span style=color:#f92672>i</span> <span style=color:#a6e22e>class</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;fa fa-twitter&#34;</span> <span style=color:#a6e22e>aria-hidden</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;true&#34;</span>&gt;&lt;/<span style=color:#f92672>i</span>&gt;&lt;/<span style=color:#f92672>a</span>&gt;
+	&lt;<span style=color:#f92672>a</span> <span style=color:#a6e22e>href</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;https://www.linkedin.com/in/pr4k&#34;</span>&gt;&lt;<span style=color:#f92672>i</span> <span style=color:#a6e22e>class</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;fa fa-linkedin&#34;</span> <span style=color:#a6e22e>aria-hidden</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;true&#34;</span>&gt;&lt;/<span style=color:#f92672>i</span>&gt;&lt;/<span style=color:#f92672>a</span>&gt;
+	&lt;<span style=color:#f92672>a</span> <span style=color:#a6e22e>href</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;https://join.skype.com/invite/oZkUaPq8hsnw&#34;</span>&gt;&lt;<span style=color:#f92672>i</span> <span style=color:#a6e22e>class</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;fa fa-skype&#34;</span> <span style=color:#a6e22e>aria-hidden</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;true&#34;</span>&gt;&lt;/<span style=color:#f92672>i</span>&gt;&lt;/<span style=color:#f92672>a</span>&gt;
+	&lt;<span style=color:#f92672>a</span> <span style=color:#a6e22e>href</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;https://t.me/Prakharkaushik&#34;</span>&gt;&lt;<span style=color:#f92672>i</span> <span style=color:#a6e22e>class</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;fa fa-telegram&#34;</span> <span style=color:#a6e22e>aria-hidden</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;true&#34;</span>&gt;&lt;/<span style=color:#f92672>i</span>&gt;&lt;/<span style=color:#f92672>a</span>&gt;
+	&lt;<span style=color:#f92672>a</span> <span style=color:#a6e22e>href</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;https://stackoverflow.com/users/10425600/prakhar-kaushik&#34;</span>&gt;&lt;<span style=color:#f92672>i</span> <span style=color:#a6e22e>class</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;fa fa-stack-overflow&#34;</span>
+			<span style=color:#a6e22e>aria-hidden</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;true&#34;</span>&gt;&lt;/<span style=color:#f92672>i</span>&gt;&lt;/<span style=color:#f92672>a</span>&gt;
+&lt;/<span style=color:#f92672>div</span>&gt;
 
 {{end}}
-</code></pre></div><p>Note how I extended this using the already created header html files inside the theme. The <code>{{define &quot;main&quot;}}</code> takes care of all the header files like css from the theme and navigation bar too, so that our <code>index.html</code> can blend in the theme. The css I used was just for aligning things like buttons and customizing the size for headings.</p>
-<p>And Done! now I have an index page, blog page and a project page. The only thing left is adding content and creating the first blog about <code>how i created this blog</code> which is also about to complete.</p>
-<p>So for creating a new blog ,type this in your terminal:</p>
-<p><code>hugo new blog/how-i-created-this-blog.md</code></p>
-<p>Done now you have a post created , start editing the file and see the live changes on the page using the server.</p>
-<h2 id="final-directory-structure">Final Directory structure</h2>
-<p><img src="directory.png" alt="Directory Structure"></p>
-<p>And thats all, this is how i created the blog you just read.</p>
-
-    </div>
-    
-      
-        <div class="pagination">
-          <div class="pagination__title">
-            <span class="pagination__title-h">Read other posts</span>
-            <hr />
-          </div>
-          <div class="pagination__buttons">
-            
-              <span class="button previous">
-                <a href="/blog/howto/">
-                  <span class="button__icon">←</span>
-                  <span class="button__text">How to Create a Stackoverflow Terminal Client - Go</span>
-                </a>
-              </span>
-            
-            
-          </div>
-        </div>
-      
-    
-
-
-    
-      
-        
-
-      
-    
-
-    </div>
-
-      </div>
-
-      
-        <footer class="footer">
-  <div class="footer__inner">
-    
-      <div class="copyright copyright--user">© 2020 Powered by Hugo | Theme Customized by pr4k</div>
-    
-  </div>
-</footer>
-
-<script src="/assets/main.js"></script>
-<script src="/assets/prism.js"></script>
-
-
-      
-    </div>
-
-    
-  </body>
-</html>
+</code></pre></div><p>Note how I extended this using the already created header html files inside the theme. The <code>{{define "main"}}</code> takes care of all the header files like css from the theme and navigation bar too, so that our <code>index.html</code> can blend in the theme. The css I used was just for aligning things like buttons and customizing the size for headings.</p><p>And Done! now I have an index page, blog page and a project page. The only thing left is adding content and creating the first blog about <code>how i created this blog</code> which is also about to complete.</p><p>So for creating a new blog ,type this in your terminal:</p><p><code>hugo new blog/how-i-created-this-blog.md</code></p><p>Done now you have a post created , start editing the file and see the live changes on the page using the server.</p><h2 id=final-directory-structure>Final Directory structure</h2><p><img src=directory.png alt="Directory Structure"></p><p>And thats all, this is how i created the blog you just read.</p></div><div class=pagination><div class=pagination__title><span class=pagination__title-h>Read other posts</span><hr></div><div class=pagination__buttons><span class="button previous"><a href=/blog/howto/><span class=button__icon>←</span>
+<span class=button__text>How to Create a Stackoverflow Terminal Client - Go</span></a></span></div></div></div></div><footer class=footer><div class=footer__inner><div class="copyright copyright--user">© 2020 Powered by Hugo | Theme Customized by pr4k</div></div></footer><script src=/assets/main.js></script><script src=/assets/prism.js></script></div></body></html>
