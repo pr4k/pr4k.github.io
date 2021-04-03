@@ -1,6 +1,6 @@
 baseurl = "/"
 languageCode = "en-us"
-theme = "hello-friend"
+theme = "darkFolio"
 paginate = 5
 
 

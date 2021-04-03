@@ -1,0 +1,30 @@
+[[skill]]
+    Name = "Django"
+    Icon = "fa-4x fab fa-python"
+    Rating= 4
+    svg = false
+[[skill]]
+    Name = "Hugo"
+    Icon = "fab fa-4x fa-rust"
+    svg = false
+    Rating= 4
+[[skill]]
+    Name = "Flask"
+    Icon = "svg/Go-Logo_Black.svg"
+    svg = true
+    Rating= 5
+[[skill]]
+    Name = "OpenCV"
+    Icon = "svg/c.svg"
+    svg = true
+    Rating= 3
+[[skill]]
+    Name = "Tensorflow"
+    Icon = "svg/c.svg"
+    svg = true
+    Rating= 3
+[[skill]]
+    Name = "FastAPI"
+    Icon = "svg/c.svg"
+    svg = true
+    Rating= 5

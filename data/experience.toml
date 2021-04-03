@@ -1,0 +1,12 @@
+[[experience]]
+Name = "Polynomial.AI"
+Status = "Present"
+Summary = "Currently a developer architect, Creating and leading teams to manage and create Cloud heavy services. Working in the field of NLP, Chatbots and Database handling "
+[[experience]]
+Name = "Apli.AI"
+Status = "May - Jun"
+Summary = "Was responsible to port and convert all the django native website to Rest Framework APIs."
+[[experience]]
+Name = "Freelancer"
+Status = "Present"
+Summary = "Worked on more than 50 projects ranging from Web scraping to NLP Pipelines. Worked with Database."

@@ -1,0 +1,16 @@
+[[skills]]
+    Name = "Web Dev"
+    Icon = "fa fa-2x fa-code"
+    Summary= "Summary 1"
+[[skills]]
+    Name = "Python"
+    Icon = "fa fa-2x fa-code"
+    Summary= "Summary 2"
+[[skills]]
+    Name = "cloud"
+    Icon = "fa fa-2x fa-code"
+    Summary= "Summary 3"
+[[skills]]
+    Name = "Scraping"
+    Icon = "fa fa-2x fa-code"
+    Summary= "Summary 4"

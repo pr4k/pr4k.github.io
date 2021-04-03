@@ -1,0 +1,16 @@
+[[services]]
+    Name = "Web Development"
+    Icon = "fa fa-2x fa-code"
+    Summary= "Proficient Backend Developer, Currently can write Apis or full fledge websites using Django Flask or Fast API."
+[[services]]
+    Name = "Chatbot Development"
+    Icon = "fa fa-2x fa-robot"
+    Summary= "Developed Production level chatbots using industry grade frameworks like DialogFLOW, Luis etc. Can create on premise chatbots using Rasa"
+[[services]]
+    Name = "Cloud Services Management"
+    Icon = "fa fa-2x fa-cloud-download-alt"
+    Summary= "Managed and Designed various Cloud Services ranging from Databases to Cloud Native service pipelines. Have Created fully tested robust cloud pipelines to manage and operate tech heavy services on cloud"
+[[services]]
+    Name = "Web Scraping"
+    Icon = "fa fa-2x fa-file-code"
+    Summary= "Have proven capability to scrape full workflow websites with unstructured as well as structured data, Have created scraper to power/train ML Models and update on Fly."
