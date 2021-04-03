@@ -2,3 +2,6 @@
 	path = pr4k.github.io
 	url = https://github.com/pr4k/pr4k.github.io.git
 	branch = master
+[submodule "themes/darkFolio"]
+	path = themes/darkFolio
+	url = git@github.com:pr4k/darkFolio.git
