@@ -22,7 +22,7 @@ jobs:
           personal_token: ${{ secrets.TOKEN }}
           external_repository: pr4k/pr4k.github.io
           publish_dir: ./public
-          #   keep_files: true
+          keep_files: true
           user_name: pr4k
           user_email: prakhark19@email.com
           publish_branch: master
