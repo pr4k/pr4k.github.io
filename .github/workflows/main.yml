@@ -26,3 +26,4 @@ jobs:
           user_name: pr4k
           user_email: prakhark19@email.com
           publish_branch: master
+          allow_empty_commit: true
