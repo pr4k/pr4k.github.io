@@ -10,11 +10,11 @@
     Rating= 71
 [[skill]]
     Name = "Golang"
-    Icon = "svg/Go-Logo_Black.svg"
+    Icon = "/svg/Go-Logo_Black.svg"
     svg = true
     Rating= 55
 [[skill]]
     Name = "C/C++"
-    Icon = "svg/c.svg"
+    Icon = "/svg/c.svg"
     svg = true
     Rating= 88
