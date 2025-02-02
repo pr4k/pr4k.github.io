@@ -1,5 +1,4 @@
 import Parser from 'rss-parser'
-import ColorThief from 'colorthief'
 
 export async function fetchPosts(feedUrl: string) {
   let parser = new Parser()
@@ -11,47 +10,47 @@ export const extractLink = (content: string) => {
   return content.match(/<img[^>]+src="([^">]+)"/)?.[1] ?? ''
 }
 
-async function fetchThumbnailsNew(techs: Array<string>) {
-  let imagesData: Array<{
-    imageUrl: string
-    backgroundColor: string
-    tech: string
-  }> = []
-  let nonImagesData: Array<{ tech: string; backgroundColor: string }> = []
-  const baseColor = 'rgb(200, 200, 200)' // Default color for missing images
+// async function fetchThumbnailsNew(techs: Array<string>) {
+//   let imagesData: Array<{
+//     imageUrl: string
+//     backgroundColor: string
+//     tech: string
+//   }> = []
+//   let nonImagesData: Array<{ tech: string; backgroundColor: string }> = []
+//   const baseColor = 'rgb(200, 200, 200)' // Default color for missing images
 
-  const extractColor = async (imageUrl: string): Promise<string> => {
-    return new Promise((resolve, reject) => {
-      const img = new Image()
-      img.crossOrigin = 'Anonymous'
-      img.src = imageUrl
+//   const extractColor = async (imageUrl: string): Promise<string> => {
+//     return new Promise((resolve, reject) => {
+//       const img = new Image()
+//       img.crossOrigin = 'Anonymous'
+//       img.src = imageUrl
 
-      img.onload = () => {
-        const colorThief = new ColorThief()
-        const dominantColor = colorThief.getColor(img) // Returns [R, G, B]
-        resolve(`rgb(${dominantColor.join(',')})`)
-      }
+//       img.onload = () => {
+//         const colorThief = new ColorThief()
+//         const dominantColor = colorThief.getColor(img) // Returns [R, G, B]
+//         resolve(`rgb(${dominantColor.join(',')})`)
+//       }
 
-      img.onerror = () => reject('Error loading image')
-    })
-  }
+//       img.onerror = () => reject('Error loading image')
+//     })
+//   }
 
-  const processImage = async (tech: string) => {
-    const imageUrl = `https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${tech}/${tech}-original.svg`
+//   const processImage = async (tech: string) => {
+//     const imageUrl = `https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${tech}/${tech}-original.svg`
 
-    try {
-      const backgroundColor = await extractColor(imageUrl)
-      imagesData.push({ imageUrl, backgroundColor, tech })
-    } catch (error) {
-      console.warn(`Image not found for: ${tech} ${error}`)
-      nonImagesData.push({ tech, backgroundColor: baseColor })
-    }
-  }
+//     try {
+//       const backgroundColor = await extractColor(imageUrl)
+//       imagesData.push({ imageUrl, backgroundColor, tech })
+//     } catch (error) {
+//       console.warn(`Image not found for: ${tech} ${error}`)
+//       nonImagesData.push({ tech, backgroundColor: baseColor })
+//     }
+//   }
 
-  await Promise.all(techs.map(processImage))
+//   await Promise.all(techs.map(processImage))
 
-  return { imagesData, nonImagesData }
-}
+//   return { imagesData, nonImagesData }
+// }
 
 export async function fetchThumbnails(techs: Array<String>) {
   let imagesData: Array<{
@@ -74,7 +73,7 @@ export async function fetchThumbnails(techs: Array<String>) {
     }
   }
 
-  const renderContent = async (imageUrl: string, tech: String) => {
+  const renderContent = async (imageUrl: string, tech: any) => {
     const imageExists = await checkImageExists(imageUrl)
     const techLower = tech.toLowerCase().replaceAll(' ', '-')
 
