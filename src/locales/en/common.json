@@ -1,0 +1,161 @@
+{
+  "title": "Prakhar Portfolio",
+  "image": "/src/images/hero-profile.jpg",
+  "description": "Building and leading high-performing teams, architecting ML/AIOps, and ensuring customer success.",
+  "navbar": [
+    {
+      "label": "Home",
+      "href": "#top"
+    },
+    {
+      "label": "Experience",
+      "href": "/en/#work-experience"
+    },
+    {
+      "label": "Writings",
+      "href": "/en/#writings"
+    },
+    {
+      "label": "About me",
+      "href": "/en/#about-me"
+    }
+  ],
+  "hero": {
+    "job_availability": "Currently Working!",
+    "title": "Hello I'm Prakhar Kaushik!",
+    "job_title": "<strong>Gen AI Enthusiast</strong> from India.",
+    "description": "Specializing in Generative AI, Large Language Models (LLM), MLOps, and Designing.",
+    "cta": "Contact me"
+  },
+  "experience": {
+    "title": "Work Experience",
+    "jobs": {
+      "jobs_title": [
+        "Head of Products & Technology",
+        "Research and Development Scientist",
+        "Consultant R&D Scientist",
+        "Machine Learning Advocate",
+        "Machine Learning Intern",
+        "Freelance Consultant"
+      ],
+      "jobs_description": [
+        {
+          "title": "Head of Products & Technology",
+          "time": ["Jul 2023 - Present"],
+          "description": "Led and expanded the ML team, helping clients become AI-ready. Revamped and rebuilt internal and customer platforms, optimizing cloud performance and reducing cloud costs by 50%. Played a key role in customer success and was responsible for architecting various projects such as clickBACON, TheFatWallet, and NBF.",
+          "list": [
+            "Team Leadership",
+            "Client Relations",
+            "Machine Learning & AI",
+            "Optimizing Cloud Infrastructure"
+          ]
+        },
+        {
+          "title": "Research and Development Scientist",
+          "time": ["Jul 2022 - Jun 2023"],
+          "description": "Expanded the ML team and led ML implementations across the company and clients. Contributed to building the UX team and developed multiple ML POCs. Led Yokogawa internal platform development and was responsible for customer success.",
+          "list": [
+            "Product R&D",
+            "Team Leadership",
+            "Python Programming",
+            "UX Design"
+          ]
+        },
+        {
+          "title": "Consultant R&D Scientist",
+          "time": ["Oct 2021 - Aug 2022"],
+          "description": "Created the core ML team and helped hire AI/ML talent. Led the development of CoCo & Lens and optimized cloud infrastructure. Contributed to consulting other startups on setting up their ML stack and built a system analyzing over 10 million e-commerce reviews for Quilt.AI.",
+          "list": [
+            "ML & NLP",
+            "Cloud Infrastructure Optimization",
+            "AI Talent Acquisition",
+            "Data Analysis"
+          ]
+        },
+        {
+          "title": "Machine Learning Advocate",
+          "time": ["Oct 2020 - Sep 2021"],
+          "description": "Built the initial team and core platform stack (CoCo & Lens). Led the company’s first ChatBot initiatives and created core DevOps pipelines and cloud infrastructures.",
+          "list": [
+            "Machine Learning",
+            "DevOps",
+            "Cloud Infrastructure",
+            "ChatBot Development"
+          ]
+        },
+        {
+          "title": "Machine Learning Intern",
+          "time": ["Apr 2020 - Sep 2020"],
+          "description": "Responsible for initializing the ML stack in the company as part of the founding team. Explored DevOps, cloud stack, and ML/AI.",
+          "list": ["Python Programming", "AI", "Jenkins", "Microsoft Azure"]
+        },
+        {
+          "title": "Freelance Consultant",
+          "time": ["Apr 2019 - Apr 2020"],
+          "description": "Freelanced as an independent consultant, completing over 150 projects, including GoLang APIs, scrapers, and NLP-trained chatbots.",
+          "list": [
+            "Backend Development",
+            "Web Scraping",
+            "NLP Models",
+            "GoLang APIs"
+          ]
+        }
+      ]
+    }
+  },
+
+  "contributions": {
+    "title": "Contributions",
+    "contributions": [
+      {
+        "src": "https://github.com/pr4k/howto/blob/master/images/logo.png?raw=true",
+        "alt": "How to",
+        "title": "How to",
+        "description": "howto is a terminal client for getting stackoverflow Answers for those who are constantly googling for doing basic programming tasks. Now it uses both google as well as Stackoverflow to get the results, because lets agree, google's search algorithm is way better than stackoverflow's search algorithm.",
+        "techs": ["Golang", "CLI"],
+        "repo": "https://github.com/pr4k/howto",
+        "repo_label": "Repository",
+        "commits": "#"
+      },
+      {
+        "src": "https://github.com/pr4k/locate/blob/master/img/locate.gif?raw=true",
+        "alt": "Locate",
+        "title": "Locate",
+        "description": "How many times have you gone through files in search of a string, or finding origin of a function. Locate is a tool written in Rust which goes through each file and gives exact location of the string in the file.",
+        "techs": ["Rust", "CLI"],
+        "repo": "https://github.com/pr4k/locate",
+        "repo_label": "Repository",
+        "commits": "#"
+      },
+      {
+        "src": "https://github.com/pr4k/Te-We/blob/master/demo.gif?raw=true",
+        "alt": "TE-WE (Terminal Webcam)",
+        "title": "TE-WE (Terminal Webcam)",
+        "description": "Presenting you the Webcam Terminal, A terminal client for webcam made solely with Ascii Characters.",
+        "techs": ["Python", "CLI"],
+        "repo": "https://github.com/pr4k/Te-We",
+        "repo_label": "Repository",
+        "commits": "#"
+      }
+    ]
+  },
+  "about": {
+    "title": "About me",
+    "subtitle": "Currently Leading GenAI team in Polynomial.AI India.",
+    "description": "Driving innovation at Polynomial.AI by leading high-performing teams, architecting scalable cloud infrastructures, and ensuring customer success. With over 4 years of experience in AI/ML, cloud optimization, and product development, I have delivered impactful solutions, while reducing cloud costs. My work combines strategic vision with hands-on expertise in LLMs, AI/ML systems, and DevOps operations."
+  },
+  "contact": {
+    "title": "Want to chat?",
+    "subtitle": "Go ahead and connect with me at."
+  },
+  "footer": {
+    "designed": {
+      "designed_with": "Designed with",
+      "designed_by": "by"
+    },
+    "developed": {
+      "developed_with": "Made with",
+      "developed_by": "by"
+    }
+  }
+}

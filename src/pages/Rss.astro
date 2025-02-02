@@ -1,0 +1,22 @@
+---
+import Parser from 'rss-parser'
+
+let parser = new Parser()
+
+let feed = await parser.parseURL('https://medium.com/feed/@pr4k')
+---
+
+{feed.title}
+<ul>
+  {
+    feed.items.map((item) => {
+      return (
+        <li>
+          <a href={item.link}>
+            {item.title}: {item.pubDate}:{item.categories}
+          </a>
+        </li>
+      )
+    })
+  }
+</ul>

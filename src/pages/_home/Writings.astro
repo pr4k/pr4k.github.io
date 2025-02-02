@@ -1,0 +1,58 @@
+---
+import { isTemplateLiteralToken } from 'typescript'
+import CardProject from '@components/CardProject.astro'
+import { extractLink, fetchPosts } from '../../scripts/utils'
+
+let feed = await fetchPosts('https://medium.com/feed/@pr4k')
+---
+
+<section id="writings" class="writings">
+  <h2>
+    <span>Recent Articles</span>
+  </h2>
+  {
+    feed.items.slice(0, 3).map((item: any) => {
+      return (
+        <CardProject
+          src={extractLink(item['content:encoded'])}
+          alt={item.title}
+          title={item.title}
+          description="Description goes here..."
+          techs={item.categories}
+          preview={item.link}
+        />
+      )
+    })
+  }
+</section>
+
+<style>
+  .writings {
+    padding-bottom: 120px;
+
+    & h2 {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      align-items: center;
+      white-space: nowrap;
+      margin-bottom: 86px;
+
+      @media (width >= 768px) {
+        justify-content: start;
+
+        &::after {
+          content: '';
+          display: block;
+          width: 100%;
+          height: 1px;
+          background-color: var(--border-color);
+        }
+      }
+
+      & span {
+        order: 1;
+      }
+    }
+  }
+</style>
