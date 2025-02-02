@@ -15,7 +15,6 @@ interface Props {
 
 const { src, alt, title, description, techs, preview } = Astro.props
 const { imagesData, nonImagesData } = await fetchThumbnails(techs)
-console.log(imagesData, nonImagesData)
 ---
 
 <section class="card-project">

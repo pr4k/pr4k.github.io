@@ -20,7 +20,6 @@ const { src, alt, title, description, techs, repo, repoLabel, commits } =
   Astro.props
 
 const { imagesData, nonImagesData } = await fetchThumbnails(techs)
-console.log(src, imagesData, nonImagesData)
 ---
 
 <section class="card-contributions">
