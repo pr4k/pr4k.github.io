@@ -90,7 +90,7 @@ const mobileOptions: ISourceOptions = {
   interactivity: {
     detect_on: 'window',
     events: {
-      onClick: {
+      onHover: {
         enable: true,
         mode: ['repulse']
       },
