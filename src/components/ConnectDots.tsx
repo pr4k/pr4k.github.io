@@ -172,7 +172,7 @@ export default function ConnectDots() {
     console.log(container)
   }
 
-  const particleConfig = isMobile() ? mobileOptions : desktopOptions
+  const particleConfig = !isMobile() ? mobileOptions : desktopOptions
 
   return init ? (
     <Particles

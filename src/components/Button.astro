@@ -23,20 +23,17 @@ const { href, class: className } = Astro.props
     border: 1px solid var(--text-color);
     border-radius: 1000px;
     transition: var(--transition-bg), var(--transition-text);
-
-    &:hover {
-      background-color: var(--bg-secondary-color);
-    }
-
-    &.filled {
-      background-color: var(--text-color);
-      color: var(--bg-color);
-      transition: var(--transition-bg), var(--transition-text);
-
-      &:hover {
-        background-color: var(--bg-secondary-color);
-        color: var(--text-color);
-      }
-    }
+  }
+  a:hover {
+    background-color: var(--bg-secondary-color);
+  }
+  a.filled {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+    transition: var(--transition-bg), var(--transition-text);
+  }
+  a.filled:hover {
+    background-color: var(--bg-secondary-color);
+    color: var(--text-color);
   }
 </style>
