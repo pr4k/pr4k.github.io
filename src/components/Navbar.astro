@@ -21,15 +21,15 @@ const links = t('navbar', { returnObjects: true })
     <li>
       <a
         class="language"
-        href={Astro.url.pathname.includes('/en')
-          ? switchLocalePath('hi')
-          : switchLocalePath('en')}
+        href={Astro.url.pathname.includes('/hi')
+          ? switchLocalePath('en')
+          : switchLocalePath('hi')}
       >
         <span>
           <Icon name="language" size={18} />
         </span>
         <span>
-          {Astro.url.pathname.includes('/en') ? 'Hindi' : 'English'}
+          {Astro.url.pathname.includes('/hi') ? 'English' : 'Hindi'}
         </span>
       </a>
     </li>
@@ -47,15 +47,15 @@ const links = t('navbar', { returnObjects: true })
     {links.map(({ label, href }) => <a href={href}>{label}</a>)}
     <a
       class="language"
-      href={Astro.url.pathname.includes('/en')
-        ? switchLocalePath('hi')
-        : switchLocalePath('en')}
+      href={Astro.url.pathname.includes('/hi')
+        ? switchLocalePath('en')
+        : switchLocalePath('hi')}
     >
       <span>
         <Icon name="language" size={18} />
       </span>
       <span>
-        {Astro.url.pathname.includes('/en') ? 'Hindi' : 'English'}
+        {Astro.url.pathname.includes('/hi') ? 'English' : 'Hindi'}
       </span>
     </a>
     <div>

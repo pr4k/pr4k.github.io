@@ -1,0 +1,214 @@
+---
+import ChessBoardWithCommits from './ChessBoardWithCommit'
+
+const GITHUB_COMMITS_URL =
+  'https://api.github.com/repos/pr4k/ChessLogs/commits?sha=main'
+const GITHUB_USER_API = 'https://api.github.com/users/'
+
+const fetchCommits = async () => {
+  try {
+    const response = await fetch(GITHUB_COMMITS_URL)
+    const data = await response.json()
+
+    if (!data || data.length === 0)
+      return { latestCommit: null, olderCommits: [] }
+
+    const processCommit = async (commit) => {
+      const commitMessage = commit.commit.message
+
+      const customMsgMatch = commitMessage.match(
+        /\|\s*([^|]+)\s*\|\s*([^|]+)\s*\|\s*([^|]+)\s*\|/
+      )[2]
+      const handleMatch = commitMessage.match(/@(\w+)/)
+      const moveMatch = commitMessage.match(
+        /move\s*=\s*(\d+\.\s*(?:\.\.\.\s*)?[a-h1-8O\-]+[a-h1-8xO\-]*)/
+      )
+      const fenMatch = commitMessage.match(
+        /fen\s*=\s*([\w\/]+)\s*([wb])\s*([KQkq-]+)\s*([\w-]+)\s*(\d+)\s*(\d+)/
+      )
+
+      const githubHandle = handleMatch ? handleMatch[1] : null
+      const move = moveMatch ? moveMatch[1] : 'N/A'
+      const fenString = fenMatch
+        ? `${fenMatch[1]} ${fenMatch[2]} ${fenMatch[3]} ${fenMatch[4]} ${fenMatch[5]} ${fenMatch[6]}`
+        : 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1'
+
+      let profileImage = null
+      if (githubHandle) {
+        const userResponse = await fetch(GITHUB_USER_API + githubHandle)
+        const userData = await userResponse.json()
+        profileImage = userData.avatar_url
+      }
+
+      return {
+        author: commit.commit.author.name,
+        customMsg: customMsgMatch,
+        githubHandle,
+        profileImage,
+        move,
+        message: commitMessage,
+        date: new Date(commit.commit.author.date).toLocaleString(),
+        sha: commit.sha,
+        fen: fenString
+      }
+    }
+
+    console.log(data[0].commit.message)
+    const buildNumber = data[0].commit.message.split(' ')[1]
+    const latestCommit = await processCommit(data[0])
+    const olderCommits = await Promise.all(data.slice(0, 10).map(processCommit))
+
+    return { latestCommit, olderCommits, buildNumber }
+  } catch (error) {
+    console.error('Error fetching commits:', error)
+    return { latestCommit: null, olderCommits: [] }
+  }
+}
+const latestCommit = {
+  author: 'Prakhar Kaushik',
+  customMsg: 'This is a great move',
+  githubHandle: 'pr4k',
+  profileImage: 'https://avatars.githubusercontent.com/u/42279770?v=4',
+  move: '1. g4',
+  message:
+    'BuildNo: 1 | @pr4k | Custom Message  | move = 1. g4  | fen = rnbqkbnr/pppppppp/8/8/6P1/8/PPPPPP1P/RNBQKBNR b KQkq - 0 1',
+  date: '2/8/2025, 1:38:28 AM',
+  sha: 'a167875cf1fce2f2757e5024367a953ed4a27d1d',
+  fen: 'rnbqkbnr/pppppppp/8/8/6P1/8/PPPPPP1P/RNBQKBNR b KQkq - 0 1'
+}
+const olderCommits = [
+  {
+    author: 'Prakhar Kaushik',
+    customMsg: 'Custom Message  ',
+    githubHandle: 'pr4k',
+    profileImage: 'https://avatars.githubusercontent.com/u/42279770?v=4',
+    move: '1. g4',
+    message:
+      'BuildNo: 1 | @pr4k | Custom Message  | move = 1. g4  | fen = rnbqkbnr/pppppppp/8/8/6P1/8/PPPPPP1P/RNBQKBNR b KQkq - 0 1',
+    date: '2/8/2025, 1:38:28 AM',
+    sha: 'a167875cf1fce2f2757e5024367a953ed4a27d1d',
+    fen: 'rnbqkbnr/pppppppp/8/8/6P1/8/PPPPPP1P/RNBQKBNR b KQkq - 0 1'
+  },
+  {
+    author: 'Prakhar Kaushik',
+    customMsg: 'Game Reset  ',
+    githubHandle: 'pr4k',
+    profileImage: 'https://avatars.githubusercontent.com/u/42279770?v=4',
+    move: 'N/A',
+    message:
+      'BuildNo: 1 | @pr4k | Game Reset  | move = NA  | fen = rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1',
+    date: '2/5/2025, 2:06:29 AM',
+    sha: 'e15a1373cfcbdb8019bafe9b67f65f485d187ae0',
+    fen: 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1'
+  },
+  {
+    author: 'Prakhar Kaushik',
+    customMsg: 'Custom Message  ',
+    githubHandle: 'pr4k',
+    profileImage: 'https://avatars.githubusercontent.com/u/42279770?v=4',
+    move: 'N/A',
+    message:
+      'BuildNo: 0 | @pr4k | Custom Message  | move = 1. ... Rh2#  | fen = 5k2/8/8/8/8/5q2/1K5r/4r3 w - - 2 2',
+    date: '2/5/2025, 1:58:39 AM',
+    sha: '603709c05e6c640f199b86d9a97a23dc78130d19',
+    fen: '5k2/8/8/8/8/5q2/1K5r/4r3 w - - 2 2'
+  },
+  {
+    author: 'Prakhar Kaushik',
+    customMsg: 'Custom Message  ',
+    githubHandle: 'pr4k',
+    profileImage: 'https://avatars.githubusercontent.com/u/42279770?v=4',
+    move: 'N/A',
+    message:
+      'BuildNo: 0 | @pr4k | Custom Message  | move = 1. Kb2  | fen = 5k2/8/7r/8/8/5q2/1K6/4r3 b - - 1 1',
+    date: '2/5/2025, 1:58:28 AM',
+    sha: 'ba4e77ae0a19ba462d7eecb49861dccd63775505',
+    fen: '5k2/8/7r/8/8/5q2/1K6/4r3 b - - 1 1'
+  },
+  {
+    author: 'Prakhar Kaushik',
+    customMsg: 'Custom Message  ',
+    githubHandle: 'pr4k',
+    profileImage: 'https://avatars.githubusercontent.com/u/42279770?v=4',
+    move: 'N/A',
+    message:
+      'BuildNo: 0 | @pr4k | Custom Message  | move = 1. ... Rh2#  | fen = 5k2/8/8/8/8/5q2/1K5r/4r3 w - - 2 2',
+    date: '2/5/2025, 1:57:50 AM',
+    sha: '153c80aba633075a25f87aef4fcc2436de738134',
+    fen: '5k2/8/8/8/8/5q2/1K5r/4r3 w - - 2 2'
+  },
+  {
+    author: 'Prakhar Kaushik',
+    customMsg: 'Custom Message  ',
+    githubHandle: 'pr4k',
+    profileImage: 'https://avatars.githubusercontent.com/u/42279770?v=4',
+    move: 'N/A',
+    message:
+      'BuildNo: 0 | @pr4k | Custom Message  | move = 1. Kb2  | fen = 5k2/8/7r/8/8/5q2/1K6/4r3 b - - 1 1',
+    date: '2/5/2025, 1:57:44 AM',
+    sha: '7abcd3ca3d9babf1d9da98c6e1c1009779b193c5',
+    fen: '5k2/8/7r/8/8/5q2/1K6/4r3 b - - 1 1'
+  },
+  {
+    author: 'Prakhar Kaushik',
+    customMsg: 'Custom Message  ',
+    githubHandle: 'pr4k',
+    profileImage: 'https://avatars.githubusercontent.com/u/42279770?v=4',
+    move: 'N/A',
+    message:
+      'BuildNo: 0 | @pr4k | Custom Message  | move = 1. ... Rh2#  | fen = 5k2/8/8/8/8/5q2/1K5r/4r3 w - - 2 2',
+    date: '2/5/2025, 1:56:43 AM',
+    sha: 'cf85bcc2ed6ccdd47b4c249f2d9a22cc4307ef8e',
+    fen: '5k2/8/8/8/8/5q2/1K5r/4r3 w - - 2 2'
+  },
+  {
+    author: 'Prakhar Kaushik',
+    customMsg: 'Custom Message  ',
+    githubHandle: 'pr4k',
+    profileImage: 'https://avatars.githubusercontent.com/u/42279770?v=4',
+    move: 'N/A',
+    message:
+      'BuildNo: 0 | @pr4k | Custom Message  | move = 1. Kb2  | fen = 5k2/8/7r/8/8/5q2/1K6/4r3 b - - 1 1',
+    date: '2/5/2025, 1:56:40 AM',
+    sha: '3f84001b38a02d0962d84a987b8265ff237cf99c',
+    fen: '5k2/8/7r/8/8/5q2/1K6/4r3 b - - 1 1'
+  },
+  {
+    author: 'Prakhar Kaushik',
+    customMsg: 'Game Reset  ',
+    githubHandle: 'pr4k',
+    profileImage: 'https://avatars.githubusercontent.com/u/42279770?v=4',
+    move: 'N/A',
+    message:
+      'BuildNo: 1 | @pr4k | Game Reset  | move = NA  | fen = rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1',
+    date: '2/5/2025, 1:56:20 AM',
+    sha: '51e2274165f58089c03271019c56f9dd915f3b99',
+    fen: 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1'
+  },
+  {
+    author: 'Prakhar Kaushik',
+    customMsg: 'Custom Message  ',
+    githubHandle: 'pr4k',
+    profileImage: 'https://avatars.githubusercontent.com/u/42279770?v=4',
+    move: 'N/A',
+    message:
+      'BuildNo: 0 | @pr4k | Custom Message  | move = 1. ... Rh2#  | fen = 5k2/8/8/8/8/5q2/1K5r/4r3 w - - 2 2',
+    date: '2/5/2025, 1:56:19 AM',
+    sha: 'cb017c296efa742283863c8e82adf4789117d2fe',
+    fen: '5k2/8/8/8/8/5q2/1K5r/4r3 w - - 2 2'
+  }
+]
+const buildNumber = 1
+// const { latestCommit, olderCommits, buildNumber } = await fetchCommits()
+// console.log(latestCommit)
+// console.log(olderCommits)
+// console.log(buildNumber)
+// const { latestCommit = {}, olderCommits = [], buildNumber = 0 } = {}
+---
+
+<ChessBoardWithCommits
+  latestCommit={latestCommit}
+  olderCommits={olderCommits}
+  buildNumber={buildNumber}
+  client:visible
+/>

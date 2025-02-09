@@ -9,15 +9,15 @@
     },
     {
       "label": "Experience",
-      "href": "/en/#work-experience"
+      "href": "/#work-experience"
     },
     {
       "label": "Writings",
-      "href": "/en/#writings"
+      "href": "/#writings"
     },
     {
       "label": "About me",
-      "href": "/en/#about-me"
+      "href": "/#about-me"
     }
   ],
   "hero": {
@@ -157,5 +157,12 @@
       "developed_with": "Made with",
       "developed_by": "by"
     }
+  },
+  "devops": {
+    "job_availability": "Currently in Devops Mode !",
+    "title": "Prakhar Kaushik!",
+    "job_title": "<strong>As</strong> Devops Architect.",
+    "description": "Worked with Docker, Kubernetes, Kafka, Jenkins & Reverse proxy.",
+    "cta": "Contact me"
   }
 }

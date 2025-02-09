@@ -8,6 +8,8 @@ import sitemap from 'astro-sitemap'
 import playformCompress from '@playform/compress'
 import compressor from 'astro-compressor'
 
+import react from '@astrojs/react'
+
 // https://astro.build/config
 export default defineConfig({
   site: URL,
@@ -24,7 +26,7 @@ export default defineConfig({
     astroImageTools,
     i18n({
       defaultLocale: 'en',
-      locales: ['hi', 'en']
+      locales: ['en', 'hi']
     }),
     sitemap({
       canonicalURL: URL,
@@ -74,6 +76,7 @@ export default defineConfig({
       Image: false,
       SVG: false
     }),
-    compressor()
+    compressor(),
+    react()
   ]
 })
