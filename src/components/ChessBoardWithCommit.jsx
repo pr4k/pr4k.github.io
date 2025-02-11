@@ -17,8 +17,11 @@ export default function ChessBoardWithCommits({
       '5k2/8/7r/8/8/5q2/K7/4r3 w - - 0 1'
   )
   const [selectedCommit, setSelectedCommit] = useState(latestCommit)
-  const githubHandle = '@pr4k'
-  const commitMessageTemplate = 'Custom Message'
+
+  const [githubHandle, setGithubHandle] = useState('')
+  const [commitMessageTemplate, setCommitMessageTemplate] = useState('')
+  const [isShakingHandle, setIsShakingHandle] = useState(false)
+  const [isShakingMessage, setIsShakingMessage] = useState(false)
 
   const updateCommit = (requestBody) => {
     fetch('https://chesslogs.azurewebsites.net/api/update_commit', {
@@ -49,7 +52,7 @@ export default function ChessBoardWithCommits({
   }
 
   const handleNewMove = (newMove, newFen, isCheckmate = false) => {
-    const commitMessage = `BuildNo: ${buildNumber} | ${githubHandle} | ${commitMessageTemplate} | move = ${newMove} | fen = ${newFen}`
+    const commitMessage = `BuildNo: ${buildNumber} | @${githubHandle} | ${commitMessageTemplate} | move = ${newMove} | fen = ${newFen}`
 
     const requestBody = {
       new_content: commitMessage,
@@ -68,10 +71,33 @@ export default function ChessBoardWithCommits({
     setSelectedCommit(commit)
   }
 
+  const isValid = () => {
+    let isValidFlag = true
+
+    if (githubHandle.length === 0) {
+      isValidFlag = false
+      setIsShakingHandle(true)
+      setTimeout(() => setIsShakingHandle(false), 500) // Stop shake after animation
+    }
+
+    if (commitMessageTemplate.length === 0) {
+      isValidFlag = false
+      setIsShakingMessage(true)
+      setTimeout(() => setIsShakingMessage(false), 500) // Stop shake after animation
+    }
+
+    return isValidFlag
+  }
+
   return (
     <div className="container">
       <div className="chessboard">
-        <ChessBoard key={currentFen} fen={currentFen} onMove={handleNewMove} />
+        <ChessBoard
+          key={currentFen}
+          fen={currentFen}
+          onMove={handleNewMove}
+          isValid={isValid}
+        />
         <div class="github-container">
           <div class="github-thumbnail">
             <img
@@ -79,19 +105,24 @@ export default function ChessBoardWithCommits({
               alt=""
             />
           </div>
-          <div class="github-handle">
+          <div class={`github-handle ${isShakingHandle ? 'shake' : ''}`}>
             <span>@</span>
             <input
               type="text"
               class="github-input"
               placeholder="handle"
               maxlength="10"
+              value={githubHandle}
+              onChange={(e) => setGithubHandle(e.target.value)}
             />
           </div>
-          <div class="github-message">
+          <div class={`github-message ${isShakingMessage ? 'shake' : ''}`}>
             <input
               class="github-textarea"
+              maxlength="15"
               placeholder="Enter your message"
+              value={commitMessageTemplate}
+              onChange={(e) => setCommitMessageTemplate(e.target.value)}
             ></input>
           </div>
         </div>

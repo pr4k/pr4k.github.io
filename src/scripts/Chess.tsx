@@ -5,9 +5,10 @@ import { Chessboard } from 'react-chessboard'
 interface ChessBoardProps {
   fen?: string // Accept pgn as a prop
   onMove: (newMove: string, newFen: string, isCheckmate: boolean) => {}
+  isValid: () => boolean
 }
 
-const ChessBoard: React.FC<ChessBoardProps> = ({ fen, onMove }) => {
+const ChessBoard: React.FC<ChessBoardProps> = ({ fen, onMove, isValid }) => {
   console.log('Fen is', fen)
 
   const [game, setGame] = useState(() => new Chess(fen)) // Initialize game from pgn string or empty
@@ -58,6 +59,7 @@ const ChessBoard: React.FC<ChessBoardProps> = ({ fen, onMove }) => {
   }
 
   function onSquareClick(square: Square) {
+    if (!isValid()) return
     setRightClickedSquares({})
 
     if (!moveFrom) {
