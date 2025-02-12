@@ -2,12 +2,11 @@
 import { Icon } from 'astro-icon/components'
 import { t } from 'i18n:astro'
 import Layout from '@layouts/Layout.astro'
-import Hero from '@pages/_home/Hero.astro'
 import Button from '@components/Button.astro'
-import CardProject from '@components/CardProject.astro'
 import ChessBoard from '../../components/ChessBoard.astro'
 import ConnectDots from '../../components/ConnectDots.jsx'
 import { socials } from '../../data/constants'
+import '@styles/chess.css'
 
 const {
   job_availability: jobAvailability,
@@ -53,86 +52,87 @@ const {
       </div>
     </section>
   </main>
+</Layout>
 
-  <style>
-    /* .devops {
+<style>
+  /* .devops {
       position: relative;
     } */
-    .chess {
-      margin-top: 20px;
-    }
+  .chess {
+    margin-top: 20px;
+  }
 
-    .writings {
-      padding-bottom: 120px;
+  .writings {
+    padding-bottom: 120px;
 
-      & h2 {
-        display: flex;
-        gap: 24px;
-        justify-content: center;
-        align-items: center;
-        white-space: nowrap;
-
-        @media (width >= 768px) {
-          justify-content: start;
-
-          &::after {
-            content: '';
-            display: block;
-            width: 100%;
-            height: 1px;
-            background-color: var(--border-color);
-          }
-        }
-
-        & span {
-          order: 0;
-        }
-      }
-    }
-    main {
-      max-width: 1054px;
-      margin-inline: auto;
-      padding-inline: var(--mobile-inline-padding);
-
-      @media (width >= 1200px) {
-        padding-inline: 0;
-      }
-    }
-    .devops {
-      padding-top: 20px;
-      padding-bottom: 56px;
+    & h2 {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      align-items: center;
+      white-space: nowrap;
 
       @media (width >= 768px) {
-        padding-block: 129px;
+        justify-content: start;
+
+        &::after {
+          content: '';
+          display: block;
+          width: 100%;
+          height: 1px;
+          background-color: var(--border-color);
+        }
       }
 
-      & > div {
+      & span {
+        order: 0;
+      }
+    }
+  }
+  main {
+    max-width: 1054px;
+    margin-inline: auto;
+    padding-inline: var(--mobile-inline-padding);
+
+    @media (width >= 1200px) {
+      padding-inline: 0;
+    }
+  }
+  .devops {
+    padding-top: 20px;
+    padding-bottom: 56px;
+
+    @media (width >= 768px) {
+      padding-block: 129px;
+    }
+
+    & > div {
+      position: relative;
+      margin-inline: auto;
+      text-align: center;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 120px 29px;
+      overflow: hidden;
+
+      #devops-container {
         position: relative;
-        margin-inline: auto;
-        text-align: center;
-        border: 1px solid var(--border-color);
-        border-radius: var(--radius);
-        padding: 120px 29px;
-        overflow: hidden;
+      }
 
-        #devops-container {
-          position: relative;
-        }
+      #tsparticles {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
 
-        #tsparticles {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          z-index: -1;
-        }
+      @media (width >= 992px) {
+        padding: 148px 125px;
+      }
 
-        @media (width >= 992px) {
-          padding: 148px 125px;
-        }
-
-        /* & canvas {
+      /* & canvas {
           position: absolute;
           top: 0;
           left: 0;
@@ -143,62 +143,61 @@ const {
           pointer-events: none;
         } */
 
-        /* Separador entre contenido */
-        & > * + *:not(canvas) {
-          margin-top: 24px;
+      /* Separador entre contenido */
+      & > * + *:not(canvas) {
+        margin-top: 24px;
+      }
+
+      & .badge {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: fit-content;
+        margin-inline: auto;
+        background-color: var(--bg-secondary-color);
+        font-size: 0.875rem;
+        padding: 6px 12px;
+        border: 1px solid var(--text-color);
+        border-radius: 1000px;
+        transition: var(--transition-bg), var(--transition-border);
+
+        & .dot {
+          --size: 6px;
+          --color: #22c55e;
+
+          width: var(--size);
+          height: var(--size);
+          background-color: var(--color);
+          border-radius: 50%;
+          box-shadow: 0 0 0 0 var(--color);
+          transform: scale(1);
+          animation: pulse 2s infinite;
+        }
+      }
+
+      & p {
+        font-size: 1.25rem;
+        color: var(--text-description-color);
+
+        @media (width >= 768px) {
+          font-size: 1.5rem;
         }
 
-        & .badge {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          width: fit-content;
-          margin-inline: auto;
-          background-color: var(--bg-secondary-color);
-          font-size: 0.875rem;
-          padding: 6px 12px;
-          border: 1px solid var(--text-color);
-          border-radius: 1000px;
-          transition: var(--transition-bg), var(--transition-border);
-
-          & .dot {
-            --size: 6px;
-            --color: #22c55e;
-
-            width: var(--size);
-            height: var(--size);
-            background-color: var(--color);
-            border-radius: 50%;
-            box-shadow: 0 0 0 0 var(--color);
-            transform: scale(1);
-            animation: pulse 2s infinite;
-          }
+        > strong {
+          color: var(--text-color);
         }
+      }
 
-        & p {
-          font-size: 1.25rem;
-          color: var(--text-description-color);
+      & .button-container {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: 13px;
 
-          @media (width >= 768px) {
-            font-size: 1.5rem;
-          }
-
-          > strong {
-            color: var(--text-color);
-          }
-        }
-
-        & .button-container {
-          display: flex;
-          justify-content: center;
-          flex-direction: column;
-          gap: 13px;
-
-          @media (width >= 768px) {
-            flex-direction: row;
-          }
+        @media (width >= 768px) {
+          flex-direction: row;
         }
       }
     }
-  </style>
-</Layout>
+  }
+</style>

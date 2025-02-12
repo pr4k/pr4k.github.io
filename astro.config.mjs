@@ -9,6 +9,7 @@ import playformCompress from '@playform/compress'
 import compressor from 'astro-compressor'
 
 import react from '@astrojs/react'
+import './src/styles/global.css'
 
 // https://astro.build/config
 export default defineConfig({

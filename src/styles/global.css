@@ -24,15 +24,15 @@ html {
 }
 
 html.dark {
-  --bg-color: #fff;
-  --bg-secondary-color: color-mix(in srgb, #1e1e1e, #fff 95%);
-  --bg-toggle-thumb: #d5d5d5;
-  --bg-card-contributions: #cbcbcb4d;
-  --bg-separator: #000;
-  --text-color: #000;
-  --text-description-color: color-mix(in srgb, #a6a6a6, #000 40%);
-  --border-color: #e6e6e6;
-  --border-card-contributions-color: #e6e6e6;
+  --bg-color: #fff !important;
+  --bg-secondary-color: color-mix(in srgb, #1e1e1e, #fff 95%) !important;
+  --bg-toggle-thumb: #d5d5d5 !important;
+  --bg-card-contributions: #cbcbcb4d !important;
+  --bg-separator: #000 !important;
+  --text-color: #000 !important;
+  --text-description-color: color-mix(in srgb, #a6a6a6, #000 40%) !important;
+  --border-color: #e6e6e6 !important;
+  --border-card-contributions-color: #e6e6e6 !important;
 }
 
 body {

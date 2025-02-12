@@ -13,7 +13,7 @@ const fetchCommits = async () => {
     if (!data || data.length === 0)
       return { latestCommit: null, olderCommits: [] }
 
-    const processCommit = async (commit) => {
+    const processCommit = async (commit: any) => {
       const commitMessage = commit.commit.message
 
       const customMsgMatch = commitMessage.match(

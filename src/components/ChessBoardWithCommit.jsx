@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import ChessBoard from '../scripts/Chess'
-import '../styles/chess.css'
-import '../styles/global.css'
+// import '../styles/chess.css'
+// import '../styles/global.css'
 
 import ChessMove from '/public/media/chess-move.svg'
 import ChessCommitLink from '/public/media/chess-commit.svg'
