@@ -22,6 +22,54 @@ export default function ChessBoardWithCommits({
   const [commitMessageTemplate, setCommitMessageTemplate] = useState('')
   const [isShakingHandle, setIsShakingHandle] = useState(false)
   const [isShakingMessage, setIsShakingMessage] = useState(false)
+  const [buildStatus, setBuildStatus] = useState('completed')
+  const [loading, setLoading] = useState(false)
+
+  const getStatus = () => {
+    // setLoading(true)
+    return new Promise((resolve, reject) => {
+      fetch('https://chesslogs.azurewebsites.net/api/get_build_status', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log('Commit successful:', data)
+          setBuildStatus(data['status'])
+          resolve(data['status'])
+        })
+        .catch((error) => {
+          console.error('Error committing move:', error)
+          reject(error)
+        })
+        .finally(() => {
+          setLoading(false)
+        })
+    })
+  }
+  useEffect(() => {
+    let timer
+    const poll = () => {
+      if (timer) clearTimeout(timer)
+
+      getStatus()
+        .then((status) => {
+          timer = setTimeout(() => {
+            poll()
+          }, 5000)
+        })
+        .catch((e) => {
+          if (timer) clearTimeout(timer)
+        })
+    }
+    poll()
+
+    return () => {
+      if (timer) clearTimeout(timer)
+    }
+  }, [])
 
   const updateCommit = (requestBody) => {
     fetch('https://chesslogs.azurewebsites.net/api/update_commit', {
@@ -98,6 +146,7 @@ export default function ChessBoardWithCommits({
           onMove={handleNewMove}
           isValid={isValid}
         />
+
         <div class="github-container">
           <div class="github-thumbnail">
             <img
@@ -128,99 +177,104 @@ export default function ChessBoardWithCommits({
         </div>
       </div>
 
-      <div className="commit-info">
-        {selectedCommit ? (
-          <>
-            <h3>Latest Github Commit</h3>
-            <div class="latest-commit">
-              {selectedCommit.profileImage && (
-                <div class="section-heading">
+      {buildStatus === 'completed' ? (
+        // If buildStatus is completed, render this:
+        <div className="commit-info">
+          {selectedCommit ? (
+            <>
+              <h3>Latest Github Commit</h3>
+              <div className="latest-commit">
+                {selectedCommit.profileImage && (
+                  <div className="section-heading">
+                    <a
+                      href={`https://github.com/${selectedCommit.githubHandle}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <img
+                        src={selectedCommit.profileImage}
+                        alt="Profile"
+                        className="profile-img"
+                      />
+                    </a>
+                    <div className="section-title">
+                      <h4>{selectedCommit.customMsg}</h4>
+                      <span>{selectedCommit.date}</span>
+                    </div>
+                  </div>
+                )}
+                <div className="section-commit-info">
+                  <div className="img-div">
+                    <img src={ChessMove.src} />
+                  </div>
+                  <p>{selectedCommit.move}</p>
+                </div>
+                <div className="section-commit-info">
+                  <div className="img-div">
+                    <img src={ChessCommitLink.src} />
+                  </div>
                   <a
-                    href={`https://github.com/${selectedCommit.githubHandle}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href={`https://github.com/pr4k/ChessLogs/commit/${selectedCommit.sha}`}
                   >
-                    <img
-                      src={selectedCommit.profileImage}
-                      alt="Profile"
-                      className="profile-img"
-                    />
+                    https://github.co...{selectedCommit.sha.slice(-5)}
                   </a>
-                  <div class="section-title">
-                    <h4> {selectedCommit.customMsg} </h4>
-                    <span>{selectedCommit.date}</span>
-                  </div>
                 </div>
-              )}
-              <div class="section-commit-info">
-                <div class="img-div">
-                  <img src={ChessMove.src} />
-                </div>
-                <p>{selectedCommit.move}</p>
               </div>
-              <div class="section-commit-info">
-                <div class="img-div">
-                  <img src={ChessCommitLink.src} />
-                </div>
-                <a
-                  href={`https://github.com/pr4k/ChessLogs/commit/${selectedCommit.sha}`}
-                >
-                  https://github.co...{selectedCommit.sha.slice(-5)}
-                </a>
-              </div>
-            </div>
 
-            <h3>Older Commits</h3>
-            <div className="commit-list">
-              {olderCommits.length > 0 ? (
-                olderCommits.map((commit) => (
-                  <div>
-                    {commit.profileImage && (
-                      <div class="section-heading">
-                        <a
-                          href={`https://github.com/${commit.githubHandle}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <img
-                            src={commit.profileImage}
-                            alt="Profile"
-                            className="profile-img"
-                          />
-                        </a>
-                        <div class="section-title">
-                          <h4> {commit.customMsg} </h4>
-                          <span>{commit.date}</span>
+              <h3>Older Commits</h3>
+              <div className="commit-list">
+                {olderCommits.length > 0 ? (
+                  olderCommits.map((commit) => (
+                    <div key={commit.sha}>
+                      {commit.profileImage && (
+                        <div className="section-heading">
+                          <a
+                            href={`https://github.com/${commit.githubHandle}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <img
+                              src={commit.profileImage}
+                              alt="Profile"
+                              className="profile-img"
+                            />
+                          </a>
+                          <div className="section-title">
+                            <h4>{commit.customMsg}</h4>
+                            <span>{commit.date}</span>
+                          </div>
                         </div>
+                      )}
+                      <div className="section-commit-info">
+                        <div className="img-div">
+                          <img src={ChessMove.src} />
+                        </div>
+                        <p>{commit.move}</p>
                       </div>
-                    )}
-                    <div class="section-commit-info">
-                      <div class="img-div">
-                        <img src={ChessMove.src} />
+                      <div className="section-commit-info">
+                        <div className="img-div">
+                          <img src={ChessCommitLink.src} />
+                        </div>
+                        <a
+                          href={`https://github.com/pr4k/ChessLogs/commit/${commit.sha}`}
+                        >
+                          https://github.co...{commit.sha.slice(-5)}
+                        </a>
                       </div>
-                      <p>{commit.move}</p>
                     </div>
-                    <div class="section-commit-info">
-                      <div class="img-div">
-                        <img src={ChessCommitLink.src} />
-                      </div>
-                      <a
-                        href={`https://github.com/pr4k/ChessLogs/commit/${commit.sha}`}
-                      >
-                        https://github.co...{commit.sha.slice(-5)}
-                      </a>
-                    </div>
-                  </div>
-                ))
-              ) : (
-                <p>No older commits found.</p>
-              )}
-            </div>
-          </>
-        ) : (
-          <p>Failed to load commit data.</p>
-        )}
-      </div>
+                  ))
+                ) : (
+                  <p>No older commits found.</p>
+                )}
+              </div>
+            </>
+          ) : (
+            <p>Failed to load commit data.</p>
+          )}
+        </div>
+      ) : (
+        <h1>{buildStatus}</h1>
+      )}
     </div>
   )
 }
