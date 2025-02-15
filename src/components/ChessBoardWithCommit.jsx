@@ -148,27 +148,29 @@ export default function ChessBoardWithCommits({
         />
 
         <div class="github-container">
-          <div class="github-thumbnail">
-            <img
-              src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png"
-              alt=""
-            />
-          </div>
-          <div class={`github-handle ${isShakingHandle ? 'shake' : ''}`}>
-            <span>@</span>
-            <input
-              type="text"
-              class="github-input"
-              placeholder="handle"
-              maxlength="10"
-              value={githubHandle}
-              onChange={(e) => setGithubHandle(e.target.value)}
-            />
+          <div class="github-handle-section">
+            <div class="github-thumbnail">
+              <img
+                src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png"
+                alt=""
+              />
+            </div>
+            <div class={`github-handle ${isShakingHandle ? 'shake' : ''}`}>
+              <span>@</span>
+              <input
+                type="text"
+                class="github-input"
+                placeholder="handle"
+                maxlength="37"
+                value={githubHandle}
+                onChange={(e) => setGithubHandle(e.target.value)}
+              />
+            </div>
           </div>
           <div class={`github-message ${isShakingMessage ? 'shake' : ''}`}>
             <input
               class="github-textarea"
-              maxlength="15"
+              maxlength="35"
               placeholder="Enter your message"
               value={commitMessageTemplate}
               onChange={(e) => setCommitMessageTemplate(e.target.value)}
