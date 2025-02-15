@@ -142,19 +142,10 @@ body {
 .commit-item.selected {
   background-color: #d1e7ff;
 }
-.github-handle-section {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  align-items: center;
-}
 .github-container {
   display: flex;
-  flex-direction: column;
   padding-top: 30px;
-  justify-content: space-around;
-  align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 .github-thumbnail {
   display: flex;
@@ -163,26 +154,27 @@ body {
   overflow: hidden;
   width: 40px;
 }
+.github-handle-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 8px;
+}
 .github-handle {
   display: flex;
-  /* flex: 0.4; */
   justify-content: left;
   border-radius: 10px;
   border:
     1px,
     solid var(--border-color);
   padding: 10px;
-  margin-left: 20px;
   width: 100%;
 
-  span {
-    line-height: normal;
-  }
-
   input {
+    width: 100%;
     padding-left: 10px;
     background-color: transparent;
-    max-width: calc(100% - 16.25px);
     border: none;
     color: var(--text-color);
     outline: none;

@@ -148,33 +148,36 @@ export default function ChessBoardWithCommits({
         />
 
         <div class="github-container">
+          <div class="github-thumbnail">
+            <img
+              src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png"
+              alt=""
+            />
+          </div>
           <div class="github-handle-section">
-            <div class="github-thumbnail">
-              <img
+            <div class={`github-handle ${isShakingHandle ? 'shake' : ''}`}>
+              {/* <img
                 src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png"
                 alt=""
-              />
-            </div>
-            <div class={`github-handle ${isShakingHandle ? 'shake' : ''}`}>
-              <span>@</span>
+              /> */}
               <input
                 type="text"
                 class="github-input"
-                placeholder="handle"
-                maxlength="37"
+                placeholder="Your github handle goes here..."
+                maxlength="36"
                 value={githubHandle}
                 onChange={(e) => setGithubHandle(e.target.value)}
               />
             </div>
-          </div>
-          <div class={`github-message ${isShakingMessage ? 'shake' : ''}`}>
-            <input
-              class="github-textarea"
-              maxlength="35"
-              placeholder="Enter your message"
-              value={commitMessageTemplate}
-              onChange={(e) => setCommitMessageTemplate(e.target.value)}
-            ></input>
+            <div class={`github-message ${isShakingMessage ? 'shake' : ''}`}>
+              <input
+                class="github-textarea"
+                maxlength="35"
+                placeholder="Describe your move"
+                value={commitMessageTemplate}
+                onChange={(e) => setCommitMessageTemplate(e.target.value)}
+              ></input>
+            </div>
           </div>
         </div>
       </div>
