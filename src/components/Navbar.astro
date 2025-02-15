@@ -310,24 +310,31 @@ const links = t('navbar', { returnObjects: true })
 </script>
 
 <script>
+  // Select all sections that have an 'id' attribute
   const mainSections = document.querySelectorAll('section[id]')
+
+  // Select all links inside the element with id 'menu'
   const navbarLinks = document.querySelectorAll(
     '#menu a'
   ) as NodeListOf<HTMLAnchorElement>
 
+  // Function to handle the active link in the navbar
   const handleActiveLink = (sectionId: string | null) => {
     navbarLinks.forEach((link) => {
       if (sectionId && link.href.includes(`#${sectionId}`)) {
+        // Add 'active' class if the link corresponds to the visible section
         link.classList.add('active')
       } else if (!sectionId && link.href.includes('#top')) {
-        // Activar el enlace del #top cuando estamos en la parte superior
+        // Activate the link for #top when we are at the top of the page
         link.classList.add('active')
       } else {
+        // Remove 'active' class from other links
         link.classList.remove('active')
       }
     })
   }
 
+  // Intersection Observer to detect when sections come into view
   const observer = new IntersectionObserver(
     (entries) => {
       let visibleSectionId = null
@@ -335,31 +342,31 @@ const links = t('navbar', { returnObjects: true })
 
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          isAnySectionVisible = true // Hay al menos una sección visible
-          visibleSectionId = entry.target.id // Guardar el id de la sección visible
+          isAnySectionVisible = true // At least one section is visible
+          visibleSectionId = entry.target.id // Store the id of the visible section
         }
       })
 
-      // Si no hay ninguna sección visible y estamos en el top de la página
+      // If no section is visible and we are at the top of the page
       if (!isAnySectionVisible && window.scrollY === 0) {
-        handleActiveLink(null) // Activar el enlace de #top
+        handleActiveLink(null) // Activate the link for #top
       } else if (isAnySectionVisible) {
-        handleActiveLink(visibleSectionId) // Activar la sección visible
+        handleActiveLink(visibleSectionId) // Activate the visible section's link
       }
     },
     {
-      threshold: 0.1, // Detectar cuando la sección está al menos en un 10% visible
-      rootMargin: '0px 0px -40% 0px' // Ajustar el margen para detectar la visibilidad
+      threshold: 0.1, // Detect when at least 10% of the section is visible
+      rootMargin: '0px 0px -40% 0px' // Adjust margins to improve visibility detection
     }
   )
 
-  // Observar cada sección
+  // Observe each section to detect visibility changes
   mainSections.forEach((section) => observer.observe(section))
 
-  // Agregar una verificación para cuando el usuario regresa al inicio
+  // Add an event listener to check when the user scrolls back to the top
   window.addEventListener('scroll', () => {
     if (window.scrollY === 0) {
-      handleActiveLink(null) // Activar #top cuando el scroll está en el tope
+      handleActiveLink(null) // Activate #top when the scroll is at the top
     }
   })
 </script>

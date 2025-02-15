@@ -57,6 +57,7 @@ body {
 .chessboard {
   flex: 1;
   width: 100%;
+  max-width: 480px;
   @media (width>=768) {
     margin-right: 20px;
   }
@@ -73,15 +74,14 @@ body {
     margin-top: 0px;
   }
   .section-heading {
-    padding-top: 15px;
+    padding-top: 20px;
     padding-bottom: 15px;
     display: flex;
     flex-direction: row;
-    gap: 15px;
+    gap: 20px;
     align-items: center;
   }
   .section-title {
-    padding-left: 10px;
     display: flex;
     flex-direction: column;
     h4 {
@@ -100,13 +100,18 @@ body {
 }
 
 .commit-list {
-  max-height: 300px;
+  max-height: 372px;
   overflow-y: auto;
   margin-top: 15px;
   border-top: 1px solid var(--border-color);
   padding-top: 10px;
   /* scrollbar-width: thin;
   scrollbar-color: var(--thumbBG) var(--scrollbarBG); */
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 /* Webkit-based browsers (Chrome, Safari) */
@@ -221,14 +226,24 @@ body {
     text-decoration: underline;
   }
   .img-div {
-    width: 30px;
-    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    img {
+      filter: var(--img-svg--filter);
+    }
   }
 }
-.latest-commit {
+.commit-info-card {
   border-bottom: 2px solid var(--border-color);
   margin-bottom: 10px;
   padding-bottom: 10px;
+
+  &:hover {
+    background: var(--bg-secondary-color);
+    cursor: pointer;
+  }
 }
 @keyframes tilt-n-move-shaking {
   0% {
@@ -251,4 +266,26 @@ body {
 .shake {
   animation: tilt-n-move-shaking 0.15s infinite;
   border: 2px solid red; /* Optional: Highlight invalid fields */
+}
+
+.github-commit-link {
+  width: 350px;
+  white-space: nowrap;
+  span {
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: middle;
+  }
+
+  .ellipsis {
+    display: inline-block;
+    width: calc(50% + 1.2em);
+    text-overflow: ellipsis;
+  }
+
+  .indent {
+    display: inline-flex;
+    width: calc(50% - 1.2em);
+    justify-content: flex-end;
+  }
 }

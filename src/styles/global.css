@@ -14,6 +14,7 @@ html {
   --transition-bg: background-color 150ms ease;
   --transition-text: color 150ms ease;
   --transition-border: border-color 150ms ease;
+  --img-svg--filter: invert(0);
 
   scroll-behavior: smooth;
   scroll-padding-top: 96px;
@@ -33,6 +34,7 @@ html.dark {
   --text-description-color: color-mix(in srgb, #a6a6a6, #000 40%) !important;
   --border-color: #e6e6e6 !important;
   --border-card-contributions-color: #e6e6e6 !important;
+  --img-svg--filter: invert(1);
 }
 
 body {

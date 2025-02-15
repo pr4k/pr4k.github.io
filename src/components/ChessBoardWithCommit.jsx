@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
 import ChessBoard from '../scripts/Chess'
+import { GithubCommitDetails } from './GithubCommitDetails'
+import ChessCommitLink from '/public/media/chess-commit.svg'
+import ChessMove from '/public/media/chess-move.svg'
 // import '../styles/chess.css'
 // import '../styles/global.css'
-
-import ChessMove from '/public/media/chess-move.svg'
-import ChessCommitLink from '/public/media/chess-commit.svg'
 
 export default function ChessBoardWithCommits({
   latestCommit,
@@ -114,8 +114,15 @@ export default function ChessBoardWithCommits({
   }
 
   const handleCommitClick = (commit) => {
+    if (latestCommit?.sha === commit?.sha) return
     setCurrentFen(commit.fen)
     setSelectedCommit(commit)
+    setGithubHandle(
+      latestCommit?.sha === commit?.sha ? '' : commit?.githubHandle
+    )
+    setCommitMessageTemplate(
+      latestCommit.sha === commit?.sha ? '' : commit?.customMsg
+    )
   }
 
   const isValid = () => {
@@ -136,7 +143,7 @@ export default function ChessBoardWithCommits({
     return isValidFlag
   }
   const isInputDisabled = !(
-    buildStatus === 'completed' && selectedCommit.sha === latestCommit.sha
+    buildStatus === 'completed' && selectedCommit?.sha === latestCommit?.sha
   )
 
   return (
@@ -192,7 +199,7 @@ export default function ChessBoardWithCommits({
               {selectedCommit ? (
                 <>
                   <h3>Latest Github Commit</h3>
-                  <div className="latest-commit">
+                  {/* <div className="latest-commit">
                     {selectedCommit.profileImage && (
                       <div className="section-heading">
                         <a
@@ -228,54 +235,26 @@ export default function ChessBoardWithCommits({
                         https://github.co...{selectedCommit.sha.slice(-5)}
                       </a>
                     </div>
-                  </div>
+                  </div> */}
+
+                  <GithubCommitDetails
+                    commit={selectedCommit}
+                    onClick={() => {
+                      console.log('On Click worked')
+                    }}
+                  />
 
                   <h3>Older Commits</h3>
                   <div className="commit-list">
                     {olderCommits.length > 0 ? (
                       olderCommits.map((commit) => (
-                        <div
+                        <GithubCommitDetails
                           key={commit.sha}
+                          commit={commit}
                           onClick={() => {
                             handleCommitClick(commit)
                           }}
-                        >
-                          {commit.profileImage && (
-                            <div className="section-heading">
-                              <a
-                                href={`https://github.com/${commit.githubHandle}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                              >
-                                <img
-                                  src={commit.profileImage}
-                                  alt="Profile"
-                                  className="profile-img"
-                                />
-                              </a>
-                              <div className="section-title">
-                                <h4>{commit.customMsg}</h4>
-                                <span>{commit.date}</span>
-                              </div>
-                            </div>
-                          )}
-                          <div className="section-commit-info">
-                            <div className="img-div">
-                              <img src={ChessMove.src} />
-                            </div>
-                            <p>{commit.move}</p>
-                          </div>
-                          <div className="section-commit-info">
-                            <div className="img-div">
-                              <img src={ChessCommitLink.src} />
-                            </div>
-                            <a
-                              href={`https://github.com/pr4k/ChessLogs/commit/${commit.sha}`}
-                            >
-                              https://github.co...{commit.sha.slice(-5)}
-                            </a>
-                          </div>
-                        </div>
+                        />
                       ))
                     ) : (
                       <p>No older commits found.</p>
