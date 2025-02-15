@@ -26,7 +26,6 @@ export default function ChessBoardWithCommits({
   const [loading, setLoading] = useState(false)
 
   const getStatus = () => {
-    // setLoading(true)
     return new Promise((resolve, reject) => {
       fetch('https://chesslogs.azurewebsites.net/api/get_build_status', {
         method: 'GET',
@@ -43,9 +42,6 @@ export default function ChessBoardWithCommits({
         .catch((error) => {
           console.error('Error committing move:', error)
           reject(error)
-        })
-        .finally(() => {
-          setLoading(false)
         })
     })
   }
@@ -72,6 +68,7 @@ export default function ChessBoardWithCommits({
   }, [])
 
   const updateCommit = (requestBody) => {
+    setBuildStatus('commit_initiated')
     fetch('https://chesslogs.azurewebsites.net/api/update_commit', {
       method: 'POST',
       headers: {
@@ -82,9 +79,11 @@ export default function ChessBoardWithCommits({
       .then((response) => response.json())
       .then((data) => {
         console.log('Commit successful:', data)
+        setBuildStatus('commit_completed')
       })
       .catch((error) => {
         console.error('Error committing move:', error)
+        setBuildStatus('commit_failed')
       })
   }
   const startNewGame = (buildNumber) => {
@@ -136,6 +135,9 @@ export default function ChessBoardWithCommits({
 
     return isValidFlag
   }
+  const isInputDisabled = !(
+    buildStatus === 'completed' && selectedCommit.sha === latestCommit.sha
+  )
 
   return (
     <div className="container">
@@ -167,6 +169,7 @@ export default function ChessBoardWithCommits({
                 maxlength="36"
                 value={githubHandle}
                 onChange={(e) => setGithubHandle(e.target.value)}
+                disabled={isInputDisabled}
               />
             </div>
             <div class={`github-message ${isShakingMessage ? 'shake' : ''}`}>
@@ -176,110 +179,122 @@ export default function ChessBoardWithCommits({
                 placeholder="Describe your move"
                 value={commitMessageTemplate}
                 onChange={(e) => setCommitMessageTemplate(e.target.value)}
+                disabled={isInputDisabled}
               ></input>
             </div>
           </div>
         </div>
       </div>
-
-      {buildStatus === 'completed' ? (
-        // If buildStatus is completed, render this:
-        <div className="commit-info">
-          {selectedCommit ? (
-            <>
-              <h3>Latest Github Commit</h3>
-              <div className="latest-commit">
-                {selectedCommit.profileImage && (
-                  <div className="section-heading">
-                    <a
-                      href={`https://github.com/${selectedCommit.githubHandle}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <img
-                        src={selectedCommit.profileImage}
-                        alt="Profile"
-                        className="profile-img"
-                      />
-                    </a>
-                    <div className="section-title">
-                      <h4>{selectedCommit.customMsg}</h4>
-                      <span>{selectedCommit.date}</span>
+      {(() => {
+        if (buildStatus === 'completed') {
+          return (
+            <div className="commit-info">
+              {selectedCommit ? (
+                <>
+                  <h3>Latest Github Commit</h3>
+                  <div className="latest-commit">
+                    {selectedCommit.profileImage && (
+                      <div className="section-heading">
+                        <a
+                          href={`https://github.com/${selectedCommit.githubHandle}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <img
+                            src={selectedCommit.profileImage}
+                            alt="Profile"
+                            className="profile-img"
+                          />
+                        </a>
+                        <div className="section-title">
+                          <h4>{selectedCommit.customMsg}</h4>
+                          <span>{selectedCommit.date}</span>
+                        </div>
+                      </div>
+                    )}
+                    <div className="section-commit-info">
+                      <div className="img-div">
+                        <img src={ChessMove.src} />
+                      </div>
+                      <p>{selectedCommit.move}</p>
+                    </div>
+                    <div className="section-commit-info">
+                      <div className="img-div">
+                        <img src={ChessCommitLink.src} />
+                      </div>
+                      <a
+                        href={`https://github.com/pr4k/ChessLogs/commit/${selectedCommit.sha}`}
+                      >
+                        https://github.co...{selectedCommit.sha.slice(-5)}
+                      </a>
                     </div>
                   </div>
-                )}
-                <div className="section-commit-info">
-                  <div className="img-div">
-                    <img src={ChessMove.src} />
-                  </div>
-                  <p>{selectedCommit.move}</p>
-                </div>
-                <div className="section-commit-info">
-                  <div className="img-div">
-                    <img src={ChessCommitLink.src} />
-                  </div>
-                  <a
-                    href={`https://github.com/pr4k/ChessLogs/commit/${selectedCommit.sha}`}
-                  >
-                    https://github.co...{selectedCommit.sha.slice(-5)}
-                  </a>
-                </div>
-              </div>
 
-              <h3>Older Commits</h3>
-              <div className="commit-list">
-                {olderCommits.length > 0 ? (
-                  olderCommits.map((commit) => (
-                    <div key={commit.sha}>
-                      {commit.profileImage && (
-                        <div className="section-heading">
-                          <a
-                            href={`https://github.com/${commit.githubHandle}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <img
-                              src={commit.profileImage}
-                              alt="Profile"
-                              className="profile-img"
-                            />
-                          </a>
-                          <div className="section-title">
-                            <h4>{commit.customMsg}</h4>
-                            <span>{commit.date}</span>
+                  <h3>Older Commits</h3>
+                  <div className="commit-list">
+                    {olderCommits.length > 0 ? (
+                      olderCommits.map((commit) => (
+                        <div
+                          key={commit.sha}
+                          onClick={() => {
+                            handleCommitClick(commit)
+                          }}
+                        >
+                          {commit.profileImage && (
+                            <div className="section-heading">
+                              <a
+                                href={`https://github.com/${commit.githubHandle}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                <img
+                                  src={commit.profileImage}
+                                  alt="Profile"
+                                  className="profile-img"
+                                />
+                              </a>
+                              <div className="section-title">
+                                <h4>{commit.customMsg}</h4>
+                                <span>{commit.date}</span>
+                              </div>
+                            </div>
+                          )}
+                          <div className="section-commit-info">
+                            <div className="img-div">
+                              <img src={ChessMove.src} />
+                            </div>
+                            <p>{commit.move}</p>
+                          </div>
+                          <div className="section-commit-info">
+                            <div className="img-div">
+                              <img src={ChessCommitLink.src} />
+                            </div>
+                            <a
+                              href={`https://github.com/pr4k/ChessLogs/commit/${commit.sha}`}
+                            >
+                              https://github.co...{commit.sha.slice(-5)}
+                            </a>
                           </div>
                         </div>
-                      )}
-                      <div className="section-commit-info">
-                        <div className="img-div">
-                          <img src={ChessMove.src} />
-                        </div>
-                        <p>{commit.move}</p>
-                      </div>
-                      <div className="section-commit-info">
-                        <div className="img-div">
-                          <img src={ChessCommitLink.src} />
-                        </div>
-                        <a
-                          href={`https://github.com/pr4k/ChessLogs/commit/${commit.sha}`}
-                        >
-                          https://github.co...{commit.sha.slice(-5)}
-                        </a>
-                      </div>
-                    </div>
-                  ))
-                ) : (
-                  <p>No older commits found.</p>
-                )}
-              </div>
-            </>
-          ) : (
-            <p>Failed to load commit data.</p>
-          )}
-        </div>
-      ) : (
-        <h1>{buildStatus}</h1>
-      )}
+                      ))
+                    ) : (
+                      <p>No older commits found.</p>
+                    )}
+                  </div>
+                </>
+              ) : (
+                <p>Failed to load commit data.</p>
+              )}
+            </div>
+          )
+        } else if (buildStatus === 'queued') {
+          return <h1>Commiting your change</h1>
+        } else if (buildStatus == 'in_progress') {
+          return <h1>Building your Commit</h1>
+        } else {
+          return <h1>{buildStatus}</h1>
+        }
+      })()}
     </div>
   )
 }
