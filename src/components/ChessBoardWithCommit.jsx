@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import ChessBoard from '../scripts/Chess'
 import { GithubCommitDetails } from './GithubCommitDetails'
+import { CommitList } from './CommitList'
 import ChessCommitLink from '/public/media/chess-commit.svg'
 import ChessMove from '/public/media/chess-move.svg'
 // import '../styles/chess.css'
@@ -114,7 +115,6 @@ export default function ChessBoardWithCommits({
   }
 
   const handleCommitClick = (commit) => {
-    if (latestCommit?.sha === commit?.sha) return
     setCurrentFen(commit.fen)
     setSelectedCommit(commit)
     setGithubHandle(
@@ -192,88 +192,12 @@ export default function ChessBoardWithCommits({
           </div>
         </div>
       </div>
-      {(() => {
-        if (buildStatus === 'completed') {
-          return (
-            <div className="commit-info">
-              {selectedCommit ? (
-                <>
-                  <h3>Latest Github Commit</h3>
-                  {/* <div className="latest-commit">
-                    {selectedCommit.profileImage && (
-                      <div className="section-heading">
-                        <a
-                          href={`https://github.com/${selectedCommit.githubHandle}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <img
-                            src={selectedCommit.profileImage}
-                            alt="Profile"
-                            className="profile-img"
-                          />
-                        </a>
-                        <div className="section-title">
-                          <h4>{selectedCommit.customMsg}</h4>
-                          <span>{selectedCommit.date}</span>
-                        </div>
-                      </div>
-                    )}
-                    <div className="section-commit-info">
-                      <div className="img-div">
-                        <img src={ChessMove.src} />
-                      </div>
-                      <p>{selectedCommit.move}</p>
-                    </div>
-                    <div className="section-commit-info">
-                      <div className="img-div">
-                        <img src={ChessCommitLink.src} />
-                      </div>
-                      <a
-                        href={`https://github.com/pr4k/ChessLogs/commit/${selectedCommit.sha}`}
-                      >
-                        https://github.co...{selectedCommit.sha.slice(-5)}
-                      </a>
-                    </div>
-                  </div> */}
-
-                  <GithubCommitDetails
-                    commit={selectedCommit}
-                    onClick={() => {
-                      console.log('On Click worked')
-                    }}
-                  />
-
-                  <h3>Older Commits</h3>
-                  <div className="commit-list">
-                    {olderCommits.length > 0 ? (
-                      olderCommits.map((commit) => (
-                        <GithubCommitDetails
-                          key={commit.sha}
-                          commit={commit}
-                          onClick={() => {
-                            handleCommitClick(commit)
-                          }}
-                        />
-                      ))
-                    ) : (
-                      <p>No older commits found.</p>
-                    )}
-                  </div>
-                </>
-              ) : (
-                <p>Failed to load commit data.</p>
-              )}
-            </div>
-          )
-        } else if (buildStatus === 'queued') {
-          return <h1>Commiting your change</h1>
-        } else if (buildStatus == 'in_progress') {
-          return <h1>Building your Commit</h1>
-        } else {
-          return <h1>{buildStatus}</h1>
-        }
-      })()}
+      <CommitList
+        selectedCommit={selectedCommit}
+        olderCommits={olderCommits}
+        buildStatus={buildStatus}
+        handleCommitClick={handleCommitClick}
+      />
     </div>
   )
 }

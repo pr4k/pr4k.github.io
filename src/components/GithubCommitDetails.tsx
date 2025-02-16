@@ -1,5 +1,6 @@
 import ChessCommitLink from '/public/media/chess-commit.svg'
 import ChessMove from '/public/media/chess-move.svg'
+import Avatar from './Avatar'
 
 interface Props {
   commit: {
@@ -16,7 +17,7 @@ interface Props {
 export const GithubCommitDetails = ({ commit, onClick }: Props) => {
   return (
     <div className="commit-info-card" onClick={onClick}>
-      {commit.profileImage && (
+      {commit.profileImage ? (
         <div className="section-heading">
           <a
             href={`https://github.com/${commit.githubHandle}`}
@@ -29,6 +30,14 @@ export const GithubCommitDetails = ({ commit, onClick }: Props) => {
               className="profile-img"
             />
           </a>
+          <div className="section-title">
+            <h4>{commit.customMsg}</h4>
+            <span>{commit.date}</span>
+          </div>
+        </div>
+      ) : (
+        <div className="section-heading">
+          <Avatar name={commit.githubHandle} bgColor="#343841" />
           <div className="section-title">
             <h4>{commit.customMsg}</h4>
             <span>{commit.date}</span>
