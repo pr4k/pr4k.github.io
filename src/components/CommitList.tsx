@@ -214,10 +214,10 @@ export const CommitList = ({
         <PipelineProgressTracker {...buildProgressProps} endnode={false} />
         <PipelineProgressTracker {...deployProgressProps} endnode={false} />
         <PipelineProgressTracker
-          title="Waiting to deploy"
+          title="Click to Refresh"
           timestamp={deployStatus.deployment_completed}
-          state={deployStatus.deployment_completed ? 'completed' : 'initiated'}
-          endnode={deployStatus.deployment_completed ? true : false}
+          state={deployStatus.deployment_completed ? 'completed' : 'queued'}
+          endnode={true}
         />
       </div>
     )
