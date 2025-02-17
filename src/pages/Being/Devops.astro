@@ -46,11 +46,16 @@ const {
     </section>
     <section id="writings" class="writings">
       <h2>
-        <span>Interactive Chess</span>
+        <span>Github Powered Chess</span>
       </h2>
       <div class="chess">
         <ChessBoard />
       </div>
+    </section>
+    <section id="documentation" class="writings documentation">
+      <h2>
+        <span>How It Works?</span>
+      </h2>
     </section>
   </main>
 </Layout>
@@ -87,6 +92,14 @@ const {
 
       & span {
         order: 0;
+      }
+    }
+  }
+
+  .documentation {
+    & h2 {
+      & span {
+        order: 1;
       }
     }
   }
