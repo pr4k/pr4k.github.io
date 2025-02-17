@@ -1,0 +1,87 @@
+.pipeline-list {
+  margin-top: 50px;
+  @media (width>=768) {
+    margin-top: 0px;
+  }
+}
+
+.progress-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.progress-connector {
+  height: 50px;
+  margin-left: 43px;
+  width: 0px;
+  &.in_progress {
+    border: 2px dotted var(--text-color);
+  }
+  &.queued {
+    border: 2px dotted var(--text-description-color);
+  }
+  &.initiated {
+    border: 2px dotted var(--text-color);
+  }
+  &.completed {
+    border: 2px dotted var(--text-color);
+  }
+}
+.circular-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  margin-left: 20px;
+  margin-right: 20px;
+  width: 50px;
+  border: 6px solid;
+  height: 50px;
+
+  &.in_progress {
+    border-color: var(--text-color);
+  }
+  &.queued {
+    border-color: var(--text-description-color);
+  }
+  &.initiated {
+    border-color: var(--text-color);
+  }
+
+  & > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--text-color);
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+  }
+  .initiated,
+  .queued {
+    background-color: transparent;
+  }
+
+  .in_progress {
+    animation: inprogress 2s linear infinite;
+  }
+}
+
+@keyframes inprogress {
+  /* 0% {
+    opacity: 0.25;
+  } */
+  25% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0.5;
+  }
+  /* 100% {
+    opacity: 0.25;
+  } */
+}

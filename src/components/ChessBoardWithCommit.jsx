@@ -4,8 +4,29 @@ import { GithubCommitDetails } from './GithubCommitDetails'
 import { CommitList } from './CommitList'
 import ChessCommitLink from '/public/media/chess-commit.svg'
 import ChessMove from '/public/media/chess-move.svg'
+import { timerMessage } from 'node_modules/astro/dist/core/logger/core'
 // import '../styles/chess.css'
 // import '../styles/global.css'
+
+const DEFAULT_PIPELINE = {
+  build_status: {
+    build_queued: null,
+    build_started: null,
+    build_in_progress: null,
+    build_completed: null
+  },
+  deployment_status: {
+    deployment_queued: null,
+    deployment_started: null,
+    deployment_in_progress: null,
+    deployment_completed: null
+  },
+  commit_status: {
+    commit_initiated: null,
+    commit_completed: null,
+    commit_failed: null
+  }
+}
 
 export default function ChessBoardWithCommits({
   latestCommit,
@@ -23,7 +44,7 @@ export default function ChessBoardWithCommits({
   const [commitMessageTemplate, setCommitMessageTemplate] = useState('')
   const [isShakingHandle, setIsShakingHandle] = useState(false)
   const [isShakingMessage, setIsShakingMessage] = useState(false)
-  const [buildStatus, setBuildStatus] = useState('completed')
+  const [pipeline, setPipeline] = useState(DEFAULT_PIPELINE)
   const [loading, setLoading] = useState(false)
 
   const getStatus = () => {
@@ -36,12 +57,12 @@ export default function ChessBoardWithCommits({
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log('Commit successful:', data)
-          setBuildStatus(data['status'])
-          resolve(data['status'])
+          console.log('Status Fetch successful:', data)
+          setPipeline((prev) => ({ ...DEFAULT_PIPELINE, ...prev, ...data }))
+          resolve(data)
         })
         .catch((error) => {
-          console.error('Error committing move:', error)
+          console.error('Error Getting Status:', error)
           reject(error)
         })
     })
@@ -69,7 +90,22 @@ export default function ChessBoardWithCommits({
   }, [])
 
   const updateCommit = (requestBody) => {
-    setBuildStatus('commit_initiated')
+    setPipeline((prev) => {
+      console.log('initiated', {
+        ...prev,
+        commit_status: {
+          ...(prev?.commit_status ?? {}),
+          commit_initiated: new Date().toISOString()
+        }
+      })
+      return {
+        ...prev,
+        commit_status: {
+          ...(prev?.commit_status ?? {}),
+          commit_initiated: new Date().toISOString()
+        }
+      }
+    })
     fetch('https://chesslogs.azurewebsites.net/api/update_commit', {
       method: 'POST',
       headers: {
@@ -80,11 +116,27 @@ export default function ChessBoardWithCommits({
       .then((response) => response.json())
       .then((data) => {
         console.log('Commit successful:', data)
-        setBuildStatus('commit_completed')
+        setPipeline((prev) => {
+          return {
+            ...prev,
+            commit_status: {
+              ...(prev?.commit_status ?? {}),
+              commit_completed: new Date().toISOString()
+            }
+          }
+        })
       })
       .catch((error) => {
         console.error('Error committing move:', error)
-        setBuildStatus('commit_failed')
+        setPipeline((prev) => {
+          return {
+            ...prev,
+            commit_status: {
+              ...(prev?.commit_status ?? {}),
+              commit_failed: new Date().toISOString()
+            }
+          }
+        })
       })
   }
   const startNewGame = (buildNumber) => {
@@ -143,9 +195,11 @@ export default function ChessBoardWithCommits({
     return isValidFlag
   }
   const isInputDisabled = !(
-    buildStatus === 'completed' && selectedCommit?.sha === latestCommit?.sha
+    pipeline?.deployment_status?.deployment_completed &&
+    selectedCommit?.sha === latestCommit?.sha
   )
-
+  console.log(currentFen)
+  console.table(pipeline)
   return (
     <div className="container">
       <div className="chessboard">
@@ -195,7 +249,9 @@ export default function ChessBoardWithCommits({
       <CommitList
         selectedCommit={selectedCommit}
         olderCommits={olderCommits}
-        buildStatus={buildStatus}
+        buildStatus={pipeline?.build_status}
+        deployStatus={pipeline?.deployment_status}
+        commitStatus={pipeline?.commit_status}
         handleCommitClick={handleCommitClick}
       />
     </div>
