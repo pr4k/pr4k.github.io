@@ -92,7 +92,7 @@ export default function ChessBoardWithCommits({
   const updateCommit = (requestBody) => {
     setPipeline((prev) => {
       console.log('initiated', {
-        ...prev,
+        ...DEFAULT_PIPELINE,
         commit_status: {
           ...(prev?.commit_status ?? {}),
           commit_initiated: new Date().toISOString()
