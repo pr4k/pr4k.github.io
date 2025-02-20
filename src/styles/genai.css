@@ -1,0 +1,43 @@
+.ai-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 700px;
+  align-items: center;
+}
+.ai-content-box {
+  display: flex;
+  width: 70%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.ai-content-input {
+  display: flex;
+  flex-direction: row;
+  width: 75%;
+
+  button {
+    background-color: var(--bg-secondary-color);
+    border-radius: 0 10px 10px 0;
+    border: none;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: var(--text-color);
+  }
+  input {
+    width: 100%;
+    height: 40px;
+    background-color: var(--bg-secondary-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 10px 0 0 10px;
+    border-right: 1px solid var(--bg-color);
+    padding-left: 10px;
+  }
+  input:focus {
+    outline: none;
+    border: none;
+  }
+}

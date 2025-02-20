@@ -1,0 +1,11 @@
+---
+import Layout from '@layouts/Layout.astro'
+import ChatBox from '@components/ChatBox'
+import '@styles/genai.css'
+---
+
+<Layout options={{ title: 'DevOps', description: 'Description' }}>
+  <main>
+    <ChatBox client:visible />
+  </main>
+</Layout>
