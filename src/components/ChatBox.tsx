@@ -34,7 +34,9 @@ const ChatBox: React.FC = () => {
         <div dangerouslySetInnerHTML={{ __html: response }} />
         {/* <div
           dangerouslySetInnerHTML={{
-            __html: ` <div style="display: flex; flex-direction: column; align-items: center; padding: 20px;">        <img src="https://pr4k.me/img" alt="Prakhar Kaushik" style="width: 150px; border-radius: 50%;">        <h1>Prakhar Kaushik</h1>        <p style="text-align: center;">FREELANCER | FREELANCE DEVELOPER</p>        <p style="text-align: center;">Completed more than 150 projects with multiple rated projects.</p>        <button style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Contact Me</button>    </div>`
+            __html: `
+        <div>            <img src="https://raw.githubusercontent.com/pr4k/pr4k.github.io/refs/heads/sourcev2/src/images/hero-profile.png" alt="Prakhar Kaushik's Profile Picture">            <h1>Prakhar Kaushik</h1>            <h2>Head of Products & Technology at Polynomial AI</h2>            <p>AI/ML enthusiast with 4+ years experience. Building the future with data and code.            <br> Passionate about innovation and open-source contributions.            </p>            <p><strong>To connect with Prakhar on GitHub, find him at:</strong></p>            <ul>                <li>                    <button onclick="window.open('github.com/pr4k', '_blank')">GitHub</button>                </li>                <li>                    <button onclick="window.open('linkedin.com/in/pr4k', '_blank')">LinkedIn</button>                </li>                <li>                    <button onclick="window.open('medium.com/@pr4k', '_blank')">Medium</button>                </li>            </ul>        </div>
+            `
           }}
         /> */}
       </div>

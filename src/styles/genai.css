@@ -11,6 +11,29 @@
   height: 100%;
   align-items: center;
   justify-content: center;
+
+  h2 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  img {
+    width: 150px;
+    height: 100%;
+    border-radius: 10%;
+    margin-bottom: 10px;
+  }
+  button {
+    background-color: var(--bg-secondary-color);
+    color: var(--text-color);
+    border: none;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+  }
+  button:hover {
+    cursor: pointer;
+    background-color: var(--bg-toggle-thumb);
+  }
 }
 
 .ai-content-input {
