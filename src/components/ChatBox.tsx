@@ -31,14 +31,14 @@ const ChatBox: React.FC = () => {
   return (
     <div className="ai-container">
       <div className="ai-content-box">
-        <div dangerouslySetInnerHTML={{ __html: response }} />
-        {/* <div
+        {/* <div dangerouslySetInnerHTML={{ __html: response }} /> */}
+        <div
           dangerouslySetInnerHTML={{
             __html: `
-        <div>            <img src="https://raw.githubusercontent.com/pr4k/pr4k.github.io/refs/heads/sourcev2/src/images/hero-profile.png" alt="Prakhar Kaushik's Profile Picture">            <h1>Prakhar Kaushik</h1>            <h2>Head of Products & Technology at Polynomial AI</h2>            <p>AI/ML enthusiast with 4+ years experience. Building the future with data and code.            <br> Passionate about innovation and open-source contributions.            </p>            <p><strong>To connect with Prakhar on GitHub, find him at:</strong></p>            <ul>                <li>                    <button onclick="window.open('github.com/pr4k', '_blank')">GitHub</button>                </li>                <li>                    <button onclick="window.open('linkedin.com/in/pr4k', '_blank')">LinkedIn</button>                </li>                <li>                    <button onclick="window.open('medium.com/@pr4k', '_blank')">Medium</button>                </li>            </ul>        </div>
-            `
+                <div>            <img src="https://raw.githubusercontent.com/pr4k/pr4k.github.io/refs/heads/sourcev2/src/images/hero-profile.png" alt="Prakhar Kaushik's Profile Picture">            <h1>Prakhar Kaushik</h1>            <h2>Head of Products & Technology at Polynomial AI</h2>            <p>                AI/ML enthusiast with a passion for building innovative products.                Experienced in cloud platforms and backend engineering.                Focusing on scaling AI solutions for real-world impact.            </p>            <p><strong>Education: B.Tech in Computer Science, IIIT Bhubaneswar</strong></p>            <p><strong>Expertise:</strong> AI/ML, DevOps, Cloud Platforms, Backend Engineering</p>            <p><strong>Skills:</strong> Python, Golang, Rust, Docker, Azure, Google BigQuery, Redis, Firebase</p>            <p><strong>Achievements:</strong> IBM ML Hackathon Winner, Awarded Employee of the year</p>            <br>            <h2>Find Me At</h2>            <ul>                <li><button><a href="https://github.com/pr4k">GitHub</a></button></li>                <li><button><a href="https://linkedin.com/in/pr4k">LinkedIn</a></button></li>                <li><button><a href="https://medium.com/@pr4k">Medium</a></button></li>            </ul>        </div>  
+        `
           }}
-        /> */}
+        />
       </div>
       <div className="ai-content-input">
         <input
