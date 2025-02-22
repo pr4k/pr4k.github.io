@@ -13,34 +13,33 @@
   justify-content: center;
   padding-top: 20px;
   overflow-y: auto;
-
-  & h2 {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-  }
-  & img {
-    width: 150px;
-    height: 100%;
-    border-radius: 10%;
-    margin-bottom: 10px;
-  }
-  & button,
-  & a {
-    background-color: var(--bg-secondary-color);
-    color: var(--text-color);
-    border: none;
-    padding: 10px;
-    margin: 5px;
-    border-radius: 5px;
-  }
-  & button:hover,
-  & a:hover {
-    cursor: pointer;
-    background-color: var(--bg-toggle-thumb);
-  }
-  & a {
-    width: 100%;
-  }
+}
+.genai_element h2 {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+.genai_element img {
+  width: 150px;
+  height: 100%;
+  border-radius: 10%;
+  margin-bottom: 10px;
+}
+.genai_element button,
+.genai_element a {
+  background-color: var(--bg-secondary-color);
+  color: var(--text-color);
+  border: none;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+}
+.genai_element button:hover,
+.genai_element a:hover {
+  cursor: pointer;
+  background-color: var(--bg-toggle-thumb);
+}
+.genai_element a {
+  width: 100%;
 }
 
 .ai-content-box:-webkit-scrollbar {
@@ -68,27 +67,26 @@
   flex-direction: row;
   width: 75%;
   margin-top: 30px;
-
-  & button {
-    background-color: var(--bg-secondary-color);
-    border-radius: 0 10px 10px 0;
-    border: none;
-    padding-left: 20px;
-    padding-right: 20px;
-    color: var(--text-color);
-  }
-  & input {
-    width: 100%;
-    height: 40px;
-    background-color: var(--bg-secondary-color);
-    color: var(--text-color);
-    border: none;
-    border-radius: 10px 0 0 10px;
-    border-right: 1px solid var(--bg-color);
-    padding-left: 10px;
-  }
-  & input:focus {
-    outline: none;
-    border: none;
-  }
+}
+.ai-content-input button {
+  background-color: var(--bg-secondary-color);
+  border-radius: 0 10px 10px 0;
+  border: none;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: var(--text-color);
+}
+.ai-content-input input {
+  width: 100%;
+  height: 40px;
+  background-color: var(--bg-secondary-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: 10px 0 0 10px;
+  border-right: 1px solid var(--bg-color);
+  padding-left: 10px;
+}
+.ai-content-input input:focus {
+  outline: none;
+  border: none;
 }
