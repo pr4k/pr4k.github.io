@@ -60,6 +60,24 @@ const ChatBox: React.FC = () => {
           </div>
         )}
       </div>
+      {response ? (
+        <div className="ai-suggested-questions-row">
+          {suggestedQueries.map((q, index) => (
+            <div
+              key={index}
+              className="ai-suggested-question-bubble"
+              onClick={() => {
+                setQuery(q)
+                handleSend(q)
+              }}
+            >
+              {q}
+            </div>
+          ))}
+        </div>
+      ) : (
+        <></>
+      )}
       <div className="ai-content-input">
         <input
           type="text"
