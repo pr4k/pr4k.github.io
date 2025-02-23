@@ -99,6 +99,8 @@
 .ai-suggested-question-bubble {
   background: var(--bg-secondary-color);
   padding: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
   border-radius: 20px;
   cursor: pointer;
   text-align: center;

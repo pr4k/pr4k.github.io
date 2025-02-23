@@ -39,7 +39,9 @@ const ChatBox: React.FC = () => {
   return (
     <div className="ai-container">
       <div className="ai-content-box">
-        {response ? (
+        {loading ? (
+          <div className="loading-spinner">Loading...</div>
+        ) : response ? (
           <div dangerouslySetInnerHTML={{ __html: response }} />
         ) : (
           <div className="ai-suggested-questions-grid">
@@ -47,7 +49,10 @@ const ChatBox: React.FC = () => {
               <div
                 key={index}
                 className="ai-suggested-question-bubble"
-                onClick={() => handleSend(q)}
+                onClick={() => {
+                  setQuery(q)
+                  handleSend(q)
+                }}
               >
                 {q}
               </div>
@@ -60,7 +65,7 @@ const ChatBox: React.FC = () => {
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Type your query..."
+          placeholder="Ask anything about me..."
           className="flex-1"
         />
         <button onClick={() => handleSend()} disabled={loading}>
