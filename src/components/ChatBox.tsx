@@ -1,11 +1,19 @@
 import React, { useState } from 'react'
+
 const ChatBox: React.FC = () => {
   const [query, setQuery] = useState('')
   const [response, setResponse] = useState('')
   const [loading, setLoading] = useState(false)
+  const [suggestedQueries, setSuggestedQueries] = useState([
+    'Education background',
+    'Key achievements',
+    'His skills',
+    'Does he like bike?'
+  ])
 
-  const handleSend = async () => {
-    if (!query.trim()) return
+  const handleSend = async (queryText?: string) => {
+    const finalQuery = queryText || query
+    if (!finalQuery.trim()) return
     setLoading(true)
     try {
       const res = await fetch(
@@ -15,7 +23,7 @@ const ChatBox: React.FC = () => {
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ query })
+          body: JSON.stringify({ query: finalQuery })
         }
       )
       const data = await res.json() // Expecting raw HTML response
@@ -24,20 +32,28 @@ const ChatBox: React.FC = () => {
       console.error('Error fetching response:', error)
     } finally {
       setLoading(false)
+      setQuery('')
     }
   }
 
   return (
     <div className="ai-container">
       <div className="ai-content-box">
-        <div dangerouslySetInnerHTML={{ __html: response }} />
-        {/* <div
-          dangerouslySetInnerHTML={{
-            __html: `
-        <div>  <img src="https://raw.githubusercontent.com/pr4k/pr4k.github.io/refs/heads/sourcev2/src/images/hero-profile.png" alt="Prakhar Kaushik's Profile Picture">  <h1>Prakhar Kaushik</h1>  <h2>Head of Products & Technology at Polynomial AI</h2>  <p>    <strong>B.Tech in Computer Science, IIIT Bhubaneswar</strong>. Over 4 years of industry experience.    Expert in <strong>AI/ML, DevOps, and Cloud Platforms</strong>. Passionate about building innovative products.  </p>  <p>    <strong>Achievements:</strong> IBM ML Hackathon Winner, Awarded Employee of the year.  </p>  <p>  </p>  <div>    <h2>Find Me At</h2>    <button><a href="https://github.com/pr4k">GitHub</a></button>    <button><a href="https://linkedin.com/in/pr4k">LinkedIn</a></button>    <button><a href="https://medium.com/@pr4k">Medium</a></button>  </div></div>
-                `
-          }}
-        /> */}
+        {response ? (
+          <div dangerouslySetInnerHTML={{ __html: response }} />
+        ) : (
+          <div className="ai-suggested-questions-grid">
+            {suggestedQueries.map((q, index) => (
+              <div
+                key={index}
+                className="ai-suggested-question-bubble"
+                onClick={() => handleSend(q)}
+              >
+                {q}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
       <div className="ai-content-input">
         <input
@@ -47,7 +63,7 @@ const ChatBox: React.FC = () => {
           placeholder="Type your query..."
           className="flex-1"
         />
-        <button onClick={handleSend} disabled={loading}>
+        <button onClick={() => handleSend()} disabled={loading}>
           {loading ? 'Sending...' : 'Send'}
         </button>
       </div>

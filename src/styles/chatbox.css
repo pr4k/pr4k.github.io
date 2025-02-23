@@ -90,3 +90,20 @@
   outline: none;
   border: none;
 }
+.ai-suggested-questions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+.ai-suggested-question-bubble {
+  background: var(--bg-secondary-color);
+  padding: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.3s;
+}
+.ai-suggested-question-bubble:hover {
+  background: var(--bg-toggle-thumb);
+}
