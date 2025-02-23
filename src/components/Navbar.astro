@@ -8,6 +8,11 @@ const links = t('navbar', { returnObjects: true })
 ---
 
 <nav id="menu">
+  <div>
+    <a href="/">
+      <p>Pr4k</p>
+    </a>
+  </div>
   <ul>
     {
       links.map(({ label, href }, index) => (
@@ -78,6 +83,10 @@ const links = t('navbar', { returnObjects: true })
 
 <style>
   nav#menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     background-color: color-mix(in srgb, var(--bg-color), transparent 30%);
     backdrop-filter: blur(12px);
     padding-block: 1rem;
@@ -93,6 +102,20 @@ const links = t('navbar', { returnObjects: true })
       padding: 0;
       top: 36px;
       text-align: initial;
+    }
+
+    & div {
+      @media (width>=768px) {
+        display: none;
+      }
+      & p {
+        font-size: xx-large;
+        font-weight: bolder;
+      }
+      & a {
+        color: var(--text-color);
+        text-decoration: none;
+      }
     }
 
     & ul {
