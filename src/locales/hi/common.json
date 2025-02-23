@@ -5,7 +5,7 @@
   "navbar": [
     {
       "label": "होम",
-      "href": "#top"
+      "href": "/hi"
     },
     {
       "label": "अनुभव",
